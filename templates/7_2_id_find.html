@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='7_2_id_find.css') }}">
+</head>
+<body>
+  
+{% extends "index.html" %}
+    
+    {% block section %}
+
+        <content>
+            <div class="status">
+                <p style="font-size:23px" > 아이디 찾기 </p> 
+            </div> 
+        </content>
+        <div class="pw-chk">
+            <div class="pw-area">
+                <label for="entertelid">휴대폰 번호 입력</label>
+                <input type="text" id="entertelid" name="entertelid" value="">
+                <button type="button" class="btn-pw">인증번호 전송</button><br>
+            </div>
+            <div class="pw-area">
+                <label for="enterpinid">인증번호 입력</label>
+                <input type="text" id="enterpinid" name="enterpinid" value="">
+                <button type="button" class="btn-pw">제출</button>
+            </div>
+        </div>
+      {% endblock section %}
+    </body>
+    </html>

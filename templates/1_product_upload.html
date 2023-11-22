@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{{ url_for('static', filename='1_product_upload.css') }}">
+        <script src="{{ url_for('static', filename='1_product_upload.js') }}" defer></script>
+        <script src="{{ url_for('static', filename='1_id_certificate') }}" defer></script>
+    
+</head>
+<body>
+    {% extends "index.html" %}
+    
+    {% block section %}
+           <content>
+            <div class="status">
+                <p style="font-size:23px" > 상품 등록 </p> 
+            </div> 
+        </content>
+
+
+        
+        <content class="content2">
+
+            <div class="wrapping">
+
+            <div class="upside">
+
+            <div class="img-upload">
+                <div id="image-container">
+                    <img src="#" id="uploaded-image">
+                    <p id="uploaded-image-text" style="display: none;"></p>
+                    <p id="image-counter" style="display: none;"></p>
+                </div>
+                <input type="file" accept="image/*" multiple id="image-upload-input">
+                <button id="cancel-upload">업로드 취소</button> <!-- 업로드 취소 버튼을 img-upload 아래로 이동 -->
+            </div>
+
+            <div class="info-upload">
+                상품 명 <input type="text" class="c"> <br>
+                상품 설명 제목 <input type="text" class="c"> <br>
+                가격 (1000원 이상) <input type="text" class="c"><br>
+                <input type="checkbox" class="checkbox-bigger">
+                <p class="c" style="display:inline; margin-top:5px; margin-bottom:5px;">배송비 포함</p> <br>
+                <label for="product-status" class="c">상품 상태</label>
+                <select id="product-status" name="product-status" style="margin-top:10px;">
+                    <option value="미개봉">미개봉</option>
+                    <option value="개봉 새상품">개봉 새상품</option>
+                    <option value="중고">중고</option>
+                </select> <br>
+                카테고리 <input type="text" class="c" style="margin-top:15px"> <br>
+                <input type="checkbox" class="checkbox-bigger"> 직거래 지역 <input type="text" class="c"> <br>
+            </div>
+                
+                 </div>
+
+            <div class="info-text">
+                <p>상품 설명(10자 이상)</p>
+                <textarea name="info" id="info" cols="75%" rows="10" placeholder="상품의 정보, 상태, 거래 방법, 연락처 등 상품에 대한 정보를 알기 쉽게 작성해주세요."></textarea>
+                
+            </div>
+
+            </div>
+
+            <div class="idcerti">
+                <label for="seller-id"><br>판매자 ID</label>
+                <input type="text" id="seller-id" name="seller-id">
+                <button id="authenticate-button">인증</button>
+                <div id="message"></div>
+            </div>
+
+
+            <div class="upload-button" >
+                <a href="uploaded(임시).html"> 상품 등록하기 </a> 
+                </div>
+
+            </content>
+     {% endblock section %}
+    </body>
+    
+    </html>

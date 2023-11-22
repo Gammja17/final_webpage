@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    
+     <link rel="stylesheet" href="{{ url_for('static', filename='7_1_log_in.css') }}">
+</head>
+<body>
+  
+{% extends "index.html" %}
+    
+    {% block section %}
+
+        <content>
+            <div class="status">
+                <p style="font-size:23px" > 로그인 </p> 
+            </div> 
+        </content>
+
+        <div class="login-form">
+            <form action="login.php" method="post">
+                <div class="inp-area">
+                    <label for="idbox">아이디(ID)</label>
+                    <input type="text" id="idbox" name="boxforid" autocomplete="off" required><br>
+                </div>
+                <div class="inp-area">
+                    <label for="psbox">비밀번호(pw)</label>
+                    <input type="password" name="psbox" id="psbox" autocomplete="off" required><br>
+                </div>
+                <div class="inp-area">
+                    <button type="submit" class="btn-area">Login</button><br>
+                </div>
+            </form>
+            <div class="fmet">
+                <a href="/pw_find">비밀번호찾기</a>
+                <a href="/id_find">아이디찾기</a>
+                <a href="/sign_up">회원가입</a>
+            </div>
+        </div>
+    {% endblock section %}
+    </body>
+</html>

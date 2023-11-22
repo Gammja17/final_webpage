@@ -4,41 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="3_product_detail.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='3_product_detail.css') }}">
+    <script src="{{ url_for('static', filename='3_product_detail.js') }}" defer></script>
 </head>
 
 <body>
 
+ {% extends "index.html" %}
     
-    <link rel="stylesheet" type="text/css" href="0_header.css">
-    <link rel="stylesheet" type="text/css" href="3_product_detail.css">
 
-        <header>
-            <div class="container">
-                <a href="2_home.html">
-                    <div id="homebutton">
-                        <img id="logo" src="10_logo.png" alt="LOGO">
-                        이화 마켓
-                    </div>
-                </a>
-                <span class="search">
-                    <input type="search" size="40" maxlength="20" placeholder="상품명, 지역명, 판매자 아이디 입력">
-                    <button>검색</button>
-                </span>
-                <div class="headerbutton">
-                    <a href="9_1_wishlist.html"><span class="hb" id="wishlist"> <img id="icon" src="10_wish.png" alt="위시"> </span></a>
-                    <a href="9_2_shopping_cart.html"><span class="hb" id="cart"> <img id="icon" src="10_cart.png" alt="카트"> </span></a>
-                    <a href="9_3_mypage.html"><span class="hb" id="mypage"> <img id="icon" src="10_my.png" alt="마이"> </span></a>
-                </div>
-            </div>
-        </header>
-
- 
-        <div class="info-section">
-            <div class="info-block" id="product-reviews">상품 후기</div>
-            <div class="info-block" id="seller-info">판매자 정보</div>
-            <div class="info-block" id="product-details" style="background-color: #c9d8b7;">상품 상세 정보</div>
-        </div>
+    
+                <div class="info-block" id="product-reviews" > <a href="/review_all">상품 후기</a></div>
+                <div class="info-block" id="seller-info"> <a href="/seller_info">판매자 정보</a></div>
+                <div class="info-block" id="product-details"  style="background-color:#c9d8b7;" > <a href="/product_detail">상품 상세 정보</a></div> 
  
 
 
@@ -69,7 +47,7 @@
 
 
 
-
+    {% block section %}
 
 
         <!--이미지 슬라이드쇼로 보여줌-->
@@ -79,19 +57,19 @@
 
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 3</div>
-                    <img src="10_336-x-280.jpg" style="width: 336px;height: 280px;">
+                    <img src="{{ url_for('static', filename='images/10_336-x-280.jpg') }}"  style="width: 336px;height: 280px;">
                     <div class="text">Caption Text</div>
                 </div>
 
                 <div class="mySlides fade">
                     <div class="numbertext">2 / 3</div>
-                    <img src="10_336-x-280.jpg" style="width: 336px;height: 280px;">
+                    <img src="{{ url_for('static', filename='images/10_336-x-280.jpg') }}" style="width: 336px;height: 280px;">
                     <div class="text">Caption Two</div>
                 </div>
 
                 <div class="mySlides fade">
                     <div class="numbertext">3 / 3</div>
-                    <img src="10_336-x-280.jpg" style="width: 336px;height: 280px;">
+                    <img src="{{ url_for('static', filename='images/10_336-x-280.jpg') }}" style="width: 336px;height: 280px;">
                     <div class="text">Caption Three</div>
                 </div>
 
@@ -117,15 +95,15 @@
                 <ul style="padding: 10px;font-size: 20px;margin: 0px;">
                     <li>판매자 id</li>
                     <li>거래지역</li>
-                    <li>상품 상태 <span class="underline">중고</p>
+                    <li>상품 상태 <span class="underline">중고</span>
                     </li>
                 </ul>
 
                 <a href="#" class="image-button">
-                    <img src="10_wish_button.png" alt="Custom Button"></a>
+                    <img src="{{ url_for('static', filename='images/10_wish_button.png') }}" alt="Wish" ></a>
                 <a href="#" class="image-button">
                     <p> </p>
-                    <img src="10_cart_button.png" alt="cart">
+                    <img src="{{ url_for('static', filename='images/10_cart_button.png') }}" alt="Cart" >
                 </a>
             </div>
       
@@ -145,15 +123,15 @@
 
         <div class="seller-info">
             <h2>판매자 정보</h2>
-            <img src="10_person.png" alt="판매자">
+              <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="판매자">
             <p>id</p>
             <p>온도</p>
             <hr class="divider">
 
 
             <div class="person">
-                <a href="#상품리뷰 상세"><img src="10_person.png" alt="구매자 1"></a>
-                <a href="#상품리뷰 상세">
+                <a href="/review_detail"><img src="{{ url_for('static', filename='images/10_person.png') }}" alt="구매자1"></a>
+                <a href="/review_detail">
                     <h3 style="text-decoration: underline;">id</h3>
                 </a>
                 <div class="star-rating" data-current-rating="0">
@@ -170,12 +148,12 @@
             <hr class="divider">
 
             <div class="person">
-                <a href="#상품리뷰 상세"></a><img src="10_person.png" alt="구매자 2"></a>
-                <a href="#상품리뷰 상세">
+                <a href="/review_detail"></a><img src="{{ url_for('static', filename='images/10_person.png') }}" alt="구매자2">
+                <a href="/review_detail">
                     <h3 style="text-decoration: underline;">id</h3>
                 </a>
-                <a href="#상품리뷰 상세">
-                    <div class="star-rating" data-current-rating="0">
+                <a href="/review_detail">
+                    <div class="star-rating" data-current-rating="0"></div>
                 </a>
                 <div class="stars">
                     <span class="star" onclick="setRating(this)" data-value="1">&#9733;</span>
@@ -189,7 +167,7 @@
         </div>
         <hr class="divider">
     </div>
-    </div>
+    
 
     <div class="location_category">
         <div class="box">
@@ -203,7 +181,7 @@
     </div>
 </content>
 
-
+{%endblock section%}
 </body>
 
 </html>

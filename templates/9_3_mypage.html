@@ -4,58 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+ <link rel="stylesheet" href="{{ url_for('static', filename='9_3_mypage.css') }}">
+     <script src="{{ url_for('static', filename='9_3_mypage.js') }}" defer></script>
 </head>
-
 <body>
-    <link rel="stylesheet" type="text/css" href="0_header.css">
-    <link rel="stylesheet" type="text/css" href="9_3_mypage.css">
-
-        <header>
-            <div class="container">
-                <a href="2_home.html">
-                    <div id="homebutton">
-                        <img id="logo" src="10_logo.png" alt="LOGO">
-                        이화 마켓
-                    </div>
-                </a>
-                <span class="search">
-                    <input type="search" size="40" maxlength="20" placeholder="상품명, 지역명, 판매자 아이디 입력">
-                    <button>검색</button>
-                </span>
-                <div class="headerbutton">
-                    <a href="9_1_wishlist.html"><span class="hb" id="wishlist"> <img id="icon" src="10_wish.png" alt="위시"> </span></a>
-                    <a href="9_2_shopping_cart.html"><span class="hb" id="cart"> <img id="icon" src="10_cart.png" alt="카트"> </span></a>
-                    <a href="9_3_mypage.html"><span class="hb" id="mypage"> <img id="icon" src="10_my.png" alt="마이"> </span></a>
-                </div>
-            </div>
-        </header>
-
-        <aside>
-            <p style="font-weight: bold; font-size:23px"> 카테고리
-            <p>
-            <ul class="category">
-                <li><a href="all.html">
-                        <div class="category-menu">전체</div>
-                    </a></li>
-                <li><a href="clothes.html">
-                        <div class="category-menu">옷</div>
-                    </a></li>
-                <li><a href="food.html">
-                        <div class="category-menu">음식</div>
-                    </a></li>
-                <li><a href="furniture.html">
-                        <div class="category-menu">가구</div>
-                    </a></li>
-                <li><a href="electronic.html">
-                        <div class="category-menu">전자</div>
-                    </a></li>
-                <li><a href="etc.html">
-                        <div class="category-menu">기타</div>
-                    </a></li>
-            </ul>
-        </aside>
-        
+  
+{% extends "index.html" %}
+    
+    {% block section %}
         <content>
             <div class="status">
                 <p style="font-size:23px"> 마이페이지 </p>
@@ -76,7 +32,7 @@
             <div class="container">
                 <div class="profile-box">
                     <div class="profile-image">
-                        <img src="10_person.png" alt="프로필 사진" style="width: 400px; height: 300px;">
+                          <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="product image" alt="프로필 사진" style="width: 400px; height: 300px;">
                     </div>
                     <div class="profile-info">
                         <p>ID: 사용자 아이디</p>
@@ -94,21 +50,21 @@
                 <div class="store-box">
                     <h2>내 상점</h2>
                     <div class="product">
-                        <a href="#상품 상세페이지"><img src="10__img.jpg" alt="상품1"></a>
+                        <a href="/product_detail"><img src="{{ url_for('static', filename='images/10__img.jpg') }}" alt="상품"></a>
                         <div class="product-info">
                             <p class="product-state">판매중</p>
                             <p>상품명: 상품 1</p>
                         </div>
                     </div>
                     <div class="product">
-                        <a href="#상품 상세페이지"><img src="10__img.jpg" alt="상품2"></a>
+                        <a href="/product_detail"><img src="{{ url_for('static', filename='images/10__img.jpg') }}" alt="상품"></a>
                         <div class="product-info">
                             <p class="product-state">판매중</p>
                             <p>상품명: 상품 2</p>
                         </div>
                     </div>
                     <div class="product">
-                        <a href="#상품 상세페이지"><img src="10__img.jpg" alt="상품3"></a>
+                        <a href="/product_detail"><img src="{{ url_for('static', filename='images/10__img.jpg') }}" alt="상품"></a>
                         <div class="product-info">
                             <p class="product-state">판매중</p>
                             <p>상품명: 상품 3</p>
@@ -139,8 +95,7 @@
 </div>
 
 
-
-    <script src="9_3_mypage.js"></script>
+    {% endblock section %}
 </body>
 
 </html>
