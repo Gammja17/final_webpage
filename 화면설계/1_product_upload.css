@@ -2,8 +2,8 @@
 
 .content2 {
     font-family: 'Do Hyeon';
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+   place-items: center;
     justify-content: center;
   }
   
