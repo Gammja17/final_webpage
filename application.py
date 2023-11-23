@@ -10,7 +10,7 @@ DB = DBhandler()
 
 @application.route("/")
 def hello():
-    return render_template("2_home.html")
+    return render_template("7_1_log_in.html")
     #return redirect(url_for('view_list'))
 
 @application.route("/list")

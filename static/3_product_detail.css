@@ -1,4 +1,3 @@
-
 body{
   background-color: #f5f5f5;
   font-family: 'Do Hyeon';
@@ -15,32 +14,36 @@ body{
     align-items: center;
 }
 
-
-
-
-.info-section{
-  font-family: 'Do Hyeon';
-  background-color: #ebefd6;
-  display:flex;
-  justify-content: column;
+.main{
+  display: grid;
   align-items: center;
-  justify-content: center;
-  height: 80px;
-}
-.info-block{
-  width:100%;
-  text-align: center;
-  font-size: 25px;
-  padding: 22px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-bottom: 0;
 }
 
-.info-block:hover{
-   background-color: #c9d8b7;
+
+
+.info-section {
+    font-family: 'Do Hyeon';
+    background-color: #ebefd6;
+    display: flex;
+    justify-content: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
 }
 
+.info-block {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    padding: 22px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 0;
+}
+
+.info-block:hover {
+    background-color: #c9d8b7;
+}
 
 
 
@@ -51,7 +54,8 @@ body{
   text-align: left;
   
 }
-* {box-sizing: border-box}
+
+
 .mySlides{display: none; text-align: center;}
 img {vertical-align: middle;}
 
