@@ -10,7 +10,7 @@ DB = DBhandler()
 
 @application.route("/")
 def hello():
-    return render_template("index.html")
+    return render_template("7_1_log_in.html")
     #return redirect(url_for('view_list'))
 
 @application.route("/list")
@@ -49,9 +49,65 @@ def view_list():
 def view_review():
     return render_template("review.html")
 
-@application.route("/reg_items")
-def reg_item():
-    return render_template("reg_items.html")
+@application.route("/product_upload")
+def product_upload():
+    return render_template("1_product_upload.html")
+
+@application.route("/product_detail")
+def product_detail():
+    return render_template("3_product_detail.html")
+
+@application.route("/review_upload")
+def review_upload():
+    return render_template("4_review_upload.html")
+
+@application.route("/review_all")
+def review_all():
+    return render_template("5_review_all.html")
+
+@application.route("/review_detail")
+def review_detail():
+    return render_template("6_review_detail.html")
+
+@application.route("/log_in")
+def log_in():
+    return render_template("7_1_log_in.html")
+
+@application.route("/id_find")
+def id_find():
+    return render_template("7_2_id_find.html")
+
+@application.route("/id_found")
+def id_found():
+    return render_template("7_3_id_found.html")
+
+@application.route("/pw_find")
+def pw_find():
+    return render_template("7_4_pw_find.html")
+
+@application.route("/pw_reset")
+def pw_reset():
+    return render_template("7_5_pw_reset.html")
+
+@application.route("/sign_up")
+def sign_up():
+    return render_template("8_sign_up.html")
+
+@application.route("/wishlist")
+def wishlist():
+    return render_template("9_1_wishlist.html")
+
+@application.route("/shopping_cart")
+def shopping_cart():
+    return render_template("9_2_shopping_cart.html")
+
+@application.route("/mypage")
+def mypage():
+    return render_template("9_3_mypage.html")
+
+@application.route("/seller_info")
+def seller_info():
+    return render_template("seller_info.html")
 
 @application.route("/reg_reviews")
 def reg_review():
@@ -126,3 +182,5 @@ def view_item_detail(name):
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
+    
+    

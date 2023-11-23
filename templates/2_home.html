@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-height, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='2_home.css') }}">
+</head>
+<body>
+    {% extends "index.html" %}
+    
+    {% block section %}
+    
+    
+           <div class="rside">
+            <div class="upper">
+        <div class="sort" style="font-weight: bold;">
+            <a href="/home.html">최신순</a>&nbsp|&nbsp<a href="/home.html">가격순</a>
+        </div>
+        <a href="/product_upload" class="upload-button" style="font-weight: bold;">상품 등록하기</a>
+    </div>
+               
+               
+        <div id="product-container">
+            <a href="/product_detail">
+            <div class="product">
+                <span class="product-img">
+                     <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image">
+                </span>
+                <div class="product-info">
+                    <p style="font-size: 25px; font-weight: bold;">카메라</p>
+                    <p style="font-size: 18px;">
+                        150000원<br>
+                        감자<br>
+                         36.5<br>
+                        <span style="color:orange; font-size: 15px;">★★★★★(2)</span> <br>
+                     <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}" alt="wishbutton" style="width:45px; height:45px;">
+                    </p>
+                </div>
+            </div>
+        </a>
+            
+            <a href="/product_detail">
+            <div class="product">
+                <span class="product-img">
+                     <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image">
+                </span>
+                <div class="product-info">
+                    <p style="font-size: 25px; font-weight: bold;">카메라</p>
+                    <p style="font-size: 18px;">
+                        150000원<br>
+                        감자<br>
+                         36.5<br>
+                        <span style="color:orange; font-size: 15px;">★★★★★(2)</span> <br>
+                     <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}" alt="wishbutton" style="width:45px; height:45px;">
+                    </p>
+                </div>
+            </div>
+        </a>
+            
+            <a href="/product_detail">
+            <div class="product">
+                <span class="product-img">
+                     <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image">
+                </span>
+                <div class="product-info">
+                    <p style="font-size: 25px; font-weight: bold;">카메라</p>
+                    <p style="font-size: 18px;">
+                        150000원<br>
+                        감자<br>
+                         36.5<br>
+                        <span style="color:orange; font-size: 15px;">★★★★★(2)</span> <br>
+                     <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}" alt="wishbutton" style="width:45px; height:45px;">
+                    </p>
+                </div>
+            </div>
+        </a>
+            
+            <a href="/product_detail">
+            <div class="product">
+                <span class="product-img">
+                     <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image">
+                </span>
+                <div class="product-info">
+                    <p style="font-size: 25px; font-weight: bold;">카메라</p>
+                    <p style="font-size: 18px;">
+                        150000원<br>
+                        감자<br>
+                         36.5<br>
+                        <span style="color:orange; font-size: 15px;">★★★★★(2)</span> <br>
+                     <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}" alt="wishbutton" style="width:45px; height:45px;">
+                    </p>
+                </div>
+            </div>
+        </a>
+
+
+        </div>
+
+        <div class="pagination">
+            <a href="#">&lt;</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">&gt;</a>
+               </div>
+        
+    </div>
+    
+    
+   
+    {% endblock section %}
+                        
+                        
+</body>
+</html>

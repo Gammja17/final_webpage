@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='7_4_pw_find.css') }}">
+</head>
+<body>
+  
+{% extends "index.html" %}
+    
+    {% block section %}
+
+        <content>
+            <div class="status">
+                <p style="font-size:23px" > 비밀번호 찾기 </p> 
+            </div> 
+        </content>
+       
+        <div id="pwFindScreen">
+        <div class="align">
+        <div class="checking-form">
+            <div class="chk-area">
+                <label for="enterid">아이디(ID) 입력</label>             
+                <input type="text" id="enterid" name="enterid" value=""><br>
+            </div>
+            <div class="chk-area">
+                <label for="entertel">휴대폰 번호 입력</label>
+                <input type="text" id="entertel" name="entertel" value="">
+                <button type="button" class="btn-chk">인증번호 전송</button><br>
+            </div>
+            <div class="chk-area">
+                <label for="enterpin">인증번호 입력</label>
+                <input type="text" id="enterpin" name="enterpin" value="">
+                <button type="submit" class="btn-chk" onclick="showPWFoundScreen()">제출</button><br>
+            </div>
+        </div>
+        </div>
+        </div>
+
+    <div  id="pwFoundScreen" hidden>
+        <div class="pw-texting">
+            <span style="font-size: 25px; margin-bottom: 5px;"> 입력해주신 휴대폰 번호로 비밀번호가 전송되었습니다. </span>
+            <button type="button" class="back_btn" onclick="showLoginScreen()">로그인 화면으로 돌아가기</button>
+        </div>
+    </div>
+
+    <script>
+        function showPWFoundScreen() {
+            document.getElementById("pwFindScreen").hidden = true;
+            document.getElementById("pwFoundScreen").hidden = false;
+        }
+    
+        function showLoginScreen() {
+            // Redirect to 7_1_log_in.html
+            window.location.href = "/log_in";
+        }
+    </script>
+
+      {% endblock section %}
+    </body>
+</html>
