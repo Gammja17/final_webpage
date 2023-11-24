@@ -45,6 +45,10 @@ def view_list():
         total=item_counts
     )
 
+@application.route("/home")
+def home():
+    return render_template("2_home.html")
+
 @application.route("/review")
 def view_review():
     return render_template("review.html")
@@ -105,13 +109,13 @@ def shopping_cart():
 def mypage():
     return render_template("9_3_mypage.html")
 
-@application.route("/seller_info")
-def seller_info():
-    return render_template("seller_info.html")
-
 @application.route("/reg_reviews")
 def reg_review():
     return render_template("reg_reviews.html")
+
+@application.route("/seller_info")
+def seller_info():
+    return render_template("11_seller_information.html")
 
 @application.route("/submit_item_post", methods=['POST'])
 def reg_item_submit_post():
