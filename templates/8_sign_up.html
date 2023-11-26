@@ -90,11 +90,8 @@
                 </div>
             </div>
     
-    </body>
-
-        {% endblock section %}
-
-   <script>
+    
+     <script>
     document.addEventListener('DOMContentLoaded', function(){
         document.getElementById('check-username').addEventListener('click', function(){
             alert('중복 확인 되었습니다.');
@@ -121,7 +118,12 @@
        
         function showLoginScreen() {
                     // Redirect to 7_1_log_in.html
-                    window.location.href = "7_1_log_in.html";
+                    window.location.href = "/log_in";
         }
         </script>
+    </body>
+
+        {% endblock section %}
+
+  
 </html>

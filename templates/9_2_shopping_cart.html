@@ -3,8 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="{{ url_for('static', filename='9_2_shopping_cart.css') }}">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
+
+
+
+.content {
+    font-family: 'Noto Sans KR';
+    float:right;
+}
+
+.status {
+    font-family: 'Noto Sans KR';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebefd6;
+}
+  
+ .review-container {
+  padding:10px;
+    display: flex;
+    font-family: 'Noto Sans KR';
+    border-top: 3px solid black;
+    height: 200px;
+    margin-bottom: 10px;
+    margin-left:30px;
+    margin-right:30px;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .review-image-container{
+    width: 200px;
+    height:200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .review-image{
+    max-width:100%;
+    max-height:100%;
+    object-fit:cover;
+  }
+
+  .item-details{
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+.review-button{
+  font-size: 23px;
+  font-family: 'Noto Sans KR';
+  width: 130px;
+  height: 50px;
+  display: flex;
+  background-color: #c9d8b7;
+  text-align: center;
+  transition: background-color 0.3s, opacity 0.3s;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-button:hover{
+  background-color: #c9d8b7; 
+  opacity: 0.6; 
+}
+
+
+.info-preview{
+  display: flex;
+  border: 2px solid;
+  width: 400px;
+  font-size: 20px;
+  height: 150px;
+  margin-top: 10px;
+  padding: 5px;
+}
+.rsidde{
+  display: flex;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.etc-high{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 20px;
+  align-content: center;
+}
+
+
+.custom-button {
+  background: url('10_wishbutton.png') no-repeat;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+.etc-low{
+  display: flex;
+  font-size: 25px;
+}
+
+.rsidde1{
+  display: flex;
+}
+
+.price{
+  display: flex;
+}
+.delete{
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.3s;
+  margin-top: 3px;
+}
+
+.delete:hover{
+  background-color: #c9d8b7;
+}
+
+.money{
+  display: flex;
+  font-family: 'Noto Sans KR';
+  font-size: 25px;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 100px;
+}
+
+.buy-button{
+  font-size: 23px;
+  font-family: 'Noto Sans KR';
+  width: 150px;
+  height: 50px;
+  display: flex;
+  background-color: #c9d8b7;
+  text-align: center;
+  transition: background-color 0.3s, opacity 0.3s;
+  justify-content: center;
+  align-items: center;
+}
+
+.buy-button:hover{
+  background-color: #c9d8b7; 
+  opacity: 0.6; 
+}
+
+.bottomm{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-top: 3px solid;
+  padding-top:20px;
+}
+
+.content2{
+    display: flex;
+    flex-direction: column;
+    margin-top:20px;
+}
+
+.pay-button {
+  margin-top:20px;
+  font-size:25px;
+  font-family: 'Noto Sans KR';
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  height: 40px;
+  padding:30px;
+  background-color: #ebefd6;
+  text-align: center;
+  transition: background-color 0.3s, opacity 0.3s; 
+  border:none;
+}
+
+.pay-button:hover {
+  background-color: #5c6e56;
+  opacity: 0.6; 
+}
+
+
+
+.pay-button a {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 1000px;
+  height: 20px;
+  padding:20px;
+}
+
+
+.pw-texting{
+  font-family: 'Noto Sans KR';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  text-align: center; 
+  margin-top:200px;
+  font-family: 'Noto Sans KR';
+  font-size:25px;
+}
+
+.back_btn{
+  width: 450px;
+  height: 50px;
+  margin-top: 20px;
+  font-family: "Noto Sans KR";
+  font-size: 23px;
+  background-color: #c9d8b7;
+  border: none;
+  transition: background-color 0.3s, opacity 0.3s; 
+  color: black;
+}
+
+.back_btn:hover{
+   background-color: #c9d8b7; 
+   opacity: 0.6; 
+}
+    </style>
 </head>
+    
+    
 <body>
   
 {% extends "index.html" %}
@@ -15,114 +248,138 @@
                 <p style="font-size:23px" > 장바구니(3) </p> 
             </div> 
         </content>
+    
 
-        <div class="cart-container">
-            <div class="cart-header">
-                <div class="goods-image-container">
-                    <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image" class="goods-image">
-                </div>
-               
-                <div class="goods-container">
-                    <div class="goods-info">
-                        <div class="goods-name">상품명</div>
-                        <div class="seller-place">지역</div>
-                        <div class="goods-condition">상태</div>
-                    </div>
+        <div id="shoppingcart">
+        <div class="content2">
+        <div class="review-container">
 
-                    <div class="goods-details-box">
-                        <div class="goods-details">상세 설명</div>
-                    </div>
-
-                    <div class="etc-high">
-                        <a href="view_review.html" class="heart-button">♡</a>
-                        <a href="/review_all" class="showreview-button">리뷰 보기</a>
-                        <a href="view_review.html" class="delete-button">삭제</a>
-                    </div>
-                    <div>
-                    <div class="etc-low">
-                        <div class="price">가격 : 40000원</div>
-                    </div>
-                    </div>
-                </div>
-               
+            <div class="review-image-container">
+                <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="Review Image" class="review-image">
             </div>
-           
-        </div>  
-        <div class="cart-container">
-            <div class="cart-header">
-                <div class="goods-image-container">
-                    <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image" class="goods-image">
-                </div>
-               
-                <div class="goods-container">
-                    <div class="goods-info">
-                        <div class="goods-name">상품명</div>
-                        <div class="seller-place">지역</div>
-                        <div class="goods-condition">상태</div>
-                    </div>
-
-                    <div class="goods-details-box">
-                        <div class="goods-details">상세 설명</div>
-                    </div>
-
-                    <div class="etc-high">
-                        <a href="view_review.html" class="heart-button">♡</a>
-                        <a href="/review_all" class="showreview-button">리뷰 보기</a>
-                        <a href="view_review.html" class="delete-button">삭제</a>
-                    </div>
-                    <div>
-                    <div class="etc-low">
-                        <div class="price">가격 : 40000원</div>
-                    </div>
-                    </div>
-                </div>
-               
+            <div class="item-details">
+                <div class="product-name" style="margin-bottom: 10px; border-bottom:2px solid; font-weight:800;">상품명</div>
+                <div class="seller-name" style="margin-bottom: 10px;  border-bottom:2px solid">판매자명</div>
+                <div class="date-purchase" style=" border-bottom:2px solid;">날짜</div>
             </div>
-           
-        </div>
-        <div class="cart-container">
-            <div class="cart-header">
-                <div class="goods-image-container">
-                  <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image" class="goods-image">
+            
+                <div class="info-preview">
+                    <div>상품 상세설명</div>
                 </div>
-               
-                <div class="goods-container">
-                    <div class="goods-info">
-                        <div class="goods-name">상품명</div>
-                        <div class="seller-place">지역</div>
-                        <div class="goods-condition">상태</div>
-                    </div>
 
-                    <div class="goods-details-box">
-                        <div class="goods-details">상세 설명</div>
-                    </div>
-
-                    <div class="etc-high">
-                        <a href="view_review.html" class="heart-button">♡</a>
-                        <a href="/review_all" class="showreview-button">리뷰 보기</a>
-                        <a href="view_review.html" class="delete-button">삭제</a>
-                    </div>
-                    <div>
-                    <div class="etc-low">
-                        <div class="price">가격 : 40000원</div>
-                    </div>
-                    </div>
+                <div class="rsidde1">
+                <div class="rsidde">
+                <div class="etc-high">
+                    <button class="custom-button">Wish</button>
+                    <a href="/review_detail" class="review-button">리뷰 보기</a>
                 </div>
-               
+                <div class="etc-low">
+                    <div class="price">가격 : 40000원</div>
+                </div>
             </div>
-           
+            <a href="///"><img src="{{ url_for('static', filename='images/10_minus.png') }}"  class="delete"></a>
+
         </div>
 
+               
+        </div>
+        <div class="review-container">
+
+            <div class="review-image-container">
+                <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="Review Image" class="review-image">
+            </div>
+            <div class="item-details">
+                <div class="product-name" style="margin-bottom: 10px; border-bottom:2px solid; font-weight:800;">상품명</div>
+                <div class="seller-name" style="margin-bottom: 10px;  border-bottom:2px solid">판매자명</div>
+                <div class="date-purchase" style=" border-bottom:2px solid;">날짜</div>
+            </div>
+            
+                <div class="info-preview">
+                    <div>상품 상세설명</div>
+                </div>
+
+                <div class="rsidde1">
+                <div class="rsidde">
+                <div class="etc-high">
+                    <button class="custom-button">Wish</button>
+                    <a href="/review_detail" class="review-button">리뷰 보기</a>
+                </div>
+                <div class="etc-low">
+                    <div class="price">가격 : 40000원</div>
+                </div>
+            </div>
+            <a href="///"><img src="{{ url_for('static', filename='images/10_minus.png') }}"  class="delete"></a>
+
+        </div>
+
+               
+        </div>
+        <div class="review-container">
+
+            <div class="review-image-container">
+                <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="Review Image" class="review-image">
+            </div>
+            <div class="item-details">
+                <div class="product-name" style="margin-bottom: 10px; border-bottom:2px solid; font-weight:800;">상품명</div>
+                <div class="seller-name" style="margin-bottom: 10px;  border-bottom:2px solid">판매자명</div>
+                <div class="date-purchase" style=" border-bottom:2px solid;">날짜</div>
+            </div>
+            
+                <div class="info-preview">
+                    <div>상품 상세설명</div>
+                </div>
+
+                <div class="rsidde1">
+                <div class="rsidde">
+                <div class="etc-high">
+                    <button class="custom-button">Wish</button>
+                    <a href="/review_detail" class="review-button">리뷰 보기</a>
+                </div>
+                <div class="etc-low">
+                    <div class="price">가격 : 40000원</div>
+                </div>
+            </div>
+            <a href="///"><img src="{{ url_for('static', filename='images/10_minus.png') }}"  class="delete"></a>
+
+        </div>
+
+               
+        </div>
+
+
+        <div class="bottomm">
         <div class="money">
-            <div class="total-money">총 가격 : 98750원</div>
-            <br>
+            <div class="total-money" style="margin-bottom: 20px;">총 가격 : 98750원</div>
             <div class="my-money">내 잔액 : 100000원</div>
-
         </div>
 
-       <a href="#" class="buy-button">결제하기</a>
+       <a href="/my_page" class="buy-button">잔액 충전하기</a>
           
+        </div>  
 
+        <button type="button" class="pay-button" onclick="payment()">결제하기</button>
+    </div>
+    </div>
+
+    <div  id="payed" hidden>
+        <div class="pw-texting">
+            <span style="font-size: 30px; font-family: 'Noto Sans KR'; margin-bottom: 5px;">상품 구매가 완료되었습니다.<br></span>
+            <span style="font-size: 25px; color:blue; font-family: 'Noto Sans KR'; margin-bottom: 5px;">잔액: 2000원</span>
+            <button type="button" class="back_btn" onclick="showhomeScreen()">홈 화면으로 돌아가기</button>
+        </div>
+</div>    
+
+
+        <script>
+            function payment() {
+                document.getElementById("shoppingcart").hidden = true;
+                document.getElementById("payed").hidden = false;
+            }
+        
+            function showhomeScreen() {
+                window.location.href = "/home";
+            }
+        </script>
         {% endblock section %}
 </body>
 </html>
