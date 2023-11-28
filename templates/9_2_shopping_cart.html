@@ -10,27 +10,44 @@
 {% extends "index.html" %}
     
     {% block section %}
+    <div class="rside">
         <content>
             <div class="status">
-                <p style="font-size:23px" > 장바구니(3) </p> 
+                <p style="font-size:23px" > 장바구니({{total}}) </p> 
             </div> 
         </content>
 
+    {% if total > 0 %}
+
+            <table>
+                <tr>
+                    {% for key, value in datas %}
+                    <td>
         <div class="cart-container">
             <div class="cart-header">
                 <div class="goods-image-container">
-                    <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image" class="goods-image">
+                  <img src="../../static/images/{{value.img_path}}" alt="product image" class="goods-image">
                 </div>
                
                 <div class="goods-container">
                     <div class="goods-info">
-                        <div class="goods-name">상품명</div>
-                        <div class="seller-place">지역</div>
-                        <div class="goods-condition">상태</div>
+                        <div class="goods-name">{{value.name}}</div>
+                        <div class="seller-place">{{value.placebox}} {{value.place}}</div>
+                        <div class="goods-condition">
+                        {% if value['productstatus'] == "boxing" %}
+                        미개봉
+                        {% endif %}
+                        {% if value['productstatus'] == "unboxingnew" %}
+                        개봉 새상품
+                        {% endif %}
+                        {% if value['productstatus'] == "unboxing" %}
+                        중고
+                        {% endif %}
+                        </div>
                     </div>
 
                     <div class="goods-details-box">
-                        <div class="goods-details">상세 설명</div>
+                        <div style="white-space:pre;" class="goods-details">{{value.info}}</div>
                     </div>
 
                     <div class="etc-high">
@@ -40,39 +57,7 @@
                     </div>
                     <div>
                     <div class="etc-low">
-                        <div class="price">가격 : 40000원</div>
-                    </div>
-                    </div>
-                </div>
-               
-            </div>
-           
-        </div>  
-        <div class="cart-container">
-            <div class="cart-header">
-                <div class="goods-image-container">
-                    <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image" class="goods-image">
-                </div>
-               
-                <div class="goods-container">
-                    <div class="goods-info">
-                        <div class="goods-name">상품명</div>
-                        <div class="seller-place">지역</div>
-                        <div class="goods-condition">상태</div>
-                    </div>
-
-                    <div class="goods-details-box">
-                        <div class="goods-details">상세 설명</div>
-                    </div>
-
-                    <div class="etc-high">
-                        <a href="view_review.html" class="heart-button">♡</a>
-                        <a href="/review_all" class="showreview-button">리뷰 보기</a>
-                        <a href="view_review.html" class="delete-button">삭제</a>
-                    </div>
-                    <div>
-                    <div class="etc-low">
-                        <div class="price">가격 : 40000원</div>
+                        <div class="price">가격 : {{value.price}}원</div>
                     </div>
                     </div>
                 </div>
@@ -80,39 +65,63 @@
             </div>
            
         </div>
-        <div class="cart-container">
-            <div class="cart-header">
-                <div class="goods-image-container">
-                  <img src="{{ url_for('static', filename='images/10_camera.jpg') }}" alt="product image" class="goods-image">
+</td>
+                    {% if loop.index % 1 == 0 %}
+                </tr>
+                <tr>
+                    {% endif %} {% endfor %}
+                </tr>
+            </table>
+            <br /><br /><br />
+            <hr style="border: 1.5px solid black;" />
+            <!-- 페이지네이션을 위한 코드 시작 -->
+            <div class="page-wrap">
+                <div class="page-nation">
+                    <ul>
+                        <li>
+                            {% for i in range(page_count)%}
+                            <a href="{{url_for('shoppingcart', page=i)}}" color="black">{{i}}</a>
+                            {% endfor %}
+                        </li>
+                    </ul>
                 </div>
-               
-                <div class="goods-container">
-                    <div class="goods-info">
-                        <div class="goods-name">상품명</div>
-                        <div class="seller-place">지역</div>
-                        <div class="goods-condition">상태</div>
-                    </div>
-
-                    <div class="goods-details-box">
-                        <div class="goods-details">상세 설명</div>
-                    </div>
-
-                    <div class="etc-high">
-                        <a href="view_review.html" class="heart-button">♡</a>
-                        <a href="/review_all" class="showreview-button">리뷰 보기</a>
-                        <a href="view_review.html" class="delete-button">삭제</a>
-                    </div>
-                    <div>
-                    <div class="etc-low">
-                        <div class="price">가격 : 40000원</div>
-                    </div>
-                    </div>
-                </div>
-               
             </div>
-           
-        </div>
+            {% else %}
+            <p>
+                등록된 상품이 없습니다.
+            </p>
+            {% endif %}
+            <style>
+    .page-nation li{
+        list-style: none;
+    }
+    .page-wrap{
+        text-align: center;
+        font-size: 0;
+    }
+    .page-nation{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .page-nation a{
+        display: block;
+        margin: 0 3px;
+        float: left;
+        border: 1px solid #e6e6e6;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        background-color: #fff;
+        font-size: 13px;
+        color: black;
+        text-decoration: none;
+        font-weight:bold;
+}
 
+</style>
         <div class="money">
             <div class="total-money">총 가격 : 98750원</div>
             <br>
@@ -122,7 +131,7 @@
 
        <a href="#" class="buy-button">결제하기</a>
           
-
+    </div>
         {% endblock section %}
 </body>
 </html>

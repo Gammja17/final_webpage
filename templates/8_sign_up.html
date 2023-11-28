@@ -1,127 +1,127 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Sign In - 이화 마켓</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='8_sign_up.css') }}">
-</head>
-<body>
-  
-{% extends "index.html" %}
-    
-    {% block section %}
-
- <content>
-                <div class="status">
-                    <p style="font-size:23px" > 회원가입 </p> 
-                </div> 
-            </content>
-
-                   <div id="SUScreen">
-            <div class="signup-form">
-    
-                    <div class="input-group">
-                        <label for="username">아이디</label>
-                        <input type="text" id="username" name="username" required>
-                        <button type="button" id="check-username" class="check-btn">중복 확인</button>
-                    </div>
-    
-                    <div class="input-group">
-                        <label for="password">비밀번호</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-    
-                    <div class="input-group">
-                        <label for="confirm-password">비밀번호 확인</label>
-                        <input type="password" id="confirm-password" name="confirm-password" required>
-                    </div>
-    
-                    <div class="input-group">
-                        <label for="name">이름</label>
-                        <input type="text" id="name" name="rlyname" required>
-                    </div>
-    
-                    <div class="input-group">
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="email" required>
-                        <button type="button" id="email-check" class="check-btn">중복 확인</button>
-                     </div>
-                
-                     <div class="input-group">
-                        <label for="phone">휴대폰 번호</label>
-                        <input type="tel" id="phone" name="phone" style="    width: 100%; 
-                        padding: 10px; 
-                        margin: 5px 0 20px 0; 
-                        border: 1px solid #000; 
-                        border-radius: 5px; " required>
-                        <button type="button" id="verify-phone" class="check-btn">인증번호 받기</button>
-                        
-                    </div>
-    
-                    <div class="input-group">
-                        <label for="address">주소</label>
-                        <input type="address" id="address" name="address" required>
-                    </div>
-    
-                    <div class="input-group">
-                        <label for="acount">계좌 입력</label>
-                        <input type="text" id="account" name="account" required>
-                    </div>
-    
-                    <div class="input-group">       
-                        <label for="secret">비밀단어 인증</label>
-                        <input type="text" id="secret" name="secret" required>
-                        <button type="button" id="check-secret" class="check-btn">인증하기</button>
-                    </div>
-    
-                    <div class="input-group">
-                        <button type="submit" class="signup-btn" onclick="showSUcompScreen()">가입하기</button>
-                    </div>
+        <title>Sign In - 이화 마켓</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='8_sign_up.css') }}" />
+    </head>
+    <body>
+        {% extends "index.html" %} 
+        {% block section %} 
+        {% with mesg = get_flashed_messages() %} 
+        {% if mesg !=[] %}
+        <script>
+            alert('{{ mesg[0] }}');
+        </script>
+        {% endif %} 
+        {% endwith %}
+        <content>
+            <div class="status">
+                <p style="font-size: 23px;">
+                    회원가입
+                </p>
             </div>
+        </content>
+        <div class="signup_form">
+            <form method="post" action="/signup_post">
+                <div class="input-group">
+                    <label for="id">아이디</label>
+                    <input type="text" id="id" name="id" required />
+                    <button type="button" id="check-id" class="check-btn">중복 확인</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="pw">비밀번호</label>
+                    <input type="password" id="pw" name="pw" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="confirm-pw">비밀번호 확인</label>
+                    <input type="password" id="confirm-pw" name="confirm-pw" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" required />
+                    <button type="button" id="email-check" class="check-btn">중복 확인</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="tel">휴대폰 번호</label>
+                    <input type="phone" id="tel" name="tel" required />
+                    <button type="button" id="verify-tel" class="check-btn">인증번호 받기</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="addr">주소</label>
+                    <input type="address" id="addr" name="addr" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="acount">계좌 입력</label>
+                    <input type="text" id="account" name="account" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="secret">비밀단어 인증</label>
+                    <input type="text" id="secret" name="secret" required />
+                    <button type="button" id="check-secret" class="check-btn">인증하기</button>
+                </div>
+
+                <div class="input-group">
+                    <button type="submit" id="signup-btn" class="signup-btn">
+                        가입하기
+                    </button>
+                </div>
+            </form>
         </div>
 
-                
-            <div id="SUcompScreen" hidden>
-                <div class="SU-texting">
-                    <span style="font-size: 20px; margin-bottom: 5px;">회원가입이 완료되었습니다!</span>
-                    <button type="button" class="back_btn" onclick="showLoginScreen()">로그인 화면으로 돌아가기</button>
-                </div>
+        <div id="SUcompScreen" hidden>
+            <div class="SU-texting">
+                <span style="font-size: 20px; margin-bottom: 5px;">회원가입이 완료되었습니다!</span>
+                <button type="button" class="back_btn" onclick="showLoginScreen()">
+                    로그인 화면으로 돌아가기
+                </button>
             </div>
-    
+        </div>
     </body>
 
-        {% endblock section %}
+    {% endblock section %}
 
-   <script>
-    document.addEventListener('DOMContentLoaded', function(){
-        document.getElementById('check-username').addEventListener('click', function(){
-            alert('중복 확인 되었습니다.');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('check-username').addEventListener('click', function () {
+                alert('중복 확인 되었습니다.');
+            });
+
+            document.getElementById('email-check').addEventListener('click', function () {
+                alert('확인 되었습니다.');
+            });
+
+            document.getElementById('verify-phone').addEventListener('click', function () {
+                alert('인증되었습니다');
+            });
+
+            document.getElementById('check-secret').addEventListener('click', function () {
+                alert('인증되었습니다.');
+            });
         });
 
-        document.getElementById('email-check').addEventListener('click', function(){
-            alert('확인 되었습니다.');
-        });
-
-        document.getElementById('verify-phone').addEventListener('click', function(){
-            alert('인증되었습니다');
-        });
-
-        document.getElementById('check-secret').addEventListener('click',function(){
-            alert('인증되었습니다.');
-        });
-    });
-   
-       function showSUcompScreen() {
-                    document.getElementById("SUScreen").hidden = true;
-                    document.getElementById("SUcompScreen").hidden = false;
-                }
-            
-       
-        function showLoginScreen() {
-                    // Redirect to 7_1_log_in.html
-                    window.location.href = "7_1_log_in.html";
+        function showSUcompScreen() {
+            document.getElementById('SUScreen').hidden = true;
+            document.getElementById('SUcompScreen').hidden = false;
         }
-        </script>
+
+        function showLoginScreen() {
+            // Redirect to 7_1_log_in.html
+            window.location.href = '7_1_log_in.html';
+        }
+    </script>
 </html>

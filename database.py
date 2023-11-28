@@ -11,14 +11,18 @@ class DBhandler:
 
     def insert_item(self, name, data, img_path):
         item_info = {
-            "seller": data['seller'],
-            "addr": data['addr'],
-            "email": data['email'],
+            "img_path": img_path,
+            "name": data['name'],
+            "title": data['title'],
+            "price": data['price'],
+            "productstatus": data['productstatus'],
+            "deliverprice": data['deliverprice'],
             "category": data['category'],
-            "card": data['card'],
-            "status": data['status'],
-            "phone": data['phone'],
-            "img_path": img_path
+            "placebox": data['placebox'],
+            "place": data['place'],
+            "info": data['info'],
+            "sellerid": data['sellerid']
+            
         }
         self.db.child("item").child(name).set(item_info)
         print(data, img_path)
@@ -28,7 +32,7 @@ class DBhandler:
         user_info = {
             "id": data['id'],
             "pw": pw,
-            "nickname": data['nickname']
+            "name": data['name']
         }
         if self.user_duplicate_check(str(data['id'])):
             self.db.child("user").push(user_info)

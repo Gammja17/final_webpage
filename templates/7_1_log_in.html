@@ -12,7 +12,11 @@
 {% extends "index.html" %}
     
     {% block section %}
-
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+    <script>alert("{{ mesg[0] }}")</script>
+    {% endif %} 
+    {% endwith %}
         <content>
             <div class="status">
                 <p style="font-size:23px" > 로그인 </p> 
@@ -21,19 +25,19 @@
 
     
          <div class="login-form">
-            <form action="login.php" method="post" style="display: flex;
+            <form action="/login_confirm" method="post" style="display: flex;
             flex-direction: column;
             align-items: center;">
                 <div class="inp-area">
                     <label for="idbox" style="font-size:25px;">아이디(ID)</label>
-                    <input type="text" id="idbox" name="boxforid" autocomplete="off" required><br>
+                    <input type="text" id="id" name="id" autocomplete="off" required><br>
                 </div>
                 <div class="inp-area">
                     <label for="psbox">비밀번호(pw)</label>
-                    <input type="password" name="psbox" id="psbox" autocomplete="off" required><br>
+                    <input type="password" name="pw" id="pw" autocomplete="off" required><br>
                 </div>
                 <div class="inp-area">
-                    <button type="submit" class="btn-area">로그인</button><br>
+                    <button type="submit" id = "login" class="btn-area">로그인</button><br>
                 </div>
             </form>
             <div class="fmet">

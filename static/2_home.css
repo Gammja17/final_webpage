@@ -1,23 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap'); /*폰트*/
 
 
-.rside{
-  display: flex;
-    flex-direction: column;
-}
-
-
-.upper{
-  display: flex;
-  justify-content: space-between;
-}
 
 #product-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top:50px;
-  margin-left:50px;
-  
 }
 .product {
   width: 400px;
@@ -25,12 +12,7 @@
   border: 3px solid black;
   margin: 10px;
   display: flex;
-  transition: background-color 0.3s, opacity 0.3s; 
-}
-
-.wishbutton{
-    width: 45px;
-    height: 45px;
+  transition: background-color 0.3s, opacity 0.3s;
 }
 
 .product:hover {
@@ -39,9 +21,8 @@
 }
 
 .product-img {
-  width: 250px; 
-  height: 250px; 
-
+  width: 250px;
+  height: 250px;
 }
 
 .product-img img {
@@ -56,7 +37,7 @@
 .product-info{
   width: 90px;
   height: 200px;
-  font-family: 'Noto Sans KR';
+  font-family: "Do Hyeon";
 float:right;
 margin-left:10px;
 }
@@ -64,8 +45,8 @@ margin-left:10px;
 .custom-button {
   background: url('10_wishbutton.png') no-repeat;
   background-size: cover;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border: none;
   cursor: pointer;
   text-indent: -9999px;
@@ -77,23 +58,13 @@ margin-left:10px;
 
 a {
   font-size: 23px;
-  font-family: 'Noto Sans KR';
-
+  font-family: "Do Hyeon";
 }
+
 .sort {
   float: left;
   margin-top: 60px;
   margin-left: 100px;
-}
-
-.sort a{
-  transition: background-color 0.3s;
-}
-
-.sort a:hover{
-background-color: #c9d8b7;
-color:black;
-border:1px solid #c9d8b7;
 }
 
 .upload-button {
@@ -124,21 +95,18 @@ border:1px solid #c9d8b7;
 }
 
 .pagination{
-
-  display: flex;
-  border-top:3px solid black;
+  display:inline-block;
+  margin-left: 550px;
   margin-top: 45px;
-  justify-content: center;
-
-  
 }
 
 .pagination a{
   color:black;
   float:left;
   padding: 8px 16px;
-  font-family: 'Noto Sans KR';
+  font-family: 'Do Hyeon';
   text-decoration: none;
+  
   transition: background-color .3s;
   margin-left: 0 4px;
 }

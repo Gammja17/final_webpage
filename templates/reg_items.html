@@ -21,7 +21,7 @@
     </nav>
     <section>
         {% block section %}
-        <form action="/submit_item_post" method="post" enctype="multipart/form-data">
+        <form action="/submit_item_post" method="post" enctype="multipart/form-data"> <!--여기 다음 페이지로 넘기는거 있음-->
             <div>
                 <label for="name">Item name: </label>
                 <input type="text" name="name" id="name" required><br><br>
