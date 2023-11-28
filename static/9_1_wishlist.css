@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap'); /*폰트*/
-
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
 
 
 
@@ -7,12 +6,12 @@
   display: flex;
   flex-wrap: wrap;
   margin-top:50px;
-  margin-left:300px;
+  margin-left:250px;
   
 }
 .product {
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: 250px;
   border: 3px solid black;
   margin: 10px;
   display: flex;
@@ -25,8 +24,8 @@
 }
 
 .product-img {
-  width: 200px; 
-  height: 200px; 
+  width: 250px; 
+  height: 250px; 
 
 }
 
@@ -42,7 +41,8 @@
 .product-info{
   width: 90px;
   height: 200px;
-  font-family: "Do Hyeon";
+  font-family: 'Noto Sans KR';
+
 float:right;
 margin-left:10px;
 }
@@ -50,8 +50,8 @@ margin-left:10px;
 .custom-button {
   background: url('10_wishbutton.png') no-repeat;
   background-size: cover;
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   border: none;
   cursor: pointer;
   text-indent: -9999px;
@@ -63,11 +63,8 @@ margin-left:10px;
 
 a {
   font-size: 23px;
-  font-family: "Do Hyeon";
+  font-family: 'Noto Sans KR';
 }
-
-
-
 
 .product-image{
   width:200px;

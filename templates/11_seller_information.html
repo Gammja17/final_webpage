@@ -4,73 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{{ url_for('static', filename='11_seller_information.css') }}">
 </head>
 
 <body>
-    <link rel="stylesheet" type="text/css" href="0_header.css">
-    <link rel="stylesheet" type="text/css" href="11_seller_information.css">
+ {% extends "index.html" %}
     
-    <header>
-        <div class="container">
-            <a href="2_home.html">
-                <div id="homebutton">
-                    <img id="logo" src="10_logo.png" alt="LOGO">
-                    이화 마켓
-                </div>
-            </a>
-            <span class="search">
-                <input type="search" size="40" maxlength="20" placeholder="상품명, 지역명, 판매자 아이디 입력">
-                <button>검색</button>
-            </span>
-            <div class="headerbutton">
-                <a href="9_1_wishlist.html"><span class="hb" id="wishlist"> <img id="icon" src="10_wish.png" alt="위시">
-                    </span></a>
-                <a href="9_2_shopping_cart.html"><span class="hb" id="cart"> <img id="icon" src="10_cart.png" alt="카트">
-                    </span></a>
-                <a href="9_3_mypage.html"><span class="hb" id="mypage"> <img id="icon" src="10_my.png" alt="마이">
-                    </span></a>
-            </div>
-        </div>
-    </header>
+    {% block section %}
+    
+   
 
-    <aside>
-        <p style="font-weight: bold; font-size:23px"> 카테고리
-        <p>
-        <ul class="category">
-            <li><a href="all.html">
-                    <div class="category-menu">전체</div>
-                </a></li>
-            <li><a href="clothes.html">
-                    <div class="category-menu">옷</div>
-                </a></li>
-            <li><a href="food.html">
-                    <div class="category-menu">음식</div>
-                </a></li>
-            <li><a href="furniture.html">
-                    <div class="category-menu">가구</div>
-                </a></li>
-            <li><a href="electronic.html">
-                    <div class="category-menu">전자</div>
-                </a></li>
-            <li><a href="etc.html">
-                    <div class="category-menu">기타</div>
-                </a></li>
-        </ul>
-    </aside>
-
-
-    <content>
-        <div class="info-section">
-            <div class="info-block" id="product-reviews"><a href="6_review_detail.html">상품 후기</a></div>
-            <div class="info-block" id="seller-info" style="background-color:#c9d8b7;""><a href="11_seller_information.html">판매자 정보</a></div>
-            <div class=" info-block" id="product-details"><a href="3_product_detail.html">상품 상세 정보</a></div>
-        </div>
-    </content>
+           <content>
+            <div class="info-section">
+                <a class="info-block" href="/review_all" >상품 후기</a>
+                <a class="info-block" href="/seller_info" style="background-color:#c9d8b7;">판매자 정보</a>
+                <a class="info-block" href="/product_detail">상품 상세 정보</a>
+            </div> 
+        </content>
 
     <main>
 
         <div class="seller">
-            <img src="10_person.png" id="person-img" alt="사람사진" style="height:250px; width: 250px;">
+            <img img src="{{ url_for('static', filename='images/10_person.png') }}" id="person-img" alt="사람사진" style="height:250px; width: 250px;">
 
 
             <div class="seller-info">
@@ -92,10 +47,10 @@
 
             <div class="product-details" id="productDetails1">
                 <!-- 상품 상세 내용 -->
-                <a href="3_product_detail.html">
+                <a href="/product_detail">
                     <div class="product">
                         <span class="product-img">
-                            <img src="10_immg.png" alt="product image">
+                            <img src="{{ url_for('static', filename='images/10_immg.png') }}" alt="product image">
                         </span>
                         <div class="product-info">
                             <p style="font-size: 23px;">에어팟</p>
@@ -109,11 +64,10 @@
                         </div>
                     </div>
                 </a>
-
-                <a href="3_product_detail.html">
+                <a href="/product_detail">
                     <div class="product" id="soldout">
                         <span class="product-img">
-                            <img src="10_immg.png" alt="product image">
+                            <img src="{{ url_for('static', filename='images/10_immg.png') }}"  alt="product image">
                         </span>
                         <div class="product-info">
                             <p style="font-size: 23px;">상품명</p>
@@ -130,49 +84,49 @@
                         </div>
                     </div>
                 </a>
-                <a href="3_product_detail.html">
+                <a href="/product_detail">
                     <div class="product">
                         <span class="product-img">
-                            <img src="10_immg.png" alt="product image">
+                            <img src="{{ url_for('static', filename='images/10_immg.png') }}" alt="product image">
                         </span>
                         <div class="product-info">
-                            <p style="font-size: 23px;">상품명</p>
+                            <p style="font-size: 23px;">에어팟</p>
                             <p style="font-size: 15px;">
-                                가격(원)<br>
+                                80000원<br>
                                 판매자<br>
-                                36.5(온도)<br>
-                                <span style="color:orange">★★★★★(2)</span>
+                                34.5<br>
+                                <span style="color:orange">★★★★☆(2)</span>
                                 <button class="custom-button">Wish</button>
                             </p>
                         </div>
                     </div>
                 </a>
-                <a href="3_product_detail.html">
+                <a href="/product_detail">
                     <div class="product">
                         <span class="product-img">
-                            <img src="10_immg.png" alt="product image">
+                            <img src="{{ url_for('static', filename='images/10_immg.png') }}" alt="product image">
                         </span>
                         <div class="product-info">
-                            <p style="font-size: 23px;">상품명</p>
+                            <p style="font-size: 23px;">에어팟</p>
                             <p style="font-size: 15px;">
-                                가격(원)<br>
+                                80000원<br>
                                 판매자<br>
-                                36.5(온도)<br>
-                                <span style="color:orange">★★★★★(2)</span>
+                                34.5<br>
+                                <span style="color:orange">★★★★☆(2)</span>
                                 <button class="custom-button">Wish</button>
                             </p>
                         </div>
                     </div>
                 </a>
             </div>
-
+        </div>
 
             <div class="review-details" id="reviewDetails1">
                 <!-- 리뷰 내용 -->
                 <div class="person">
                     <div class="consumer-info">
-                        <a href="#상품리뷰 상세"></a><img src="10_person.png" alt="구매자 1"></a>
-                        <a href="#상품리뷰 상세">
+                        <a href="/review_detail"><img src="{{ url_for('static', filename='images/10_person.png') }}" alt="구매자 1"></a>
+                        <a href="/review_detail">
                             <h3 style="text-decoration: underline;">id</h3>
                         </a>
 
@@ -193,49 +147,17 @@
                         </div>
                     </div>
                     <div class="consumer-review">
-                        <a href="3_product_detail.html" class="product-name">상품명></a>
-                        <a href="6_review_detail.html"><p>저렴한 상품 감사합니다~</p></a>
+                        <a href="/product_detail" class="product-name">상품명></a>
+                        <a href="review_detail"><p>저렴한 상품 감사합니다~</p></a>
                     </div>
                 </div>
-                <hr class="divider">
-
-
-
-
-                <div class="person">
-                    <div class="consumer-info">
-                        <a href="#상품리뷰 상세"></a><img src="10_person.png" alt="구매자 2"></a>
-                        <a href="#상품리뷰 상세">
-                            <h3 style="text-decoration: underline;">id</h3>
-                        </a>
-
-                        <div class="star-rating" data-current-rating="0">
-
-                            <div class="stars">
-                                <span class="star" style="color: orange;" onclick="setRating(this)"
-                                    data-value="1">&#9733;</span>
-                                <span class="star" style="color: orange;" onclick="setRating(this)"
-                                    data-value="2">&#9733;</span>
-                                <span class="star" style="color: orange;" onclick="setRating(this)"
-                                    data-value="3">&#9733;</span>
-                                <span class="star" style="color: orange;" onclick="setRating(this)"
-                                    data-value="4">&#9733;</span>
-                                <span class="star" style="color: orange;" onclick="setRating(this)"
-                                    data-value="5">&#9733;</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="consumer-review">
-                        <a href="3_product_detail.html" class="product-name">상품명></a>
-                        <a href="6_review_detail.html"><p>친절하시네요~~^^</p></a>
-                    </div>
-                </div>
+                
                 <hr class="divider">
 
                 <div class="person">
                     <div class="consumer-info">
-                        <a href="#상품리뷰 상세"></a><img src="10_person.png" alt="구매자 3"></a>
-                        <a href="#상품리뷰 상세">
+                        <a href="/review_detail"><img src="{{ url_for('static', filename='images/10_person.png') }}" alt="구매자 1"></a>
+                        <a href="/review_detail">
                             <h3 style="text-decoration: underline;">id</h3>
                         </a>
 
@@ -256,17 +178,89 @@
                         </div>
                     </div>
                     <div class="consumer-review">
-                        <a href="3_product_detail.html" class="product-name">상품명></a>
-                        <a href="6_review_detail.html"><p>구매자 3의 후기</p></a>
+                        <a href="/product_detail" class="product-name">상품명></a>
+                        <a href="review_detail"><p>저렴한 상품 감사합니다~</p></a>
                     </div>
                 </div>
+                <hr class="divider">
+                
+                
+                <div class="person">
+                    <div class="consumer-info">
+                        <a href="/review_detail"><img src="{{ url_for('static', filename='images/10_person.png') }}" alt="구매자 1"></a>
+                        <a href="/review_detail">
+                            <h3 style="text-decoration: underline;">id</h3>
+                        </a>
+
+                        <div class="star-rating" data-current-rating="0">
+
+                            <div class="stars">
+                                <span class="star" style="color: orange;" onclick="setRating(this)"
+                                    data-value="1">&#9733;</span>
+                                <span class="star" style="color: orange;" onclick="setRating(this)"
+                                    data-value="2">&#9733;</span>
+                                <span class="star" style="color: orange;" onclick="setRating(this)"
+                                    data-value="3">&#9733;</span>
+                                <span class="star" style="color: orange;" onclick="setRating(this)"
+                                    data-value="4">&#9733;</span>
+                                <span class="star" style="color: orange;" onclick="setRating(this)"
+                                    data-value="5">&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="consumer-review">
+                        <a href="/product_detail" class="product-name">상품명></a>
+                        <a href="review_detail"><p>저렴한 상품 감사합니다~</p></a>
+                    </div>
+                </div>
+                
+                <hr class="divider">
             </div>
-        </div>
 
 
         
     </main>
 
-    <script src="11_seller_information.js"></script>
+    <script>
+    
+showProductDetails('productBox');
+
+function showProductDetails(boxId) {
+    // 해당 상품 상세 내용을 보여줌
+    var productDetails = document.getElementById(boxId).querySelector('.product-details');
+    var reviewDetails = document.getElementById(boxId).querySelector('.review-details');
+    
+    productDetails.style.display = 'flex';
+    reviewDetails.style.display = 'none';
+    
+    var productDetailsButton = document.querySelector('.product-details-button');
+    var reviewButton = document.querySelector('.review-button');
+
+    productDetailsButton.classList.add('active-button');
+    reviewButton.classList.remove('active-button');
+}
+
+function showReview(boxId) {
+    // 해당 판매자의 리뷰를 보여줌
+    var productDetails = document.getElementById(boxId).querySelector('.product-details');
+    var reviewDetails = document.getElementById(boxId).querySelector('.review-details');
+
+    productDetails.style.display = 'none';
+    reviewDetails.style.display = 'block';
+
+    var productDetailsButton = document.querySelector('.product-details-button');
+    var reviewButton = document.querySelector('.review-button');
+
+    productDetailsButton.classList.remove('active-button');
+    reviewButton.classList.add('active-button');
+
+} 
+
+
+
+
+
+    </script>
+{%endblock section%}
 </body>
 </html>

@@ -45,7 +45,19 @@ def view_home():
         total=item_counts
     )
 
+<<<<<<< HEAD
 @application.route("/product_upload") #이거다
+=======
+@application.route("/home")
+def home():
+    return render_template("2_home.html")
+
+@application.route("/review")
+def view_review():
+    return render_template("review.html")
+
+@application.route("/product_upload")
+>>>>>>> 80114950508724a862686cff4cf101eed3b8ca98
 def product_upload():
     return render_template("1_product_upload.html")
 
@@ -56,6 +68,7 @@ def view_item_detail(name):
     print("####data:",data)
     return render_template("3_product_detail.html", name=name, data=data)
 
+<<<<<<< HEAD
 @application.route("/product_detail", methods=['POST'])
 def product_detail():
     image_file = request.files["file"]
@@ -66,6 +79,15 @@ def product_detail():
     return render_template("3_product_detail.html", data=data, img_path=
 "static/images/{}".format(image_file.filename))
     # return render_template("3_product_detail.html")
+=======
+@application.route("/reg_reviews")
+def reg_review():
+    return render_template("reg_reviews.html")
+>>>>>>> 80114950508724a862686cff4cf101eed3b8ca98
+
+@application.route("/seller_info")
+def seller_info():
+    return render_template("11_seller_information.html")
 
 @application.route("/submit_item_post", methods=['POST'])
 def reg_item_submit_post():
@@ -157,6 +179,7 @@ def mypage():
     data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
 
+<<<<<<< HEAD
     for i in range(row_count):
         if (i == row_count-1) and (tot_count%per_row != 0):
             locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
@@ -245,5 +268,7 @@ def shoppingcart():
 def view_review():
     return render_template("review.html")
 
+=======
+>>>>>>> 80114950508724a862686cff4cf101eed3b8ca98
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)

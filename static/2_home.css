@@ -9,7 +9,7 @@
 .product {
   width: 400px;
   height: 250px;
-  border: 3px solid black;
+  border: 2px solid black;
   margin: 10px;
   display: flex;
   transition: background-color 0.3s, opacity 0.3s;
@@ -29,7 +29,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-right: 3px solid black;
+  border-right: 2px solid black;
 }
 
 
@@ -75,7 +75,6 @@ a {
   height: 50px;
   background-color: #c9d8b7;
   text-align: center;
-  border: 3px solid black;
   padding-top: 5px;
   transition: background-color 0.3s, opacity 0.3s; 
 }
