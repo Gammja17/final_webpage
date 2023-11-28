@@ -1,21 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
-.content2 {
-    font-family: "Noto Sans KR";
-    display: flex;
-    margin-top: 20px;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: center;
-  }
+main {
+  font-family: "Noto Sans KR";
+  margin-top: 20px;
+ margin-left: 200px;
+ text-align: center;
+}
+.wrapping{
   
-
-  .wrapping{
-    display: flex;
-    justify-content:center;
-    margin-left: 50px;
-    margin-right: 50px;
-    flex-direction: column;
-  }
+  
+  margin-left: 50px;
+  margin-right: 50px;
+  display: inline-block;
+  
+}
 
 
 .upside{
