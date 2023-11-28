@@ -19,21 +19,15 @@
         </content>
 
 
-    <div class="aside-container">
-
+    <main>
         
-
-        
-
         <!--프로필 정보확인-->
-        <div class="container-buttons">
-            <div class="B">
-            <div class="A">
-            <div class="container">
+       <div class="profile">
+            
                 <div class="profile-box">
-                    <div class="profile-image">
-                          <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="product image" alt="프로필 사진" style="width: 400px; height: 300px;">
-                    </div>
+                    
+                          <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="product image" alt="프로필 사진" style="width: 400px; height: 400px;">
+                    
                     <div class="profile-info">
                         <p>ID: 사용자 아이디</p>
                         <p>PW: 비밀번호</p>
@@ -79,9 +73,8 @@
                 <button onclick="logout.php" class="button" id="logout-button">로그아웃</button>
 
             </div>
-        </div>
-    </div>
-
+        
+    
             <!--내 지갑 -->
         <div class="wallet-box">
         <h2 class="wallet">내 지갑</h2>
@@ -91,9 +84,8 @@
         <input type="button" id="btn3" value="50000원 충전" />
 
         </div>
-    </div>
-</div>
 
+    </main>
 
     {% endblock section %}
 </body>

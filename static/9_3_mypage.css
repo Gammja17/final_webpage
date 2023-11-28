@@ -3,36 +3,37 @@
 body {
     font-family: 'Do Hyeon';
 }
-.aside-container{
-    display: flex;
-}
-.container-buttons{
-    display: flex;
-    flex-direction: column;
-}
-.container {
-    display: flex;
-    align-items: flex-start;
+
+main{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    
+    
 }
 
+.profile{
+    display: flex;
+    align-items: flex-start;
+    height: 480px;
+}
 .profile-box {
     display: flex;
-    width: 1000px;
+    width: 940px;
     align-items: center;
 }
 
-.profile-image {
-
+.profile-box img{
     width: 400px;
     height: 300px;
     margin: 50px;
-
 }
-
 .profile-info {
     display: flex;
     flex-direction: column;
+    margin-left: 30px;
 }
+
 
 .store-box {
     border: 2px solid #ccc;
@@ -42,7 +43,7 @@ body {
     padding: 0px;
     height: 380px;
     margin-right: 46px;
-    margin-top: 10px;
+    margin-top: 60px;
 }
 
 .store-box h2 {
@@ -100,20 +101,20 @@ body {
 }
 
 button#edit-button.button {
-    margin-left: 100px;
+    margin-left: 95px;
 }
 
 button#logout-button.button {
     margin-left: 40px;
 }
 
-/* 세 번째 박스: 내 지갑 스타일 */
 .wallet-box {
     border: 2px solid #ccc;
     padding: 0px;
     margin: 10px;
     text-align: center;
-    margin-top:50px;
+    margin-top: 50px;
+    width: 1100px;
 }
 
 
@@ -126,7 +127,6 @@ button#logout-button.button {
     height: 40px;
     color: white;
 }
-
 
 #btn1,
 #btn2,
