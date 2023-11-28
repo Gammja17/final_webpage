@@ -56,7 +56,7 @@ def home():
 
 @application.route("/review")
 def view_review():
-    return render_template("review.html")
+    return render_template("6_review_detail.html")
 
 @application.route("/product_detail/<name>/")
 def view_item_detail(name):
@@ -266,3 +266,18 @@ def shoppingcart():
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
+    
+    
+    
+@application.route("/review_upload")
+def review_upload():
+    return render_template("4_review_upload.html")
+
+@application.route("/review_all")
+def review_all():
+    return render_template("5_review_all.html")
+
+@application.route("/review_detail")
+def review_detail():
+    return render_template("6_review_detail.html")
+''

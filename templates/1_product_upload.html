@@ -31,73 +31,40 @@
 
             <div class="img-upload">
                 <div id="image-container">
-                    <img src="#" id="uploaded-image">
-                    <p id="uploaded-image-text" style="display: none;"></p>
-                    <p id="image-counter" style="display: none;"></p>
+                    <input type="file" name="file" accept="image/*" multiple id="image-upload-input"required>
                 </div>
-
-                <input type="file" name="file" accept="image/*" multiple id="image-upload-input"required>
-                <button id="cancel-upload">업로드 취소</button> <!-- 업로드 취소 버튼을 img-upload 아래로 이동 -->
             </div>
 
+            
+
             <div class="info-upload">
-                상품 명 <input type="text" name="name" id="name" class="c" required /> <br>
-                상품 설명 제목 <input type="text" name="title" id="title" class="c" required /> <br>
-                가격 (1000원 이상) <input type="text" name="price" id="price" class="c" required /><br>
-                <input type="checkbox" class="checkbox-bigger" name="deliverprice" id="deliverprice"/>
-                <p class="c" style="display:inline; margin-top:5px; margin-bottom:5px;">배송비 포함</p> <br>
-                <label for="product-status" class="c">상품 상태</label>
-                <select id="productstatus" name="productstatus" style="margin-top:10px;">
+                <span class="texts">
+                상품 명  <br>
+                상품 설명 제목 <br>
+                가격 (1000원 이상) <br>
+                상품 상태<br>
+                카테고리<br>
+                <input type="checkbox" class="checkbox-bigger" name="placebox" id="placebox">  직거래 지역
+            </span>
+ 
+                <span class="inputs">
+                    <input type="text" name="name" id="name" class="c" required />
+                    <input type="text" name="title" id="title" class="c" required />
+                    <input type="text" name="price" id="price" class="c" required />
+                    <label for="product-status" class="c"></label>
+                <select id="productstatus" name="productstatus" style="margin-top:12px;" class="c">
                     <option value="boxing">미개봉</option>
                     <option value="unboxingnew">개봉 새상품</option>
                     <option value="unboxing">중고</option>
-                </select> <br>
-                카테고리 
-                <!-- <input type="text" class="c" style="margin-top:15px">  -->
-                <select id="category" name="category" style="margin-top:10px;">
+                </select>
+                <select id="category" name="category-select" style="margin-top:10px;" class="c">
                         <option value="cloth">옷</option>
                         <option value="food">음식</option>
                         <option value="furniture">가구</option>
                         <option value="Electronics">전자</option>
                         <option value="etc">기타</option>
                     </select>
-                <br>
-                <input type="checkbox" class="checkbox-bigger" name="placebox" id="placebox"> 
-                직거래 지역 <input type="text" id="place" name="place"/> <br>
-                판매자 ID <input type="text" id="sellerid" name="sellerid" required /> <br>
-                <p style="font-family: Noto Sans KR; font-size: 18px;"> 사진을 업로드하세요 </p>
-                <input type="file" accept="image/*" multiple id="image-upload-input">
-            </div>
-
-            <div class="info-upload">
-                <span class="texts">
-                    상품 명  <br>
-                상품 설명 제목 <br>
-                가격 (1000원 이상) <br>
-                <input type="checkbox" class="checkbox-bigger"> 배송비 포함 <br>
-                상품 상태<br>
-                카테고리<br>
-                <input type="checkbox" class="checkbox-bigger"> 직거래 지역
-            </span>
- 
-                <span class="inputs">
-                    <input type="text" class="c">
-                    <input type="text" class="c">
-                    <input type="text" class="c"> 
-                    <label for="product-status" class="c"></label>
-                <select id="product-status" name="product-status" style="margin-top:11px; margin-bottom: 11px; font-size:18px;">
-                    <option value="미개봉">미개봉</option>
-                    <option value="개봉 새상품">개봉 새상품</option>
-                    <option value="중고">중고</option>
-                </select>
-                <select id="category-select" name="category-select" style="margin-bottom: 11px; font-size:18px;">
-                    <option value="옷">옷</option>
-                    <option value="음식">음식</option>
-                    <option value="가구">가구</option>
-                    <option value="전자">전자</option>
-                    <option value="기타">기타</option>
-                </select>
-                    <input type="text" class="c"> 
+                    <input type="text" id="place" name="place"/>
 
                 </span>
 
@@ -116,23 +83,10 @@
                 <button id="authenticate-button">인증</button>
                 <div id="message"></div>
             </div>
-
-            
                 
             </div>
 
-                <div class="upload-button" >
-                    <input type="submit" value="상품 등록하기"><br><br>
-                <!-- <a href="uploaded(임시).html"> 상품 등록하기 </a>  -->
-
-            </div>
-
-      
-
-            <div class="upload-button" >
-                <a href="uploaded(임시).html"> 상품 등록하기 </a> 
-
-                </div>
+            <input type="submit"  class="upload-button"  value="상품 등록하기" style="border:none;"><br><br>
 
             </content>
     </form>

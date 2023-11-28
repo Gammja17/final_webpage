@@ -42,22 +42,19 @@ function showSlides(n) {
  {% extends "index.html" %}
     
 
-        
-
 
     {% block section %}
     
  <content>
-            <div class="info-section">
+            <div class="info-section"> 
                 <a class="info-block" href="/review_all" >상품 후기</a>
                 <a class="info-block" href="/seller_info">판매자 정보</a>
-                <a class="info-block" href="/product_detail" style="background-color:#c9d8b7;">상품 상세 정보</a>
+                <a class="info-block" style="background-color:#c9d8b7;" onclick="location.href='/product_detail/{{key}}/';">상품 상세 정보</a>
             </div> 
         </content>
 
         <!--이미지 슬라이드쇼로 보여줌-->
 
-<<<<<<< HEAD
         <content class="content2">
             <div class="slideshow-container">
 
@@ -92,20 +89,11 @@ function showSlides(n) {
                     <span class="dot" onclick="currentSlide(2)"></span>
                     <span class="dot" onclick="currentSlide(3)"></span>
                 </div> -->
-=======
-          <content class="content2">
-        <div class="upper">
-        <div class="slideshow-container">
-
-            <div class="mySlides fade">
-                <img src="{{ url_for('static', filename='images/10_336-x-280.jpg') }}"  style="width: 400px;height: 400px;">
->>>>>>> 80114950508724a862686cff4cf101eed3b8ca98
             </div>
-            <br>
-            <script>currentSlide(1)</script>
-        </div>
 
-<<<<<<< HEAD
+        <div class="upper">
+
+
             <!--상품 설명-->
             <div class="explainProduct">
 
@@ -130,61 +118,27 @@ function showSlides(n) {
                 </ul>
 
                 <a href="#" class="image-button">
-                    <img src="{{ url_for('static', filename='images/10_wish_button.png') }}" alt="Wish" ></a>
+                    <img src="{{ url_for('static', filename='images/10_wish_button.png') }}" alt="Wish" >
+                </a>
                 <a href="#" class="image-button">
                     <p> </p>
                     <img src="{{ url_for('static', filename='images/10_cart_button.png') }}" alt="Cart" >
                 </a>
             </div>
-      
-=======
-        <!--상품 설명-->
-        <div class="explainProduct">
 
-            <h1 style="font-size: 40px; margin: 0px;">상품명/상품 설명제목</h1>
-            <h2 style="font-size: 35px;margin:0px;">가격₩</h2>
-            <ul style="padding: 10px;font-size: 20px;margin: 0px;">
-                <li style="margin-bottom:8px;">판매자 id</li>
-                <li style="margin-bottom:8px;">거래지역</li>
-                <li style="margin-bottom:8px;">상품 상태 <span class="underline">중고</span>
-                </li>
-            </ul>
-
-            <div class="buttons">
-            <a href="#" class="image-button">
-                <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}" alt="Wish" style="width: 60px; height: 60px;">
-            </a>
-            <a href="#" class="image-button">
-                <img src="{{ url_for('static', filename='images/10_cart_green.png') }}" alt="Cart" style="width: 60px; height: 60px;">
-            </a>
         </div>
-    </div>
-        </div>
->>>>>>> 80114950508724a862686cff4cf101eed3b8ca98
 
 
 
-<<<<<<< HEAD
-    <div class="product-information">
-        <div class="product-description-location-category">
-            <div class="product-description">
-                <h2>상품 설명</h2>
-                <p style="white-space:pre;">{{data.info}}</p>
-                <div class="vertical-line"></div>
-                <div class="horizontal-line"></div>
-            </div>
-        </div>
-=======
->>>>>>> 80114950508724a862686cff4cf101eed3b8ca98
 
 
         <div class="product-information">
             <div class="product-description-location-category">
                 <div class="product-description">
-                    <h2>상품 설명</h2>
-                    <p>여기에 상품의 설명을 작성합니다. 상품의 세부 정보 및 특징을 여기에 표시합니다.</p>
-                    <div class="vertical-line"></div>
-                    <div class="horizontal-line"></div>
+                <h2>상품 설명</h2>
+                <p style="white-space:pre;">{{data.info}}</p>
+                <div class="vertical-line"></div>
+                <div class="horizontal-line"></div>
                 </div>
             </div>
 
@@ -234,9 +188,7 @@ function showSlides(n) {
             </div>
             <hr class="divider">
         </div>
-       
-
-<<<<<<< HEAD
+           
     <div class="location_category">
         <div class="box">
             <h2>직거래 지역</h2>
@@ -261,21 +213,15 @@ function showSlides(n) {
                 기타
                 {% endif %}
             </p>
-=======
-        <div class="location_category">
-            <div class="box">
-                <h2>직거래 지역</h2>
-                <p>직거래 지역이 작성된다.</p>
-            </div>
-            <div class="box">
-                <h2>카테고리</h2>
-                <p>카테고리가 작성된다.</p>
-            </div>
->>>>>>> 80114950508724a862686cff4cf101eed3b8ca98
         </div>
+              </div>
+        
     </content>
+        
 
 {%endblock section%}
+                
+                
 </body>
 
 </html>
