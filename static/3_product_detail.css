@@ -6,9 +6,9 @@ body{
 }
 .upper{
   display: flex;
-  align-items: stretch;
   margin-top: 100px;
   margin-left: 100px;
+  align-items: flex-start;
 }
   .content2 {
     font-family: 'Noto Sans KR';
@@ -16,6 +16,7 @@ body{
     flex-wrap: wrap;
     margin-left: 220px;
     align-items: center;
+    justify-content: center;
 }
 
 .main{
@@ -23,7 +24,10 @@ body{
   place-items: center;
 }
 
-
+.slideshow-container img{
+    width:100%;
+    max-height:300px;
+}
 
 .info-section {
     font-family: 'Noto Sans KR';
@@ -67,12 +71,10 @@ img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
-  width: 336px;
+  width: 400px;
   height: 400px;
-  position: relative;
   align-items: center;
   justify-content: center;
-  margin-right: 100px
 }
 
 
@@ -142,7 +144,6 @@ img {vertical-align: middle;}
   to {opacity: 1}
 }
 
-/* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
 }
@@ -155,21 +156,15 @@ img {vertical-align: middle;}
   flex-direction: row;
 }
 .image-button {
-  display: inline-block;
   border: none;
   background: none;
-  font-size: 15px;
   cursor: pointer;
   margin-right: 50px;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
   transition: background-color 0.3s;
 }
 
 
 
-/* ÃƒÂ¬Ã‚ÂÃ‚Â´ÃƒÂ«Ã‚Â¯Ã‚Â¸ÃƒÂ¬Ã‚Â§Ã¢â€šÂ¬ ÃƒÂ­Ã‚ÂÃ‚Â¬ÃƒÂªÃ‚Â¸Ã‚Â° ÃƒÂ¬Ã‚Â¡Ã‚Â°ÃƒÂ¬Ã‚Â Ã¢â‚¬Â¢*/
 .image-button:hover{
   background-color: #ebefd6;
 }
@@ -177,6 +172,7 @@ img {vertical-align: middle;}
   .product-information {
     display: flex;
     font-family:'Noto Sans KR';
+    flex-direction: column;
 }
 
 
@@ -218,9 +214,8 @@ p {
 }
 
 img {
-  width: 30px;
-  height: 20px;
-
+  width: 80px;
+  height: 60px;
 }
 
 h3 {
@@ -242,7 +237,7 @@ h3 {
 
 
 .box{
-  width: 300px; /* ÃƒÂ«Ã¢â‚¬ËœÃ‚Â ÃƒÂªÃ‚Â°Ã…â€œÃƒÂ¬Ã‚ÂÃ‹Å“ ÃƒÂ«Ã‚Â°Ã¢â‚¬Â¢ÃƒÂ¬Ã…Â Ã‚Â¤ÃƒÂªÃ‚Â°Ã¢â€šÂ¬ ÃƒÂ«Ã‚ÂÃ¢â€žÂ¢ÃƒÂ¬Ã‚ÂÃ‚Â¼ÃƒÂ­Ã¢â‚¬Â¢Ã…â€œ ÃƒÂ«Ã¢â‚¬Å¾Ã‹â€ ÃƒÂ«Ã‚Â¹Ã¢â‚¬Å¾ÃƒÂ«Ã‚Â¥Ã‚Â¼ ÃƒÂªÃ‚Â°Ã¢â‚¬â€œÃƒÂ«Ã‚ÂÃ¢â‚¬Å¾ÃƒÂ«Ã‚Â¡Ã‚Â 50%ÃƒÂ«Ã‚Â¡Ã…â€œ ÃƒÂ¬Ã¢â‚¬Å¾Ã‚Â¤ÃƒÂ¬Ã‚Â Ã¢â‚¬Â¢ */
+  width: 300px; 
   height: 100px;
   width: 422px;
   display: inline-block;
