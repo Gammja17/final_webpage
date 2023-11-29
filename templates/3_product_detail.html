@@ -4,38 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-    var slideIndex = 1;
-
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-
-    
+    function showHeart() {
+        $.ajax({
+            type:'GET',
+            url: '/show_heart/{{name}}/',
+            data:{},
+            success: function (response){
+                let my_heart = response['my_heart'];
+                if (my_heart['interested']=='Y') {
+                    $("#heart").css("color","red");
+                    $("#heart").attr("onclick","unlike()");
+                }
+                else {
+                    $("#heart").css("color","grey");
+                    $("#heart").attr("onclick","like()");
+                }
+                //alert("showheart!")
+            }
+        });
+    }
+    function like() {
+        $.ajax({
+            type: 'POST', 
+            url: '/like/{{name}}/',
+            data: {
+            interested: "Y" 
+            },
+            success: function(response){
+                alert(response['msg']);
+                window.location.reload()
+            }
+        });
+    }
+    function unlike() {
+        $.ajax({
+            type:'POST',
+            url: '/unlike/{{name}}/',
+            data: {
+                interested: "N"
+            },
+            success: function(response) {
+                alert(response['msg']);
+                window.location.reload()
+            }
+        });
+    }
+    $(document).ready(function(){
+       showHeart(); 
+    });
     </script>
-        <style>
+<style>
     @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
 
 
@@ -292,7 +313,13 @@ h3 {
   box-sizing: border-box;
   text-align: center;
 }
-
+    #heart {
+        color:grey;
+        font-size: 50px;
+    }
+    #heart.red{
+        color:red;
+    }
 
 </style>
 </head>
@@ -352,9 +379,7 @@ h3 {
                     
                 </ul>
 
-                <a href="#" class="image-button">
-                    <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}" alt="Wish" >
-                </a>
+                <i class="fa fa-heart" id="heart"></i>
                 <a href="/reg_review_init/{{data.name}}/{{data.sellerid}}" class="review-button">
                     <img src="{{ url_for('static', filename='images/10_plus.png') }}" alt="Wish" >
                 </a>
