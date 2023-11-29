@@ -20,8 +20,10 @@
                     </div>
                 </a>
                 <span class="search">
-                    <input type="search" size="40" maxlength="20" placeholder="상품명, 지역명, 판매자 아이디 입력">
-                    <button>검색</button>
+                 <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="상품명, 판매자 아이디 검색">
+                    <button type="submit">Search</button>
+                </form>
                 </span>
                 <div class="headerbutton">
                     {% if session['id'] %}

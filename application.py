@@ -258,6 +258,17 @@ def shoppingcart():
 # def view_review():
 #     return render_template("review.html")
 
+@application.route("/search")
+def search():
+    query = request.args.get("query")
+    all_items = DB.get_items()
+    
+    # Filter items based on item name or seller's ID
+    filtered_items = {name: details for name, details in all_items.items() 
+                      if query.lower() in name.lower() or query.lower() in details.get('seller', '').lower()}
+    
+    return render_template("search_result.html", items=filtered_items)
+
 @application.route("/review_upload")
 def review_upload():
     return render_template("4_review_upload.html")
