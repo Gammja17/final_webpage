@@ -45,48 +45,6 @@
                 </div>
 
 
-
-                <!--내 상점 -->
-                <div class="store-box">
-                    <h2>내 상점</h2>
-                    {% if total > 0 %}
-
-            <table>
-                <tr>
-                    {% for key, value in datas %}
-                    <td>
-                    <div class="product">
-                        <a href="/product_detail/{{key}}/"><img src="static/images/{{ value.img_path }}" alt="상품"></a>
-                        <div class="product-info">
-                            <p class="product-state">판매중</p>
-                            <p>{{value.name}}</p>
-                        </div>
-                    </div>
-                    </td>
-                    {% if loop.index % 2 == 0 %}
-                </tr>
-                <tr>
-                    {% endif %} {% endfor %}
-                </tr>
-            </table>
-
-            <!-- 페이지네이션을 위한 코드 시작 -->
-            <div class="page-wrap">
-                <div class="page-nation">
-                    <ul>
-                        <li>
-                            {% for i in range(page_count)%}
-                            <a href="{{url_for('mypage', page=i)}}" color="black">{{i}}</a>
-                            {% endfor %}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            {% else %}
-            <p>
-                등록된 상품이 없습니다.
-            </p>
-            {% endif %}
             <style>
     .page-nation li{
         list-style: none;
@@ -131,15 +89,7 @@
         </div>
     </div>
 
-            <!--내 지갑 -->
-        <div class="wallet-box">
-        <h2 class="wallet">내 지갑</h2>
-        <h3>현재 잔액: <span id="current"></span></h3>
-        <input type="button" id="btn1" value="1000원 충전" />
-        <input type="button" id="btn2" value="10000원 충전" />
-        <input type="button" id="btn3" value="50000원 충전" />
-
-        </div>
+       
     </div>
 </div>
 

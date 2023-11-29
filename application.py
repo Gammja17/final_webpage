@@ -139,6 +139,7 @@ def register_user():
     pw = request.form['pw']
     pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
     if DB.insert_user(data, pw_hash):
+        flash("회원가입이 완료되었습니다.")
         return render_template("7_1_log_in.html")
     else:
         flash("아이디가 이미 존재합니다!")

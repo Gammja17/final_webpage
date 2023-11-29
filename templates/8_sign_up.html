@@ -24,6 +24,7 @@
                 </p>
             </div>
         </content>
+            <div id="SUScreen">
         <div class="signup_form">
             <form method="post" action="/signup_post">
                 <div class="input-group">
@@ -50,29 +51,16 @@
                 <div class="input-group">
                     <label for="email">이메일</label>
                     <input type="email" id="email" name="email" required />
-                    <button type="button" id="email-check" class="check-btn">중복 확인</button>
                 </div>
 
                 <div class="input-group">
                     <label for="tel">휴대폰 번호</label>
                     <input type="phone" id="tel" name="tel" required />
-                    <button type="button" id="verify-tel" class="check-btn">인증번호 받기</button>
                 </div>
 
                 <div class="input-group">
                     <label for="addr">주소</label>
                     <input type="address" id="addr" name="addr" required />
-                </div>
-
-                <div class="input-group">
-                    <label for="acount">계좌 입력</label>
-                    <input type="text" id="account" name="account" required />
-                </div>
-
-                <div class="input-group">
-                    <label for="secret">비밀단어 인증</label>
-                    <input type="text" id="secret" name="secret" required />
-                    <button type="button" id="check-secret" class="check-btn">인증하기</button>
                 </div>
 
                 <div class="input-group">
@@ -82,26 +70,11 @@
                 </div>
             </form>
         </div>
-
-        <div id="SUcompScreen" hidden>
-            <div class="SU-texting">
-                <span style="font-size: 20px; margin-bottom: 5px;">회원가입이 완료되었습니다!</span>
-                <button type="button" class="back_btn" onclick="showLoginScreen()">
-                    로그인 화면으로 돌아가기
-                </button>
-            </div>
         </div>
-    </body>
-
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('check-username').addEventListener('click', function () {
-                alert('중복 확인 되었습니다.');
-            });
 
     
+    </body>
+
     
      <script>
     document.addEventListener('DOMContentLoaded', function(){
@@ -123,16 +96,6 @@
             });
         });
 
-        function showSUcompScreen() {
-            document.getElementById('SUScreen').hidden = true;
-            document.getElementById('SUcompScreen').hidden = false;
-        }
-
-        function showLoginScreen() {
-
-            // Redirect to 7_1_log_in.html
-            window.location.href = '7_1_log_in.html';
-        }
     </script>
 
 

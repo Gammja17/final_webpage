@@ -41,10 +41,13 @@
                 <span class="texts">
                 상품 명  <br>
                 상품 설명 제목 <br>
-                가격 (1000원 이상) <br>
+                가격 <br>
                 상품 상태<br>
                 카테고리<br>
-                <input type="checkbox" class="checkbox-bigger" name="placebox" id="placebox">  직거래 지역
+                지역<br>
+                계좌번호<br>
+                오픈채팅방 링크 
+                
             </span>
  
                 <span class="inputs">
@@ -52,7 +55,7 @@
                     <input type="text" name="title" id="title" class="c" required />
                     <input type="text" name="price" id="price" class="c" required />
                     <label for="product-status" class="c"></label>
-                <select id="productstatus" name="productstatus" style="margin-top:12px;" class="c">
+                    <select id="productstatus" name="productstatus" style="margin-top:12px;" class="c">
                     <option value="boxing">미개봉</option>
                     <option value="unboxingnew">개봉 새상품</option>
                     <option value="unboxing">중고</option>
@@ -65,6 +68,8 @@
                         <option value="etc">기타</option>
                     </select>
                     <input type="text" id="place" name="place"/>
+                    <input type="text" id="bank" name="bank"/>
+                    <input type="text" id="link" name="link"/>
 
                 </span>
 

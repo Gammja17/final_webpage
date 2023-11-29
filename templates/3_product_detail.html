@@ -48,7 +48,6 @@ function showSlides(n) {
  <content>
             <div class="info-section"> 
                 <a class="info-block" href="/review_all" >상품 후기</a>
-                <a class="info-block" href="/seller_info">판매자 정보</a>
                 <a class="info-block" style="background-color:#c9d8b7;" onclick="location.href='/product_detail/{{key}}/';">상품 상세 정보</a>
             </div> 
         </content>
@@ -57,39 +56,9 @@ function showSlides(n) {
 
         <content class="content2">
             <div class="slideshow-container">
-
-                <!-- <img src="../../static/images/{{data.img_path}}", width=336, height=280> -->
                 <img src="../../static/images/{{data.img_path}}" style="width: 336px;height: 280px;">
-                <!-- <div class="mySlides fade">
-                    <div class="numbertext">1 / 3</div>
-                    <img src="../../static/images/{{data.img_path}}" style="width: 336px;height: 280px;">
-                    <div class="text">Caption Text</div>
-                </div> -->
-<!-- 
-                <div class="mySlides fade">
-                    <div class="numbertext">2 / 3</div>
-                    <img src="10_336-x-280.jpg" style="width: 336px;height: 280px;">
-                    <div class="text">Caption Two</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">3 / 3</div>
-                    <img src="10_336-x-280.jpg" style="width: 336px;height: 280px;">
-                    <div class="text">Caption Three</div>
-                </div>
-
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-                <br>
-                <script>currentSlide(1)</script>
-
-                <div style="text-align:center">
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                </div> -->
             </div>
+
 
         <div class="upper">
 
@@ -102,7 +71,6 @@ function showSlides(n) {
                 <h2 style="font-size: 40px;margin-top: 20px; margin-bottom: 10px;">₩{{data.price}}</h2>
                 <ul style="padding: 10px;font-size: 20px;margin: 0px;">
                     <li>{{data.sellerid}}</li>
-                    <li>배송비 포함/비포함 : {{data.deliverprice}}</li>
                     <li>상품 상태 <span class="underline">
                         {% if data['productstatus'] == "boxing" %}
                         미개봉
@@ -120,15 +88,10 @@ function showSlides(n) {
                 <a href="#" class="image-button">
                     <img src="{{ url_for('static', filename='images/10_wish_button.png') }}" alt="Wish" >
                 </a>
-                <a href="#" class="image-button">
-                    <p> </p>
-                    <img src="{{ url_for('static', filename='images/10_cart_button.png') }}" alt="Cart" >
-                </a>
+
             </div>
 
         </div>
-
-
 
 
 
@@ -142,56 +105,11 @@ function showSlides(n) {
                 </div>
             </div>
 
-            <div class="seller-info">
-                <h2>판매자 정보</h2>
-                <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="판매자" style="width:30px;height: 30px;">
-                <p>id</p>
-                <p>온도</p>
-                <hr class="divider">
-
-
-                <div class="person">
-                    <a href="/review_detail"><img src="{{ url_for('static', filename='images/10_person.png') }}" alt="구매자1" style="width:30px;height: 30px;"></a>
-                    <a href="/review_detail">
-                        <h3 style="text-decoration: underline;">id</h3>
-                    </a>
-                    <div class="star-rating" data-current-rating="0">
-                        <div class="stars">
-                            <span class="star" onclick="setRating(this)" data-value="1">&#9733;</span>
-                            <span class="star" onclick="setRating(this)" data-value="2">&#9733;</span>
-                            <span class="star" onclick="setRating(this)" data-value="3">&#9733;</span>
-                            <span class="star" onclick="setRating(this)" data-value="4">&#9733;</span>
-                            <span class="star" onclick="setRating(this)" data-value="5">&#9733;</span>
-                        </div>
-                    </div>
-                    <p>구매자 1의 후기</p>
-                </div>
-                <hr class="divider">
-
-                <div class="person">
-                    <a href="/review_detail"><img src="{{ url_for('static', filename='images/10_person.png') }}" alt="구매자2" style="width:30px;height: 30px;"></a>
-                    <a href="/review_detail">
-                        <h3 style="text-decoration: underline;">id</h3>
-                    </a>
-                    <a href="/review_detail">
-                        <div class="star-rating" data-current-rating="0"></div>
-                    </a>
-                    <div class="stars">
-                        <span class="star" onclick="setRating(this)" data-value="1">&#9733;</span>
-                        <span class="star" onclick="setRating(this)" data-value="2">&#9733;</span>
-                        <span class="star" onclick="setRating(this)" data-value="3">&#9733;</span>
-                        <span class="star" onclick="setRating(this)" data-value="4">&#9733;</span>
-                        <span class="star" onclick="setRating(this)" data-value="5">&#9733;</span>
-                    </div>
-                </div>
-                <p>구매자 2의 후기</p>
-            </div>
-            <hr class="divider">
-        </div>
+        
            
     <div class="location_category">
         <div class="box">
-            <h2>직거래 지역</h2>
+            <h2>지역</h2>
             <p>{{data.placebox}} {{data.place}}</p>
         </div>
         <div class="box">
