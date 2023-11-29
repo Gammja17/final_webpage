@@ -35,7 +35,7 @@ function showSlides(n) {
 
     
     </script>
-    <style>
+        <style>
     @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
 
 
@@ -294,10 +294,6 @@ h3 {
 }
 
 
-
-
-
-
 </style>
 </head>
 
@@ -330,12 +326,15 @@ h3 {
             <!--상품 설명-->
             <div class="explainProduct">
 
-                <h1 style="font-size: 40px; margin-top: 0px; margin-bottom:0px;">{{data.name}}/{{data.title}}</h1>
+                <h1 style="font-size: 40px; margin-top: 0px; margin-bottom:0px;">{{data.name}}</h1>
+                <div style="font-size:25px; margin-bottom:10px; color:gray;">
+                {{data.title}}
+                </div>
 
-                <h2 style="font-size: 40px;margin-bottom: 10px;">{{data.price}}₩</h2>
-                <ul style="padding: 10px;font-size: 20px;margin: 0px;">
-                    <li>{{data.sellerid}}</li>
-                    <li>상품 상태 <span class="underline">
+                <h2 style="font-size: 30px;margin-bottom: 10px;">{{data.price}}₩ </h2>
+                <ul style="font-size: 20px; margin-bottom: 10px; margin-top: 0px; list-style: none; padding: 0px;">
+                    <li>판매자 id: {{data.sellerid}}</li>
+                    <li>상품 상태: <span class="underline">
                         {% if data['productstatus'] == "boxing" %}
                         미개봉
                         {% endif %}
@@ -347,9 +346,10 @@ h3 {
                         {% endif %}
                         </span>
                     </li>
-                    <p>
-                        오픈채팅 주소: 
-                    </p>
+                    <li>
+                        오픈채팅 주소: {{data.link}}
+                    </li>
+                    
                 </ul>
 
                 <a href="#" class="image-button">
@@ -377,7 +377,7 @@ h3 {
     <div class="location_category">
         <div class="box">
             <h2>지역</h2>
-            <p>{{data.placebox}} {{data.place}}</p>
+            <p>{{data.place}}</p>
         </div>
         <div class="box">
             <h2>카테고리</h2>

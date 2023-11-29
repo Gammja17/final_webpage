@@ -81,9 +81,6 @@ def product_detail():
 def reg_review():
     return render_template("reg_reviews.html")
 
-@application.route("/seller_info")
-def seller_info():
-    return render_template("11_seller_information.html")
 
 @application.route("/submit_item_post", methods=['POST'])
 def reg_item_submit_post():
@@ -102,12 +99,12 @@ def reg_item_submit():
     title = request.args.get("title")
     price = request.args.get("price")
     productstatus = request.args.get("productstatus")
-    deliverprice = request.args.get("deliverprice")
     category = request.args.get("category")
-    placebox = request.args.get("placebox")
     place = request.args.get("place")
     info = request.args.get("info")
     sellerid = request.args.get("sellerid")
+    link = request.args.get("link")
+    
 
 
     

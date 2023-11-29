@@ -16,12 +16,11 @@ class DBhandler:
             "title": data['title'],
             "price": data['price'],
             "productstatus": data['productstatus'],
-            "deliverprice": data['deliverprice'],
             "category": data['category'],
-            "placebox": data['placebox'],
             "place": data['place'],
             "info": data['info'],
-            "sellerid": data['sellerid']
+            "sellerid": data['sellerid'],
+            "link": data['link']
             
         }
         self.db.child("item").child(name).set(item_info)
