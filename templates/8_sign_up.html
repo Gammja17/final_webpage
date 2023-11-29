@@ -96,6 +96,20 @@
             });
         });
 
+         
+    document.addEventListener('DOMContentLoaded', function(){
+
+        document.getElementById('signup-btn').addEventListener('click', function () {
+            var password = document.getElementById('pw').value;
+            var confirmPassword = document.getElementById('confirm-pw').value;
+            if (password !== confirmPassword) {
+                alert('비밀번호 확인이 비밀번호와 일치하지 않습니다.');
+
+                event.preventDefault();
+            }
+        });
+    });
+
     </script>
 
 
