@@ -307,8 +307,8 @@ h3 {
     
  <content>
             <div class="info-section"> 
-                <a class="info-block" href="/review_all" >상품 후기</a>
-                <a class="info-block" style="background-color:#c9d8b7;" onclick="location.href='/product_detail/{{key}}/';">상품 상세 정보</a>
+                <a class="info-block" href="/review" >전체 상품 후기</a>
+                <a class="info-block" style="background-color:#c9d8b7;" href="/product_detail/{{data.name}}">상품 상세 정보</a>
             </div> 
         </content>
 
@@ -355,7 +355,9 @@ h3 {
                 <a href="#" class="image-button">
                     <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}" alt="Wish" >
                 </a>
-
+                <a href="/reg_review_init/{{data.name}}/{{data.sellerid}}" class="review-button">
+                    <img src="{{ url_for('static', filename='images/10_plus.png') }}" alt="Wish" >
+                </a>
             </div>
 
         </div>

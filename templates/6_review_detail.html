@@ -18,8 +18,8 @@
     <div class="content-container">
         <content>
             <div class="info-section">
-                <a class="info-block" href="/review_all" style="background-color:#c9d8b7;">상품 후기</a>
-                <a class="info-block" href="/product_detail">상품 상세 정보</a>
+                <a class="info-block" href="/review" style="background-color:#c9d8b7;">상품 후기</a>
+                <a class="info-block" href="/product_detail/{{data.name}}">상품 상세 정보</a>
             </div> 
         </content>
     
@@ -29,34 +29,31 @@
                  <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="프로필 사진"  class="customer-img"  style="width: 200px; height: 200px;"  >
         
                 <div class="info1">
-                <p id="customer-name"> 구매자 C </p>
-                <p id="review-date"> 리뷰 작성 날짜</p>
+                <p id="customer-name"> {{data.reviewer}} </p>
                 </div>
 
                 <table class="seller-info">
                     <tr>
                         <td><u>판매자 명</u></td>
-                        <td>seller</td>
+                        <td>{{data.seller}}</td>
                     </tr>
                     <tr>
                         <td><u>상품 명</u></td>
-                        <td>후라이팬</td>
+                        <td>{{data.name}}</td>
                     </tr>
                 </table>
 
             </div>
 
             <div class="review">
-                <p class="review-title">리뷰 제목</p>
-                <span class="review-star"> 별점 <span style="color:gold"> ★★★★★(5)</span> </span>
+                <p class="review-title">{{data.title}}</p>
+                <span class="review-star"> 별점 <span style="color:gold"> ★★★★★({{data.rate}})</span> </span>
             </div>
             <div class="input-container2">
-                <textarea id="pro-review" cols="10" rows="50" readonly> 리뷰 내용 </textarea>
+                <textarea id="pro-review" cols="10" rows="50" readonly> {{data.review}} </textarea>
             </div>
             <div class="product-img">
-                <img src="{{ url_for('static', filename='images/10_pan.jpeg') }}" alt="물건사진" style="width: 400px; height:300px;" >
-                <img src="{{ url_for('static', filename='images/10_pan.jpeg') }}" alt="물건사진" style="width: 400px; height:300px;" >  
-                <img src="{{ url_for('static', filename='images/10_pan.jpeg') }}" alt="물건사진" style="width: 400px; height:300px;" >
+                <img src="../../static/images/{{data.img_path}}" alt="물건사진" style="width: 400px; height:300px;" >
             </div>
 
                
