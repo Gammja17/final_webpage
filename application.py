@@ -54,10 +54,6 @@ def product_upload():
 def home():
     return render_template("2_home.html")
 
-@application.route("/review")
-def view_review():
-    return render_template("6_review_detail.html")
-
 @application.route("/product_detail/<name>/")
 def view_item_detail(name):
     print("###name:",name)
@@ -77,10 +73,10 @@ def product_detail():
 "static/images/{}".format(image_file.filename))
     # return render_template("3_product_detail.html")
 
-@application.route("/reg_reviews")
-def reg_review():
-    return render_template("reg_reviews.html")
 
+@application.route("/seller_info")
+def seller_info():
+    return render_template("11_seller_information.html")
 
 @application.route("/submit_item_post", methods=['POST'])
 def reg_item_submit_post():
@@ -99,12 +95,12 @@ def reg_item_submit():
     title = request.args.get("title")
     price = request.args.get("price")
     productstatus = request.args.get("productstatus")
+    deliverprice = request.args.get("deliverprice")
     category = request.args.get("category")
+    placebox = request.args.get("placebox")
     place = request.args.get("place")
     info = request.args.get("info")
     sellerid = request.args.get("sellerid")
-    link = request.args.get("link")
-    
 
 
     
@@ -273,21 +269,84 @@ def search():
     
     return render_template("search_result.html", items=filtered_items)
 
+@application.route("/review_upload")
+def review_upload():
+    return render_template("4_review_upload.html")
+
+# @application.route("/review_all")
+# def review_all():
+#     return render_template("5_review_all.html")
+
+@application.route("/review_detail")
+def review_detail():
+    return render_template("6_review_detail.html")
+
+@application.route("/reg_review", methods=['POST'])
+def reg_review():
+    if 'id' not in session:
+        return redirect(url_for('login'))
+    data = request.form
+    image_file = request.files["file"]
+    img_path = "static/images/{}".format(image_file.filename)
+    image_file.save(img_path)
+    DB.reg_review(data, image_file.filename)
+    return redirect(url_for('view_review'))
+
+@application.route("/reg_review_init/<name>/<seller>")
+def reg_review_init(name, seller):
+    if 'id' not in session:
+        return redirect(url_for('login'))
+    return render_template("4_review_upload.html", name=name, seller=seller)
+
+@application.route("/review")
+def view_review():
+    if 'id' not in session:
+        return redirect(url_for('login'))
+    
+    page = request.args.get("page", 0, type = int)
+    per_page = 3
+    per_row = 1
+    row_count = int(per_page/per_row)
+    start_idx = per_page*page
+    end_idx = per_page*(page+1)
+    
+    data = DB.get_reviews()
+    item_counts = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    tot_count = len(data)
+    
+    for i in range(row_count):
+        if(i==row_count-1) and (tot_count%per_row!=0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else: 
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return render_template(
+        "5_review_all.html",
+        datas = data.items(),
+        row1 = locals()['data_0'].items(),
+        row2 = locals()['data_1'].items(),
+        row3 = locals()['data_2'].items(),
+        limit = per_page,
+        page = page,
+        page_count = int(item_counts/per_page+1),
+        total = item_counts
+    )
+
+@application.route("/view_review_detail/<name>/")
+def view_review_detail(name):
+    if 'id' not in session:
+        return redirect(url_for('login'))
+    
+    review_data = DB.get_review_byname(name)
+    if review_data:
+        return render_template("6_review_detail.html", data=review_data)
+    else:
+        return redirect(url_for('view_review'))
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
     
     
     
-@application.route("/review_upload")
-def review_upload():
-    return render_template("4_review_upload.html")
 
-@application.route("/review_all")
-def review_all():
-    return render_template("5_review_all.html")
-
-@application.route("/review_detail")
-def review_detail():
-    return render_template("6_review_detail.html")
 ''

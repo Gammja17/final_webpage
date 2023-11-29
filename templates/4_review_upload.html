@@ -7,6 +7,15 @@
      <link rel="stylesheet" href="{{ url_for('static', filename='4_review_upload.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <script src="{{ url_for('static', filename='4_review_upload.js') }}" defer></script>
+    <style>
+        .star {
+            color: gray; /* 초기 별점 색상을 회색으로 설정 */
+            cursor: pointer;
+        }
+        .star.filled {
+            color: gold; /* 선택된 별점 색상을 금색으로 설정 */
+        }
+    </style>
 </head>
 <body>
     <!DOCTYPE html>
@@ -27,54 +36,73 @@
 
         <content>
             <div class="info-section">
-                <a class="info-block" href="/review_all" style="background-color:#c9d8b7;">상품 후기</a>
-                <a class="info-block" href="/product_detail">상품 상세 정보</a>
+                <a class="info-block" href="/review" style="background-color:#c9d8b7;">전체 상품 후기</a>
+                <a class="info-block" href="/product_detail/{{name}}">상품 상세 정보</a>
             </div> 
         </content>
    
     <main>
-        <div class="seller-review">
-            <h2>판매자 서비스 평가</h2>
-            <!--만약에 회사 이름 넣고 싶으면 추후 코드 추가-->
-                <!--일단 좋아요 싫어요 누르는 버튼 넣어두었지만 추후 삭제 가능-->
-        </div>
-        <div class="question" id="question">배송, 포장, 질문, 응대, 상품 가격 등 판매자에대한 만족도는 어떠셨나요?</div>
-        <input type="file">  
-            <div class="input-container">
-                <textarea id="review" name="review" placeholder="리뷰를 작성해주세요"></textarea>
-            </div>
-
+<form class="mb-3" name="myform" id="myform" method="post" action="/reg_review" enctype="multipart/form-data">
+    <div class="info-product">
+        <input type="text" placeholder="상품명" name="seller" id="seller" value="{{seller}}" class="seller">
+        <h2>님의</h2>
+        <input type="text" placeholder="상품명" name="name" id="name" value="{{name}}" class="name">
+    </div>
+    <br>
             <div class="evaluation-product">
                 <h2>상품 품질 평가</h2>
                 <!--만약 리뷰자 아이디를 받아와서 옆에서 계속 바뀌게 하고 싶으면 추후 삽입-->
                 <!--해당 상품 사진이랑 상품명 수량 가져오는 것은 일단은 삭제했음-->
             </div>
+        
+ 
             <div class="star-rating" data-current-rating="0">
-                <div class="stars">
-                   <span class="star" onclick="setRating(this)" data-value="1">&#9733;</span>
-                   <span class="star" onclick="setRating(this)" data-value="2">&#9733;</span>
-                   <span class="star" onclick="setRating(this)" data-value="3">&#9733;</span>
-                   <span class="star" onclick="setRating(this)" data-value="4">&#9733;</span>
-                   <span class="star" onclick="setRating(this)" data-value="5">&#9733;</span>
-            </div>
+                <div class="stars" data-current-rating="0">
+                    <span class="star" onclick="setRating(this)" data-value="1">&#9733;</span>
+                    <span class="star" onclick="setRating(this)" data-value="2">&#9733;</span>
+                    <span class="star" onclick="setRating(this)" data-value="3">&#9733;</span>
+                    <span class="star" onclick="setRating(this)" data-value="4">&#9733;</span>
+                    <span class="star" onclick="setRating(this)" data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="reviewStar" id="reviewStar">
         </div>
-            <input type="file"><br>
-            <input type="text" placeholder="제목을 작성해주세요" class="review-title">
+            <input type="file" name="file"><br>
+            <input type="text" placeholder="리뷰자명을 작성해주세요" name="reviewer" id="reviewer" class="reviewer">
+            <input type="text" placeholder="제목을 작성해주세요" name="title" id="title" class="review-title">
             <label class="upload-image">
                 
             </label>
             
             <div class="input-container2">
-                <textarea id="pro-review" name="pro-review" placeholder="리뷰를 작성해주세요"></textarea>
+                <textarea id="pro-review" name="reviewContents"placeholder="리뷰를 작성해주세요"></textarea>
             </div>
             <div class="button-container">
-                <button id="submit-review" class="submit-button">리뷰 등록</button> 
+                <button type="submit" id="submit-review" class="submit-button">리뷰 등록</button> 
             </div>
+    
+        </form>
             
             
        
     </main>
    
         {% endblock section %}
+    <script>
+        function setRating(star) {
+            console.log('setRating function called');
+            var ratingValue = parseInt(star.dataset.value, 10);
+            var stars = document.querySelectorAll('.star');
+
+            stars.forEach(function(s, index) {
+                if (index < ratingValue) {
+                    s.classList.add('filled');
+                } else {
+                    s.classList.remove('filled');
+                }
+            });
+            console.log('Rating Value:', ratingValue);
+            document.getElementById('reviewStar').value = ratingValue;
+        }
+    </script>
 </body>
 </html>

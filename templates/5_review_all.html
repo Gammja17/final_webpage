@@ -12,62 +12,15 @@
 {% extends "index.html" %}
     
     {% block section %}
-
-        <content>
-            <div class="info-section">
-                <a class="info-block" href="/review_all" style="background-color:#c9d8b7;">상품 후기</a>
-                <a class="info-block" href="/product_detail">상품 상세 정보</a>
-            </div> 
-        </content>
     
        <div class="uuuper">
         <h1 style="font-family: 'Noto Sans KR'; margin-left: 30px;"> 리뷰 전체 조회 </h1>
-        <a href="/review_upload" class="review-button">리뷰 등록하기</a>
-        </div>
-
-       
-        <div class="review-container">
-
-            <div class="user-info">
-                 <div class="user-icon">
-                    <img src="{{ url_for('static', filename='images/10_user.png') }}" alt="User Icon">
-                 </div>
-
-                    <div class="buyer-section">
-                        <div class="buyer-name">구매자 A</div>
-                    </div>
-                    </div>
-
-                    <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">상품명</div>
-                        <div class="seller-name" style="margin-bottom: 10px;">판매자명</div>
-                        <div class="date-purchase">날짜</div>
-                    </div>
-
-                    <div class="info3">
-                        
-                    <div class="info-upper">
-                    <div class="buyer-info">
-                        <div class="seller-rating">별점: </div>
-                    </div>
-
-                    <div class="info-detail">
-                        <span>★★★★☆</span>
-                    </div>
-                </div>
-                
-
-                <div class="info-preview">
-                    <div>리뷰 미리보기</div>
-                    <a href="/review_detail"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
-                </div>
-            </div>
-                    <div class="review-image-container">
-                        <img src="{{ url_for('static', filename='images/10_img.png') }}" alt="Review Image" class="review-image">
-                    </div>
-               
-           
-        </div>  
+        </div> 
+     {% if total > 0 %}
+    <table>
+    <tr>
+        {% for key, value in row1 %}
+        <td>
     <div class="review-container">
 
             <div class="user-info">
@@ -76,14 +29,14 @@
                  </div>
 
                     <div class="buyer-section">
-                        <div class="buyer-name">구매자 A</div>
+                        <div class="buyer-name">{{value.reviewer}}</div>
                     </div>
                     </div>
 
                     <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">상품명</div>
-                        <div class="seller-name" style="margin-bottom: 10px;">판매자명</div>
-                        <div class="date-purchase">날짜</div>
+                        <div class="product-name" style="margin-bottom: 10px;">{{value.name}}</div>
+                        <div class="seller-name" style="margin-bottom: 10px;">{{value.seller}}</div>
+                        <div class="date-purchase">{{value.title}}</div>
                     </div>
 
                     <div class="info3">
@@ -94,23 +47,28 @@
                     </div>
 
                     <div class="info-detail">
-                     <span>★★★★☆</span>
+                    <span>★★★★☆({{value.rate}})</span>
                     </div>
                 </div>
                 
 
                 <div class="info-preview">
-                    <div>리뷰 미리보기</div>
-                    <a href="/review_detail"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
+                    <div>{{value.review}}</div>
+                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
                 </div>
             </div>
                     <div class="review-image-container">
-                        <img src="{{ url_for('static', filename='images/10_img.png') }}" alt="Review Image" class="review-image">
+                        <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
                     </div>
                
            
         </div>  
- 
+            </td>
+    {% endfor %}
+    </tr>
+            <tr>
+        {% for key, value in row2 %}
+        <td>
     <div class="review-container">
 
             <div class="user-info">
@@ -119,14 +77,14 @@
                  </div>
 
                     <div class="buyer-section">
-                        <div class="buyer-name">구매자 A</div>
+                        <div class="buyer-name">{{value.reviewer}}</div>
                     </div>
                     </div>
 
                     <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">상품명</div>
-                        <div class="seller-name" style="margin-bottom: 10px;">판매자명</div>
-                        <div class="date-purchase">날짜</div>
+                        <div class="product-name" style="margin-bottom: 10px;">{{value.name}}</div>
+                        <div class="seller-name" style="margin-bottom: 10px;">{{value.seller}}</div>
+                        <div class="date-purchase">{{value.title}}</div>
                     </div>
 
                     <div class="info3">
@@ -137,36 +95,125 @@
                     </div>
 
                     <div class="info-detail">
-                    <span>★★★★☆</span>
+                    <span>★★★★☆({{value.rate}})</span>
                     </div>
                 </div>
                 
 
                 <div class="info-preview">
-                    <div>리뷰 미리보기</div>
-                    <a href="/review_detail"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
+                    <div>{{value.review}}</div>
+                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
                 </div>
             </div>
                     <div class="review-image-container">
-                        <img src="{{ url_for('static', filename='images/10_img.png') }}" alt="Review Image" class="review-image">
+                        <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
                     </div>
                
            
         </div>  
+            </td>
+    {% endfor %}
+    </tr>
+            <tr>
+        {% for key, value in row3 %}
+        <td>
+    <div class="review-container">
+
+            <div class="user-info">
+                 <div class="user-icon">
+                    <img src="{{ url_for('static', filename='images/10_user.png') }}" alt="User Icon">
+                 </div>
+
+                    <div class="buyer-section">
+                        <div class="buyer-name">{{value.reviewer}}</div>
+                    </div>
+                    </div>
+
+                    <div class="item-details">
+                        <div class="product-name" style="margin-bottom: 10px;">{{value.name}}</div>
+                        <div class="seller-name" style="margin-bottom: 10px;">{{value.seller}}</div>
+                        <div class="date-purchase">{{value.title}}</div>
+                    </div>
+
+                    <div class="info3">
+                        
+                    <div class="info-upper">
+                    <div class="buyer-info">
+                        <div class="seller-rating">별점: </div>
+                    </div>
+
+                    <div class="info-detail">
+                    <span>★★★★☆({{value.rate}})</span>
+                    </div>
+                </div>
+                
+
+                <div class="info-preview">
+                    <div>{{value.review}}</div>
+                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
+                </div>
+            </div>
+                    <div class="review-image-container">
+                        <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
+                    </div>
+               
+           
+        </div>  
+            </td>
+    {% endfor %}
+    </tr>
  
- 
+ </table>
         
         
-        <div class="pagination">
-            
-            <a href="#">&lt;</a>
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">&gt;</a>
-        </div>
+<div class="page-wrap">
+    <div class="page-nation">
+        <ul>
+            <li>
+            {% for i in range(page_count) %}
+                <a href="{{url_for('view_review', page=i)}}" color="black">{{i}}</a>
+            {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% else %}
+<p>
+    등록된 리뷰가 없습니다
+</p>
+{% endif %}
+
+<style>
+    .page-nation li{
+        list-style: none;
+    }
+    .page-wrap{
+        text-align: center;
+        font-size: 0;
+    }
+    .page-nation{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .page-nation a{
+        display: block;
+        margin: 0 3px;
+        float: left;
+        border: 1px solid #e6e6e6;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        background-color: #fff;
+        font-size: 13px;
+        color: black;
+        text-decoration: none;
+        font-weight:bold;
+    }
+</style>
 
         
     
