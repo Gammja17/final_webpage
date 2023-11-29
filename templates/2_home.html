@@ -12,11 +12,9 @@
         <div class="rside">
             <div class="upper">
                 <div class="sort" style="font-weight: bold;">
-                    <a href="/home.html">최신순</a>&nbsp|&nbsp<a href="/home.html">가격순</a>
+                    <a href="/home.html">가격순 정렬</a>
                 </div>
-                <a href="/product_upload" class="upload-button" style="font-weight: bold;"
-                    >상품 등록하기</a
-                >
+                <a href="/product_upload" class="upload-button" style="font-weight: bold;">상품 등록하기</a>
             </div>
 
             {% if total > 0 %}
@@ -72,7 +70,7 @@
                     <ul>
                         <li>
                             {% for i in range(page_count)%}
-                            <a href="{{url_for('view_home', page=i)}}" color="black">{{i}}</a>
+                            <a href="{{url_for('view_home', page=i)}}" color="black">{{i+1}}</a>
                             {% endfor %}
                         </li>
                     </ul>

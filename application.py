@@ -56,7 +56,7 @@ def home():
 
 @application.route("/review")
 def view_review():
-    return render_template("review.html")
+    return render_template("6_review_detail.html")
 
 @application.route("/product_detail/<name>/")
 def view_item_detail(name):
@@ -139,6 +139,7 @@ def register_user():
     pw = request.form['pw']
     pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
     if DB.insert_user(data, pw_hash):
+        flash("회원가입이 완료되었습니다.")
         return render_template("7_1_log_in.html")
     else:
         flash("아이디가 이미 존재합니다!")
@@ -266,3 +267,18 @@ def shoppingcart():
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
+    
+    
+    
+@application.route("/review_upload")
+def review_upload():
+    return render_template("4_review_upload.html")
+
+@application.route("/review_all")
+def review_all():
+    return render_template("5_review_all.html")
+
+@application.route("/review_detail")
+def review_detail():
+    return render_template("6_review_detail.html")
+''
