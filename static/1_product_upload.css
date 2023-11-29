@@ -50,6 +50,7 @@ align-items: baseline;
 
 .texts{
   line-height: 2.1;
+   
 }
 
 .inputs{
@@ -57,7 +58,7 @@ align-items: baseline;
 }
 
   .c{
-    margin-bottom:11px;
+    margin-bottom:10.5px;
     padding:4px;
   }
   

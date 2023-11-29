@@ -38,14 +38,13 @@
             
 
             <div class="info-upload">
-                <span class="texts">
+                <span class="texts"  style="margin-right:10px;">
                 상품 명  <br>
                 상품 설명 제목 <br>
                 가격 <br>
                 상품 상태<br>
                 카테고리<br>
                 지역<br>
-                계좌번호<br>
                 오픈채팅방 링크 
                 
             </span>
@@ -54,22 +53,21 @@
                     <input type="text" name="name" id="name" class="c" required />
                     <input type="text" name="title" id="title" class="c" required />
                     <input type="text" name="price" id="price" class="c" required />
-                    <label for="product-status" class="c"></label>
-                    <select id="productstatus" name="productstatus" style="margin-top:12px;" class="c">
+                    <label for="product-status"></label>
+                    <select id="productstatus" name="productstatus" class="c">
                     <option value="boxing">미개봉</option>
                     <option value="unboxingnew">개봉 새상품</option>
                     <option value="unboxing">중고</option>
-                </select>
-                <select id="category" name="category-select" style="margin-top:10px;" class="c">
+                    </select>
+                <select id="category" name="category" class="c">
                         <option value="cloth">옷</option>
                         <option value="food">음식</option>
                         <option value="furniture">가구</option>
                         <option value="Electronics">전자</option>
                         <option value="etc">기타</option>
                     </select>
-                    <input type="text" id="place" name="place"/>
-                    <input type="text" id="bank" name="bank"/>
-                    <input type="text" id="link" name="link"/>
+                    <input type="text" id="place" name="place" class="c" />
+                    <input type="text" id="link" name="link" class="c"/>
 
                 </span>
 
@@ -84,7 +82,7 @@
             </div>
             <div class="idcerti">
                 <label for="seller-id"><br>판매자 ID</label>
-                <input type="text" id="seller-id" name="seller-id">
+                <input type="text" id="sellerid" name="sellerid">
                 <button id="authenticate-button">인증</button>
                 <div id="message"></div>
             </div>
