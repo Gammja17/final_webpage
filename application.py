@@ -2,15 +2,19 @@ from flask import Flask, render_template, request, flash, redirect, url_for, ses
 from database import DBhandler
 import hashlib
 import sys
+import math
+from flask import jsonify
+
 
 application = Flask(__name__)
 application.config["SECRET_KEY"] = "helloosp"
 
 DB = DBhandler()
 
+
 @application.route("/") #첫화면
 def hello():
-     #return render_template("index.html")
+     # return render_template("index.html")
     return redirect(url_for('view_home'))
 
 @application.route("/home") #home으로
@@ -282,3 +286,14 @@ def review_all():
 def review_detail():
     return render_template("6_review_detail.html")
 ''
+
+@application.route("/search", methods=["GET"])  
+def search():
+    query = request.args.get("query")
+    all_items = DB.get_items()
+    
+    # Filter items based on item name or seller's ID
+    filtered_items = {name: details for name, details in all_items.items() 
+                      if query.lower() in name.lower() or query.lower() in details.get('seller', '').lower()}
+    
+    return render_template("search_result.html", items=filtered_items)

@@ -19,10 +19,10 @@
                         이화 마켓
                     </div>
                 </a>
-                <span class="search">
-                    <input type="search" size="40" maxlength="20" placeholder="상품명, 지역명, 판매자 아이디 입력">
-                    <button>검색</button>
-                </span>
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="상품명, 판매자 아이디 검색">
+                    <button type="submit">Search</button>
+                </form>
                 <div class="headerbutton">
                     {% if session['id'] %}
                     <a href="/wishlist"><span class="hb" id="wishlist">  <img id="icon" src="{{ url_for('static', filename='images/10_wish.png') }}" alt="wish"> </span></a>

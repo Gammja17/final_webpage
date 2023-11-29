@@ -22,7 +22,6 @@ class DBhandler:
             "place": data['place'],
             "info": data['info'],
             "sellerid": data['sellerid']
-            
         }
         self.db.child("item").child(name).set(item_info)
         print(data, img_path)
@@ -32,7 +31,9 @@ class DBhandler:
         user_info = {
             "id": data['id'],
             "pw": pw,
-            "name": data['name']
+            "name": data['name'],
+            "email": data['email'],
+            "tel": data['tel']
         }
         if self.user_duplicate_check(str(data['id'])):
             self.db.child("user").push(user_info)
