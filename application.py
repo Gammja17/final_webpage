@@ -18,6 +18,7 @@ def hello():
 @application.route("/home") #home으로
 def view_home():
     page = request.args.get("page", 0, type=int)
+    sort_by = request.args.get("sort", None)
     per_page=6
     per_row=3
     row_count=int(per_page/per_row)
@@ -25,6 +26,10 @@ def view_home():
     end_idx=per_page*(page+1)
     
     data = DB.get_items()
+    
+    if sort_by == "price":
+        data = {k: v for k, v in sorted(data.items(), key=lambda item: float(item[1]['price']))}
+        
     item_counts = len(data)
     data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
@@ -225,7 +230,7 @@ def wishlist():
 
 @application.route("/shopping_cart")
 def shoppingcart():
-    page = request.args.get("page", 0, type=int)
+    page = request.args.get("page", 1, type=int)
     per_page=3
     per_row=1
     row_count=int(per_page/per_row)
