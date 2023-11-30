@@ -193,72 +193,10 @@ def mypage():
 
 @application.route("/wishlist")
 def wishlist():
-    page = request.args.get("page", 0, type=int)
-    per_page=6
-    per_row=3
-    row_count=int(per_page/per_row)
-    start_idx=per_page*page
-    end_idx=per_page*(page+1)
-    
-    data = DB.get_items()
-    item_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
-    tot_count = len(data)
-
-    for i in range(row_count):
-        if (i == row_count-1) and (tot_count%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return render_template("9_1_wishlist.html")
             
-    
-    return render_template(
-        "9_1_wishlist.html",
-        datas=data.items(),
-        row1=locals()['data_0'].items(),
-        row2=locals()['data_1'].items(),
-        limit=per_page,
-        page=page,
-        page_count=int((item_counts/per_page)+1),
-        total=item_counts
-    )
 
-@application.route("/shopping_cart")
-def shoppingcart():
-    page = request.args.get("page", 0, type=int)
-    per_page=3
-    per_row=1
-    row_count=int(per_page/per_row)
-    start_idx=per_page*page
-    end_idx=per_page*(page+1)
-    
-    data = DB.get_items()
-    item_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
-    tot_count = len(data)
 
-    for i in range(row_count):
-        if (i == row_count-1) and (tot_count%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-            
-    
-    return render_template(
-        "9_2_shopping_cart.html",
-        datas=data.items(),
-        row1=locals()['data_0'].items(),
-        row2=locals()['data_1'].items(),
-        limit=per_page,
-        page=page,
-        page_count=int((item_counts/per_page)+1),
-        total=item_counts
-    )
-    #return render_template("9_2_shopping_cart.html")
-
-# @application.route("/review")
-# def view_review():
-#     return render_template("review.html")
 
 @application.route("/search")
 def search():
@@ -356,12 +294,12 @@ def show_heart(name):
 @application.route('/like/<name>/', methods=['POST'])
 def like(name):
     my_heart = DB.update_heart(session['id'],'Y',name)
-    return jsonify({'msg': '좋아요 완료!'})
+    return jsonify({'msg': '상품이 위시리스트에 저장되었습니다.'})
 
 @application.route('/unlike/<name>/', methods=['POST'])
 def unlike(name):
     my_heart = DB.update_heart(session['id'],'N',name)
-    return jsonify({'msg': '안좋아요 완료!'})
+    return jsonify({'msg': '상품이 위시리스트에서 삭제되었습니다.'})
     
     
 if __name__ == "__main__":

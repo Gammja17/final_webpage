@@ -118,16 +118,16 @@ body{
 
 
 .explainProduct{
-  width: 400px;
-  height: 400px;
-  margin: 10px;
-  margin-left: 25px;
-  float: left;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+     width: 400px;
+    height: 400px;
+    margin: 10px;
+    margin-left: 25px;
+    float: left;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 
@@ -219,8 +219,10 @@ img {vertical-align: middle;}
   text-decoration: underline;
 }
 .buttons{
-  display: flex;
-  flex-direction: row;
+        display: flex;
+    width: 350px;
+    margin-top: 10px;
+    justify-content: space-between;
 }
 .image-button {
   border: none;
@@ -244,21 +246,13 @@ img {vertical-align: middle;}
 
 
 .product-description {
-  flex: 2;
   margin-right: 10px;
-  margin-left: 100px;
-  height: 570px;
-  width: 800px;
-  padding: 20px;
-  border: 2px solid #ccc;
-  position: relative;
-}
-.seller-info {
-  margin-top: 40px;
-  width:300px;
+    margin-left: 100px;
+    height: 250px;
+    width: 800px;
     padding: 20px;
-    height: 570px;
-    
+    border: 2px solid #ccc;
+    position: relative;
 }
 
 
@@ -303,7 +297,7 @@ h3 {
 
 .box{
   width: 300px; 
-  height: 100px;
+  height: 85px;
   width: 422px;
   display: inline-block;
   margin-left: 0px;
@@ -315,12 +309,43 @@ h3 {
 }
     #heart {
         color:grey;
-        font-size: 50px;
+        font-size: 45px;
     }
     #heart.red{
         color:red;
     }
 
+    .g1{
+      display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid #ccc;
+    }
+
+    
+    .bg{
+     display: flex;
+    flex-direction: column;
+    width: 350px;
+    }
+    
+    .review-button {
+     width: 170px;
+    height: 50px;
+    background-color: #c9d8b7;
+    font-family: 'Noto Sans KR';
+    font-size: 23px;
+    transition: background-color 0.3s, opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-button:hover{
+  background-color: #c9d8b7; 
+  opacity: 0.6; 
+}
 </style>
 </head>
 
@@ -347,45 +372,64 @@ h3 {
 
         <div class="upper">
 
-            <div class="slideshow-container">
-                <img src="../../static/images/{{data.img_path}}">
-            </div>
+            
             <!--상품 설명-->
             <div class="explainProduct">
 
-                <h1 style="font-size: 40px; margin-top: 0px; margin-bottom:0px;">{{data.name}}</h1>
-                <div style="font-size:25px; margin-bottom:10px; color:gray;">
-                {{data.title}}
+                
+                <div class="bg">
+                <div class="g1">
+                    <div style="font-size: 30px; margin-top: 0px; margin-bottom:0px;">상품명</div>
+                    <h1 style="font-size: 40px; margin-top: 0px; margin-bottom:0px;">{{data.name}}</h1>
+                    </div>
+                    <div class="g1">
+                        <div style="font-size:25px; margin-bottom:10px; color:darkgray;">상세설명제목</div>
+                        <div style="font-size:25px; margin-bottom:10px; color:darkgray;">{{data.title}}</div>
+                    </div>
+                    <div class="g1">
+                    <div style="font-size: 25px;margin-bottom: 10px;">가격</div>
+                    <h2 style="font-size: 30px;margin-bottom: 10px;">{{data.price}}₩ </h2>
+                    </div>
+                    <div class="g1">
+                        <div style="font-size: 20px; margin-bottom: 10px; margin-top: 0px; list-style: none; padding: 0px;">
+                            판매자 id:<br>
+                            상품 상태:<br>
+                            오픈채팅 주소:
+                        </div>  
+                         <div style="font-size: 20px; margin-bottom: 10px; margin-top: 0px; list-style: none; padding: 0px; text-align:right;">
+                            {{data.sellerid}}<br>
+                            {% if data['productstatus'] == "boxing" %}
+                            미개봉
+                            {% endif %}
+                            {% if data['productstatus'] == "unboxingnew" %}
+                            개봉 새상품
+                            {% endif %}
+                            {% if data['productstatus'] == "unboxing" %}
+                            중고
+                            {% endif %}
+                            <br>
+                            {{data.link}}
+                        </div>  
+                    </div>
+                </div>
+       
+         
+                <div class="buttons">
+                    <i class="fa fa-heart" id="heart"></i>
+                    <a href="/reg_review_init/{{data.name}}/{{data.sellerid}}" class="review-button">
+                        리뷰 등록하기
+                    </a>
+                </div>
+             
+            </div>
+            
+            <div class="slideshow-container">
+                <img src="../../static/images/{{data.img_path}}">
+            </div>
+                   
                 </div>
 
-                <h2 style="font-size: 30px;margin-bottom: 10px;">{{data.price}}₩ </h2>
-                <ul style="font-size: 20px; margin-bottom: 10px; margin-top: 0px; list-style: none; padding: 0px;">
-                    <li>판매자 id: {{data.sellerid}}</li>
-                    <li>상품 상태: <span class="underline">
-                        {% if data['productstatus'] == "boxing" %}
-                        미개봉
-                        {% endif %}
-                        {% if data['productstatus'] == "unboxingnew" %}
-                        개봉 새상품
-                        {% endif %}
-                        {% if data['productstatus'] == "unboxing" %}
-                        중고
-                        {% endif %}
-                        </span>
-                    </li>
-                    <li>
-                        오픈채팅 주소: {{data.link}}
-                    </li>
-                    
-                </ul>
-
-                <i class="fa fa-heart" id="heart"></i>
-                <a href="/reg_review_init/{{data.name}}/{{data.sellerid}}" class="review-button">
-                    <img src="{{ url_for('static', filename='images/10_plus.png') }}" alt="Wish" >
-                </a>
-            </div>
-
-        </div>
+       
 
 
 
@@ -393,7 +437,7 @@ h3 {
             <div class="product-description-location-category">
                 <div class="product-description">
                 <h2>상품 설명</h2>
-                <p style="white-space:pre;">{{data.info}}</p>
+                <p style="white-space:pre; font-size:20px;">{{data.info}}</p>
                 <div class="vertical-line"></div>
                 <div class="horizontal-line"></div>
                 </div>
@@ -403,12 +447,12 @@ h3 {
            
     <div class="location_category">
         <div class="box">
-            <h2>지역</h2>
-            <p>{{data.place}}</p>
+            <h2 style="padding-top: 3px; padding-bottom: 3px; font-size:27px;" >지역</h2>
+            <p style="font-size:20px; margin: 0px;">{{data.place}}</p>
         </div>
         <div class="box">
-            <h2>카테고리</h2>
-            <p>
+            <h2 style="padding-top: 3px; padding-bottom: 3px; font-size:27px;">카테고리</h2>
+            <p style="font-size:20px; margin: 0px;">
             {% if data['category'] == "cloth" %}
                 옷
                 {% endif %}
