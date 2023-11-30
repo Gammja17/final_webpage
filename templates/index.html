@@ -39,12 +39,12 @@
         <aside>
                 <p style="font-weight: bold; font-size:23px"> 카테고리<p>
                 <ul class="category">  
-                    <li><a href="all.html"><div class="category-menu">전체</div></a></li>
-                    <li><a href="clothes.html"> <div class="category-menu">옷</div></a></li>
-                    <li><a href="food.html"> <div class="category-menu">음식</div></a></li>
-                    <li><a href="furniture.html"> <div class="category-menu">가구</div></a></li>
-                    <li><a href="electronic.html"> <div class="category-menu">전자</div></a></li>
-                    <li><a href="etc.html"> <div class="category-menu">기타</div></a></li>
+                    <li><a href="{{url_for('view_home', page=i, category='all')}}"><div class="category-menu">전체</div></a></li>
+                    <li><a href="{{url_for('view_home', page=i, category='cloth')}}"> <div class="category-menu">옷</div></a></li>
+                    <li><a href="{{url_for('view_home', page=i, category='food')}}"> <div class="category-menu">음식</div></a></li>
+                    <li><a href="{{url_for('view_home', page=i, category='furniture')}}"><div class="category-menu">가구</div></a></li>
+                    <li><a href="{{url_for('view_home', page=i, category='Electronics')}}"><div class="category-menu">전자</div></a></li>
+                    <li><a href="{{url_for('view_home', page=i, category='etc')}}"> <div class="category-menu">기타</div></a></li>
                 </ul>
         </aside>
         
