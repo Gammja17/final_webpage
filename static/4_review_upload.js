@@ -20,6 +20,4 @@ function setRating(star) {
       star.parentNode.setAttribute('data-current-rating', ratingValue.toString());
     }
   }
-
- 
   
