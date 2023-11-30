@@ -12,7 +12,7 @@
             <td>
                 <p>상품이름: {{ key }}</p>
                 <p>판매자: {{ value.seller }}</p> <!-- Display the seller's ID -->
-                <img src="static/images/{{ value.img_path }}" width="140" height="200" onclick="location.href='/view_detail/{{ key }}/';" style="cursor:pointer;">
+                <img src="static/images/{{ value.img_path }}" width="140" height="200" onclick="location.href='/product_detail/{{ key }}/';" style="cursor:pointer;">
             </td>
             {% if loop.index % 3 == 0 %}
         </tr>
