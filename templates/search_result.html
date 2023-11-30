@@ -11,8 +11,12 @@
             {% for key, value in items.items() %}
             <td>
                 <p>상품이름: {{ key }}</p>
-                <p>판매자: {{ value.seller }}</p> <!-- Display the seller's ID -->
+                <p>가격: {{ value.price }}원</p>
+                <p>판매자: {{ value.sellerid }}</p> <!-- Display the seller's ID -->
+                <p><span style="color: orange; font-size: 15px;">★★★★★(2)</span></p>
                 <img src="static/images/{{ value.img_path }}" width="140" height="200" onclick="location.href='/product_detail/{{ key }}/';" style="cursor:pointer;">
+                <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}"
+                                                alt="wishbutton" style="width: 45px; height: 45px;"/>
             </td>
             {% if loop.index % 3 == 0 %}
         </tr>
