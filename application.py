@@ -16,16 +16,25 @@ def hello():
 @application.route("/home") #home으로
 def view_home():
     page = request.args.get("page", 0, type=int)
+    category = request.args.get("category", "all")
     per_page=6
     per_row=3
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
     
-    data = DB.get_items()
+    if category == "all":
+        data = DB.get_items()
+    else:
+        data = DB.get_items_bycategory(category)
+    data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
     item_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
+    if item_counts <= per_page:
+        data = dict(list(data.items())[:item_counts])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
+
 
     for i in range(row_count):
         if (i == row_count-1) and (tot_count%per_row != 0):
@@ -42,17 +51,14 @@ def view_home():
         limit=per_page,
         page=page,
         page_count=int((item_counts/per_page)+1),
-        total=item_counts
+        total=item_counts,
+        category=category
     )
 
 
 @application.route("/product_upload") #이거다
 def product_upload():
     return render_template("1_product_upload.html")
-
-@application.route("/home")
-def home():
-    return render_template("2_home.html")
 
 @application.route("/review")
 def view_review():
@@ -290,4 +296,6 @@ def review_all():
 @application.route("/review_detail")
 def review_detail():
     return render_template("6_review_detail.html")
-''
+
+ 
+    
