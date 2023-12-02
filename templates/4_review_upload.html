@@ -45,9 +45,9 @@
     <main>
 <form class="mb-3" name="myform" id="myform" method="post" action="/reg_review" enctype="multipart/form-data">
     <div class="info-product">
-        <input type="text" placeholder="상품명" name="seller" id="seller" value="{{seller}}" class="seller">
+        <input type="text" placeholder="상품명" name="seller" id="seller" value="{{seller}}" class="seller" required>
         <h2>님의</h2>
-        <input type="text" placeholder="상품명" name="name" id="name" value="{{name}}" class="name">
+        <input type="text" placeholder="상품명" name="name" id="name" value="{{name}}" class="name" required>
     </div>
     <br>
             <div class="evaluation-product">
@@ -67,15 +67,15 @@
                 </div>
                 <input type="hidden" name="reviewStar" id="reviewStar">
         </div>
-            <input type="file" name="file"><br>
-            <input type="text" placeholder="리뷰자명을 작성해주세요" name="reviewer" id="reviewer" class="reviewer">
-            <input type="text" placeholder="제목을 작성해주세요" name="title" id="title" class="review-title">
+            <input type="file" name="file" required><br>
+            <input type="text" placeholder="리뷰자명을 작성해주세요" name="reviewer" id="reviewer" class="reviewer" required>
+            <input type="text" placeholder="제목을 작성해주세요" name="title" id="title" class="review-title" required>
             <label class="upload-image">
                 
             </label>
             
             <div class="input-container2">
-                <textarea id="pro-review" name="reviewContents"placeholder="리뷰를 작성해주세요"></textarea>
+                <textarea id="pro-review" name="reviewContents"placeholder="리뷰를 작성해주세요" required></textarea>
             </div>
             <div class="button-container">
                 <button type="submit" id="submit-review" class="submit-button">리뷰 등록</button> 
