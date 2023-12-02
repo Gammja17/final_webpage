@@ -119,5 +119,24 @@ class DBhandler:
         heart_info={
             "interested":isHeart
         }
+        
         self.db.child("heart").child(user_id).child(item).set(heart_info)
         return True
+    
+    def get_wishlist_items(self, user_id):
+        wishlist_items = {}
+        hearts = self.db.child("heart").child(user_id).get()
+        if hearts.val() is not None:
+            for item in hearts.each():
+                if item.val().get('interested') == 'Y':
+                    item_name = item.key()
+                    item_details = self.get_item_byname(item_name)
+                    wishlist_items[item_name] = item_details
+        return wishlist_items
+    
+    def get_user_info(self, user_id):
+        users = self.db.child("user").get()
+        for user in users.each():
+            if user.val().get('id') == user_id:
+                return user.val()
+        return None 
