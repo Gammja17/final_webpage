@@ -21,10 +21,6 @@
 
     <div class="aside-container">
 
-        
-
-        
-
         <!--프로필 정보확인-->
         <div class="container-buttons">
             <div class="B">
@@ -35,12 +31,12 @@
                           <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="product image" alt="프로필 사진" style="width: 400px; height: 300px;">
                     </div>
                     <div class="profile-info">
-                        <p>ID: 사용자 아이디</p>
-                        <p>PW: 비밀번호</p>
-                        <p>이름: 사용자 이름</p>
-                        <p>이메일: 사용자 이메일</p>
-                        <p>주소: 사용자 주소</p>
-                        <p>계좌: 사용자 계좌</p>
+                        <p>ID: {{ user_info.id }}</p>
+                        <p>PW: {{ user_info.pw }}</p>
+                        <p>이름: {{ user_info.name }}</p>
+                        <p>이메일: {{ user_info.email }}</p>
+                        <p>주소: {{ user_info.addr }}</p>
+                        <p>계좌: {{ user_info.tel }}</p>
                     </div>
                 </div>
 

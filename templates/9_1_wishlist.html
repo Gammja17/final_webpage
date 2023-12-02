@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='9_1_wishlist.css') }}">
-</head>
-<body>
-    
- 
-  
 {% extends "index.html" %}
-    
-    {% block section %}
 
-       <p>
-        위시리스트
-    </p>
-    
-      {% endblock section %}
-    
-</body>
-</html>
+{% block section %}
+    <p>위시리스트</p>
+    {% if items %}
+        <table>
+            <tr>
+                {% for key, value in items.items() %}
+                <td>
+                    <p>상품이름: {{ key }}</p>
+                    <img src="static/images/{{ value.img_path }}" width="140" height="200" onclick="location.href='/product_detail/{{ key }}/';" style="cursor:pointer;">
+                </td>
+                {% if loop.index % 3 == 0 %}
+                    </tr><tr>
+                {% endif %}
+                {% endfor %}
+            </tr>
+        </table>
+    {% else %}
+        <p>위시리스트에 상품이 없습니다.</p>
+    {% endif %}
+{% endblock section %}

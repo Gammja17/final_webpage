@@ -88,8 +88,6 @@ def reg_item_submit_post():
     DB.insert_item(data['name'], data, image_file.filename)
 
     view_item_detail(data['name'])
-#     return render_template("submit_item_result.html", data=data, img_path=
-# "static/images/{}".format(image_file.filename))
 
 @application.route("/submit_item")
 def reg_item_submit():
@@ -140,70 +138,34 @@ def register_user():
         flash("아이디가 이미 존재합니다!")
         return render_template("8_sign_up.html")
 
-    #print(name,addr,phone,category,status)
-    #return render_template("reg_item.html")
-
-    #print(name,addr,phone,category,status)
-    #return render_template("reg_item.html")
     
 @application.route("/logout")
 def logout_user():
     session.clear()
     return redirect(url_for('hello'))
 
-# @application.route("/view_detail/<name>/")
-# def view_item_detail(name):
-#     print("###name:",name)
-#     data = DB.get_item_byname(str(name))
-#     print("####data:",data)
-#     return render_template("detail.html", name=name, data=data)
 @application.route("/mypage")
 def mypage():
-    page = request.args.get("page", 0, type=int)
-    per_page=4
-    per_row=2
-    row_count=int(per_page/per_row)
-    start_idx=per_page*page
-    end_idx=per_page*(page+1)
-    
-    data = DB.get_items()
-    item_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
-    tot_count = len(data)
-
-
-    for i in range(row_count):
-        if (i == row_count-1) and (tot_count%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-            
-    
-    return render_template(
-        "9_3_mypage.html",
-        datas=data.items(),
-        row1=locals()['data_0'].items(),
-        row2=locals()['data_1'].items(),
-        limit=per_page,
-        page=page,
-        page_count=int((item_counts/per_page)+1),
-        total=item_counts
-    )
-    #return render_template("9_3_mypage.html")
-
+    user_id = session['id']
+    user_info = DB.get_user_info(user_id)
+    return render_template('9_3_mypage.html', user_info=user_info)
 @application.route("/wishlist")
 def wishlist():
-    return render_template("9_1_wishlist.html")
+    if 'id' not in session:
+        return redirect(url_for('login'))
+    
+    user_id = session['id']
+    wishlist_items = DB.get_wishlist_items(user_id)
+    return render_template("9_1_wishlist.html", 
+                           items=wishlist_items)
             
-
-
 
 @application.route("/search")
 def search():
     query = request.args.get("query")
     all_items = DB.get_items()
     
-    # Filter items based on item name or seller's ID
+    # 판매자 아이디, 상품명으로 검색
     filtered_items = {name: details for name, details in all_items.items() 
                       if query.lower() in name.lower() or query.lower() in details.get('seller', '').lower()}
     
@@ -213,9 +175,6 @@ def search():
 def review_upload():
     return render_template("4_review_upload.html")
 
-# @application.route("/review_all")
-# def review_all():
-#     return render_template("5_review_all.html")
 
 @application.route("/review_detail")
 def review_detail():
@@ -300,12 +259,8 @@ def like(name):
 def unlike(name):
     my_heart = DB.update_heart(session['id'],'N',name)
     return jsonify({'msg': '상품이 위시리스트에서 삭제되었습니다.'})
-    
-    
-    
-    
+
+
+
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
-####
-
-''
