@@ -228,7 +228,17 @@
                 <br /><br /><br />
      <hr style="border: 1.5px solid black;" />
         <!-- 페이지네이션 코드 (필요한 경우) -->
-
+<div class="page-wrap">
+    <div class="page-nation">
+        <ul>
+            <li>
+            {% for i in range(page_count) %}
+                <a href="{{url_for('search', page=i)}}" color="black">{{i+1}}</a>
+            {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
 
 
 
