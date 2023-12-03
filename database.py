@@ -123,6 +123,7 @@ class DBhandler:
         self.db.child("heart").child(user_id).child(item).set(heart_info)
         return True
     
+
     def get_wishlist_items(self, user_id):
         wishlist_items = {}
         hearts = self.db.child("heart").child(user_id).get()
@@ -142,7 +143,7 @@ class DBhandler:
         return None 
     
     
-    
+
     
     def get_items_bycategory(self, cate):
         items = self.db.child("item").get()
