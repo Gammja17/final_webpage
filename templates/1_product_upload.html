@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="{{ url_for('static', filename='1_product_upload.css') }}">
         <script src="{{ url_for('static', filename='1_product_upload.js') }}" defer></script>
-        <script src="{{ url_for('static', filename='1_id_certificate') }}" defer></script>
     
 </head>
 <body>
@@ -45,7 +44,8 @@
                 상품 상태<br>
                 카테고리<br>
                 지역<br>
-                오픈채팅방 링크 
+                오픈채팅방 링크<br>
+                판매자 id
                 
             </span>
  
@@ -68,6 +68,7 @@
                     </select>
                     <input type="text" id="place" name="place" class="c" required/>
                     <input type="text" id="link" name="link" class="c" required/>
+                     <input type="text" id="sellerid" name="sellerid"  class="c" required>
 
                 </span>
 
@@ -80,12 +81,7 @@
                 <textarea name="info" id="info" cols="75%" rows="10" placeholder="상품의 정보, 상태, 거래 방법, 연락처 등 상품에 대한 정보를 알기 쉽게 작성해주세요." required></textarea>
                 
             </div>
-            <div class="idcerti">
-                <label for="seller-id"><br>판매자 ID</label>
-                <input type="text" id="sellerid" name="sellerid" required>
-                <button id="authenticate-button">인증</button>
-                <div id="message"></div>
-            </div>
+            
                 
             </div>
 

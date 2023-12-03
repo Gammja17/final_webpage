@@ -4,10 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
-    <link rel="stylesheet" href="{{ url_for('static', filename='6_review_detail.css') }}">
     <script src="{{ url_for('static', filename='4_review_upload.js.') }}" defer></script>
 </head>
+    <style>
+                
+                 
+          @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
+        
+        .upper{
+        display:flex;
+        justify-content: space-evenly;
+        width: 1200px;
+        }
+        
+        .g1{
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 2px solid #ccc;
+      width: 230px;
+      margin-bottom: 30px;
+    }
+
+    
+    .bg{
+     display: flex;
+     flex-direction: column;
+     margin-bottom: 50px;
+    }
+        
+        #customer-info{
+                font-size: 25px;
+                border-bottom: 2px solid;
+                margin: 0px;
+                margin-bottom: 10px;
+                text-align: center;
+        }
+        
+        .seller{
+         display:flex;
+         font-size: 25px;
+         border-bottom: 2px solid;
+        }
+        
+        
+      body {
+      font-family: 'Noto Sans KR';
+    }
+    .aside-container{
+      display: flex;
+    }
+    .content {
+      font-family: 'Noto Sans KR';
+      float:right;
+      flex: 1;
+    }
+
+    .info-section{
+      font-family: 'Noto Sans KR';
+      background-color: #ebefd6;
+      display:flex;
+      justify-content: column;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+    }
+
+    .info-block{
+     width:100%;
+     text-align: center;
+     font-size: 25px;
+     padding: 22px;
+     cursor: pointer;
+     transition: background-color 0.3s;
+     margin-bottom: 0;
+    }
+
+    .info-block:hover{
+      background-color: #c9d8b7;
+    }
+
+    .all{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+      margin-left:250px;
+      margin-top:20px;
+    }
+
+    .B{
+      display:flex;
+    }
+
+    .info{
+            display: flex;
+            flex-direction: column;
+            margin-right: 40px;
+            width: 200px;
+            height: 340px;
+            justify-content: space-between;
+    }
+
+    .customer-img img{
+      max-width:200px;
+      max-height:200px;
+    }
+        
+        .s{
+            display:flex;
+            flex-direction: column;
+            width: 300px;
+            height: 340px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+    #customer-name{
+      font-size:40px;
+      font-family:'Noto Sans KR';
+      margin-top:10px;
+      margin-bottom:0px;
+
+    }
+
+    #review-date{
+      margin-top:10px;
+      font-size:30px;
+      margin-bottom:0px;
+    }
+
+    .info1{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .seller-info{
+      font-size: 30px;
+      font-family: 'Noto Sans KR';
+      text-align:center;
+      display: flex;
+      justify-content: right;
+    }
+
+
+    .stars{
+      display: flex;
+      direction: flex-end;
+      margin: 0 20px;
+    }
+
+    .star-rating{
+      font-size: 25px;
+      color: gray;
+    }
+
+    .star-rating .star{
+      color: #d3d3d3;
+      cursor: pointer;
+    }
+
+    .star-rating .star.filled{
+      color: gold;
+    }
+
+    .review{
+      display:flex;
+      margin-top:40px;
+    }
+
+    .review-img{
+        display:flex;
+        font-size: 25px;
+        border-bottom: 2px solid;
+        margin-bottom: 10px;
+    }
+
+    .review-title{
+      width:600px;
+      padding:20px;
+      height: 20px;
+      font-family: 'Noto Sans KR';
+      font-size: 20px;
+      border:2px solid #ccc;
+      background-color: #f5f5f5;
+      margin-top:0px;
+      margin-bottom: 0px;
+      text-align: left;
+    }
+
+    .review-star{
+      width:600px;
+      padding:20px;
+      height: 20px;
+      font-family: 'Noto Sans KR';
+      font-size: 20px;
+      border:2px solid #ccc;
+      background-color: #f5f5f5;
+      margin-top:0px;
+      margin-bottom: 0px;
+      text-align: left;
+    }
+
+    .input-container2 #pro-review{
+      width: 1244px;
+      flex: 1;
+      height: 100px;
+      font-family: 'Noto Sans KR';
+      font-size: 20px;
+      border: 2px solid #ccc;
+      background-color: #f5f5f5;
+      resize: vertical;
+      outline: none;
+      padding:20px;
+      text-align: left;
+    }
+
+    .product-img{
+      display: flex;
+      flex-direction: column;
+      height: 340px;
+      justify-content: space-between;
+    }
+    .product-img img{
+      max-height:300px;
+    }
+    </style>
 <body>
 
 
@@ -24,38 +249,67 @@
         </content>
     
         <div class="all">
-            <div class="info">
+            <div class="upper">
+            
+                
+                
+                      <div class="info">
+                          
+                    <div class="info1">
+                    <p id="customer-info"> 구매자 정보 </p>
+                    </div>
 
-                 <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="프로필 사진"  class="customer-img"  style="width: 200px; height: 200px;"  >
-        
-                <div class="info1">
-                <p id="customer-name"> {{data.reviewer}} </p>
+                     <img src="{{ url_for('static', filename='images/10_person.png') }}" alt="프로필 사진"  class="customer-img"  style="width: 200px; height: 200px;"  >
+
+                 
+                          
+                    <div class="info1">
+                    <p id="customer-name"> {{data.reviewer}} </p>
+                    </div>
+
+                    
+
+
                 </div>
-
-                <table class="seller-info">
-                    <tr>
-                        <td><u>판매자 명</u></td>
-                        <td>{{data.seller}}</td>
-                    </tr>
-                    <tr>
-                        <td><u>상품 명</u></td>
-                        <td>{{data.name}}</td>
-                    </tr>
-                </table>
-
+      
+                       <div class="product-img">
+                           <div class="review-img">
+                               리뷰 이미지
+                           </div>
+                    <img src="../../static/images/{{data.img_path}}" alt="물건사진" style="width: 400px; height:300px;" >
+                </div>
+          
+                
+                <div class="s">
+                     
+                <div class="seller">
+                    판매자 정보
+                </div>
+                
+                                    
+                <div class="bg">
+                  <div class="g1">
+                    <div style="font-size:25px; margin-top: 0px; margin-bottom:0px;">판매자 명</div>
+                    <div style="font-size: 25px; margin-top: 0px; margin-bottom:0px;">아무개</div>
+                    </div>
+                    
+                    <div class="g1">
+                        <div style="font-size:25px; margin-bottom:0px;">상품 명</div>
+                        <div style="font-size:25px; margin-bottom:0px;">고양이</div>
+                    </div>
+                    
+                </div>
+                </div>
             </div>
 
             <div class="review">
-                <p class="review-title">{{data.title}}</p>
-                <span class="review-star"> 별점 <span style="color:gold"> ★★★★★({{data.rate}})</span> </span>
+                <p class="review-title">리뷰 제목: {{data.title}}</p>
+                <span class="review-star"> 별점: <span style="color:gold"> ({{data.rate}})</span> </span>
             </div>
             <div class="input-container2">
                 <textarea id="pro-review" cols="10" rows="50" readonly> {{data.review}} </textarea>
             </div>
-            <div class="product-img">
-                <img src="../../static/images/{{data.img_path}}" alt="물건사진" style="width: 400px; height:300px;" >
-            </div>
-
+         
                
         </div>
 
