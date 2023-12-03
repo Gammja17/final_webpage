@@ -12,10 +12,11 @@
 {% extends "index.html" %}
     
     {% block section %}
-    
+     <main>
        <div class="uuuper">
-        <h1 style="font-family: 'Noto Sans KR'; margin-left: 30px;"> 리뷰 전체 조회 </h1>
+        <h1 style="font-family: 'Noto Sans KR'; margin-left: 100px; font-size:23px"> 리뷰 전체 조회 </h1>
         </div> 
+   
      {% if total > 0 %}
     <table>
     <tr>
@@ -34,9 +35,9 @@
                     </div>
 
                     <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">{{value.name}}</div>
-                        <div class="seller-name" style="margin-bottom: 10px;">{{value.seller}}</div>
-                        <div class="date-purchase">{{value.title}}</div>
+                        <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
+                        <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
+                        <div class="date-purchase">title: {{value.title}}</div>
                     </div>
 
                     <div class="info3">
@@ -69,7 +70,9 @@
             <tr>
         {% for key, value in row2 %}
         <td>
+            
     <div class="review-container">
+         
 
             <div class="user-info">
                  <div class="user-icon">
@@ -82,9 +85,9 @@
                     </div>
 
                     <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">{{value.name}}</div>
-                        <div class="seller-name" style="margin-bottom: 10px;">{{value.seller}}</div>
-                        <div class="date-purchase">{{value.title}}</div>
+                        <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
+                        <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
+                        <div class="date-purchase">title: {{value.title}}</div>
                     </div>
 
                     <div class="info3">
@@ -109,7 +112,7 @@
                         <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
                     </div>
                
-           
+        
         </div>  
             </td>
     {% endfor %}
@@ -130,9 +133,9 @@
                     </div>
 
                     <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">{{value.name}}</div>
-                        <div class="seller-name" style="margin-bottom: 10px;">{{value.seller}}</div>
-                        <div class="date-purchase">{{value.title}}</div>
+                        <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
+                        <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
+                        <div class="date-purchase">title: {{value.title}}</div>
                     </div>
 
                     <div class="info3">
@@ -152,6 +155,7 @@
                     <div>{{value.review}}</div>
                     <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
                 </div>
+                    
             </div>
                     <div class="review-image-container">
                         <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
@@ -177,14 +181,19 @@
         </ul>
     </div>
 </div>
+    
 
 {% else %}
 <p>
     등록된 리뷰가 없습니다
 </p>
 {% endif %}
+        </main>
 
 <style>
+    main{
+    display: grid; 
+    }
     .page-nation li{
         list-style: none;
     }
