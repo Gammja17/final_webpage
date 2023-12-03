@@ -27,6 +27,10 @@ def view_home():
     
     data = DB.get_items()
     
+    for product_name, details in data.items():
+        average_rating = DB.get_average_rating(product_name)
+        details['average_rating'] = average_rating
+    
     if sort_by == "price":
         data = {k: v for k, v in sorted(data.items(), key=lambda item: float(item[1]['price']))}
         

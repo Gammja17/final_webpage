@@ -99,6 +99,26 @@ class DBhandler:
         self.db.child("review").child(data['name']).set(review_info)
         return True
     
+    def get_average_rating(self, product_name):
+        reviews = self.db.child("review").child(product_name).get().val()
+        if reviews and isinstance(reviews, dict):
+            total_rating = 0
+            count = 0
+            for review in reviews.values():
+                if isinstance(review, dict) and 'rate' in review:
+                    try:
+                        total_rating += float(review['rate'])
+                        count += 1
+                    except ValueError:
+                        print("Invalid rate value:", review['rate'])
+                else:
+                    print("Invalid review structure:", review)
+            if count > 0:
+                average_rating = total_rating / count
+                return average_rating
+        return 0
+
+    
     def get_review_byname(self,name):
         reviews = self.db.child("review").get().val()
         for key, value in reviews.items():
