@@ -212,7 +212,9 @@ border:1px solid  #ebefd6;
                     <ul>
                         <li>
                             {% for i in range(page_count)%}
+                            
                             <a href="{{url_for('view_home', page=i)}}" color="black">{{i+1}}</a>
+                            
                             {% endfor %}
                         </li>
                     </ul>
