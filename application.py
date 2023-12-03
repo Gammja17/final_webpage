@@ -12,7 +12,7 @@ DB = DBhandler()
 
 @application.route("/") #첫화면
 def hello():
-     #return render_template("index.html")
+     #return render_template("7_1_log_in.html")
     return redirect(url_for('view_home'))
 
 @application.route("/home") #home으로

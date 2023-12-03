@@ -7,7 +7,6 @@ body {
 
 main {
     display: grid;
-    place-items: center;
 }
 
 .aside-container {
@@ -18,8 +17,6 @@ main {
     display: flex;
     flex-direction: column;
 }
-
-
 
 .profile{
     display: flex;
