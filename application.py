@@ -187,6 +187,7 @@ def search():
     filtered_items = {name: details for name, details in all_items.items() 
                       if query.lower() in name.lower() or query.lower() in details.get('seller', '').lower()}
     
+    
     data = filtered_items
     item_counts = len(data)
     data = dict(list(data.items())[start_idx:end_idx])
