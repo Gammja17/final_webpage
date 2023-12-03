@@ -56,7 +56,7 @@ def view_home():
         row2=locals()['data_1'].items(),
         limit=per_page,
         page=page,
-        page_count=int((item_counts/per_page)+1),
+        page_count = math.ceil(item_counts / per_page),
         total=item_counts,
         category=category
     )
@@ -223,7 +223,7 @@ def search():
         # row2 = locals()['data_1'].items(),
         limit = per_page,
         page = page,
-        page_count = int(item_counts/per_page+1),
+        page_count = math.ceil(item_counts / per_page),
         total = item_counts
     )
     
