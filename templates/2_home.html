@@ -211,7 +211,7 @@ border:1px solid  #ebefd6;
                 <div class="page-nation">
                     <ul>
                         <li>
-                            {% for i in range(page_count-1)%}
+                            {% for i in range(page_count)%}
                             <a href="{{url_for('view_home', page=i)}}" color="black">{{i+1}}</a>
                             {% endfor %}
                         </li>
