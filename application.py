@@ -149,7 +149,7 @@ def register_user():
     else:
         flash("아이디가 이미 존재합니다!")
         return render_template("8_sign_up.html")
-
+        
     #print(name,addr,phone,category,status)
     #return render_template("reg_item.html")
 
@@ -277,7 +277,7 @@ def search():
     
     # Filter items based on item name or seller's ID
     filtered_items = {name: details for name, details in all_items.items() 
-                      if query.lower() in name.lower() or query.lower() in details.get('seller', '').lower()}
+                      if query.lower() in name.lower() or query.lower() in details.get('sellerid', '').lower()}
     
     return render_template("search_result.html", items=filtered_items)
 
