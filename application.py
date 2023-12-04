@@ -32,7 +32,8 @@ def view_home():
         data = DB.get_items_bycategory(category)
 
     if sort_by == "price":
-        data = {k: v for k, v in sorted(data.items(), key=lambda item: int(item[1]['price']))}
+        data = {k: v for k, v in sorted(data.items(), key=lambda item: float(item[1]['price']))}
+        
     item_counts = len(data)
     if item_counts <= per_page:
         data = dict(list(data.items())[:item_counts])
@@ -40,9 +41,6 @@ def view_home():
         data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
 
-    for key, product in data.items():
-        if 'average_rating' not in product:
-            product['average_rating'] = '등록된 리뷰가 없습니다'
 
     for i in range(row_count):
         if (i == row_count-1) and (tot_count%per_row != 0):
@@ -65,7 +63,7 @@ def view_home():
 
 
 
-@application.route("/product_upload") #이거다
+@application.route("/product_upload") 
 def product_upload():
     if 'id' not in session:
         return redirect(url_for('login'))
@@ -87,13 +85,11 @@ def view_item_detail(name):
 def product_detail():
     image_file = request.files["file"]
     image_file.save("static/images/{}".format(image_file.filename))
-    data = request.form.to_dict()
-    
-    if len(data.get('info', '')) > 300:
-        data['info'] = data['info'][:300]
+    data = request.form
     DB.insert_item(data['name'], data, image_file.filename)
 
-    return render_template("3_product_detail.html", data=data, img_path="static/images/{}".format(image_file.filename))
+    return render_template("3_product_detail.html", data=data, img_path=
+"static/images/{}".format(image_file.filename))
     # return render_template("3_product_detail.html")
 
 
@@ -125,12 +121,11 @@ def reg_item_submit():
     placebox = request.args.get("placebox")
     place = request.args.get("place")
     info = request.args.get("info")
-    
-    if len(info) > 300:
-        info = info[:300]
     sellerid = request.args.get("sellerid")
 
 
+    
+    
 @application.route("/login")
 def login():
     return render_template("7_1_log_in.html")
@@ -223,9 +218,6 @@ def search():
     return render_template(
         "search_result.html",
         items=filtered_items,
-        # # datas = data.items(),
-        # row1 = locals()['data_0'].items(),
-        # row2 = locals()['data_1'].items(),
         limit = per_page,
         page = page,
         page_count = math.ceil(item_counts / per_page),
@@ -274,12 +266,10 @@ def view_review():
     end_idx = per_page*(page+1)
     
     data = DB.get_reviews()
-    
-    if not isinstance(data, dict):
-        # Handle the case where data is not a dictionary (e.g., convert from string or return an error)
-        return "Error: Data format is incorrect"
-    
+    print("data269: "+str(data))
     item_counts = len(data)
+    print("item_counts: "+str(item_counts))
+
     data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
     

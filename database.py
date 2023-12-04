@@ -98,7 +98,6 @@ class DBhandler:
         }
         self.db.child("review").child(data['name']).set(review_info)
         
-        self.db.child("review").child(data['name'])
         return True
     
     def update_average_rating(self, product_name):
