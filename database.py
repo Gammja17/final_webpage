@@ -21,7 +21,7 @@ class DBhandler:
             "img_path": img_path,
             "name": data['name'],
             "title": data['title'],
-            "price": 'price',
+            "price": data['price'],
             "productstatus": data['productstatus'],
             "category": data['category'],
             "place": data['place'],
