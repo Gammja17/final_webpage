@@ -36,6 +36,10 @@
    
 <main>
 <form class="mb-3" name="myform" id="myform" method="post" action="/reg_review" enctype="multipart/form-data">
+    <input type="hidden" name="name" value="{{name}}">
+    <input type="hidden" name="seller" value="{{seller}}">
+
+
     <div class="info-product">
         <h2 style="font-family:'Noto Sans KR">
             판매자 '{{seller}}' 님의 상품 '{{name}}' 에 대한 후기를 작성해주세요.
