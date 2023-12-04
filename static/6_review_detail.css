@@ -50,9 +50,8 @@ body {
 }
 
 .info{
-  display:flex;
-  margin-top:20px;
-  margin-left: 50px;
+        display: flex;
+    flex-direction: column;
 }
 
 .customer-img img{
@@ -79,7 +78,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left:50px;
 }
 
 .seller-info{

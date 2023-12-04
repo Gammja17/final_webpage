@@ -12,7 +12,7 @@ DB = DBhandler()
 
 @application.route("/") #첫화면
 def hello():
-     #return render_template("index.html")
+     #return render_template("7_1_log_in.html")
     return redirect(url_for('view_home'))
 
 @application.route("/home") #home으로
@@ -30,8 +30,10 @@ def view_home():
         data = DB.get_items()
     else:
         data = DB.get_items_bycategory(category)
+
     if sort_by == "price":
         data = {k:v for k, v in sorted(data.items(), key=lambda item: float(item[1]['price']))}
+
     item_counts = len(data)
     if item_counts <= per_page:
         data = dict(list(data.items())[:item_counts])
@@ -39,6 +41,9 @@ def view_home():
         data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
 
+    for key, product in data.items():
+        if 'average_rating' not in product:
+            product['average_rating'] = '등록된 리뷰가 없습니다'
 
     for i in range(row_count):
         if (i == row_count-1) and (tot_count%per_row != 0):
@@ -54,7 +59,7 @@ def view_home():
         row2=locals()['data_1'].items(),
         limit=per_page,
         page=page,
-        page_count=int((item_counts/per_page)+1),
+        page_count = math.ceil(item_counts / per_page),
         total=item_counts,
         category=category
     )
@@ -63,6 +68,8 @@ def view_home():
 
 @application.route("/product_upload") #이거다
 def product_upload():
+    if 'id' not in session:
+        return redirect(url_for('login'))
     return render_template("1_product_upload.html")
 
 @application.route("/home")
@@ -81,11 +88,13 @@ def view_item_detail(name):
 def product_detail():
     image_file = request.files["file"]
     image_file.save("static/images/{}".format(image_file.filename))
-    data = request.form
+    data = request.form.to_dict()
+    
+    if len(data.get('info', '')) > 300:
+        data['info'] = data['info'][:300]
     DB.insert_item(data['name'], data, image_file.filename)
 
-    return render_template("3_product_detail.html", data=data, img_path=
-"static/images/{}".format(image_file.filename))
+    return render_template("3_product_detail.html", data=data, img_path="static/images/{}".format(image_file.filename))
     # return render_template("3_product_detail.html")
 
 
@@ -95,6 +104,8 @@ def seller_info():
 
 @application.route("/submit_item_post", methods=['POST'])
 def reg_item_submit_post():
+    if 'id' not in session:
+        return redirect(url_for('login'))
     image_file = request.files["file"]
     image_file.save("static/images/{}".format(image_file.filename))
     data = request.form
@@ -104,6 +115,8 @@ def reg_item_submit_post():
 
 @application.route("/submit_item")
 def reg_item_submit():
+    if 'id' not in session:
+        return redirect(url_for('login'))
     name = request.args.get("name")
     title = request.args.get("title")
     price = request.args.get("price")
@@ -113,11 +126,12 @@ def reg_item_submit():
     placebox = request.args.get("placebox")
     place = request.args.get("place")
     info = request.args.get("info")
+    
+    if len(info) > 300:
+        info = info[:300]
     sellerid = request.args.get("sellerid")
 
 
-    
-    
 @application.route("/login")
 def login():
     return render_template("7_1_log_in.html")
@@ -164,6 +178,8 @@ def logout_user():
 
 @application.route("/mypage")
 def mypage():
+    if 'id' not in session:
+        return redirect(url_for('login'))
     user_id = session['id']
     user_info = DB.get_user_info(user_id)
     return render_template('9_3_mypage.html', user_info=user_info)
@@ -180,6 +196,13 @@ def wishlist():
 
 @application.route("/search")
 def search():
+    page = request.args.get("page", 0, type = int)
+    per_page = 6
+    per_row = 2
+    row_count = int(per_page/per_row)
+    start_idx = per_page*page
+    end_idx = per_page*(page+1)
+    
     query = request.args.get("query")
     all_items = DB.get_items()
     
@@ -187,7 +210,31 @@ def search():
     filtered_items = {name: details for name, details in all_items.items() 
                       if query.lower() in name.lower() or query.lower() in details.get('sellerid', '').lower()}
     
-    return render_template("search_result.html", items=filtered_items)
+    
+    data = filtered_items
+    item_counts = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    tot_count = len(data)
+    
+    for i in range(row_count):
+        if(i==row_count-1) and (tot_count%per_row!=0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else: 
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return render_template(
+        "search_result.html",
+        items=filtered_items,
+        # # datas = data.items(),
+        # row1 = locals()['data_0'].items(),
+        # row2 = locals()['data_1'].items(),
+        limit = per_page,
+        page = page,
+        page_count = math.ceil(item_counts / per_page),
+        total = item_counts
+    )
+    
+    
+    # return render_template("search_result.html", items=filtered_items)
 
 @application.route("/review_upload")
 def review_upload():
@@ -228,6 +275,11 @@ def view_review():
     end_idx = per_page*(page+1)
     
     data = DB.get_reviews()
+    
+    if not isinstance(data, dict):
+        # Handle the case where data is not a dictionary (e.g., convert from string or return an error)
+        return "Error: Data format is incorrect"
+    
     item_counts = len(data)
     data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
@@ -245,7 +297,7 @@ def view_review():
         row3 = locals()['data_2'].items(),
         limit = per_page,
         page = page,
-        page_count = int(item_counts/per_page+1),
+        page_count = math.ceil(item_counts / per_page),
         total = item_counts
     )
 
@@ -259,9 +311,7 @@ def view_review_detail(name):
         return render_template("6_review_detail.html", data=review_data)
     else:
         return redirect(url_for('view_review'))
-    
-    
-    
+
     
 @application.route('/show_heart/<name>/', methods=['GET'])
 def show_heart(name):

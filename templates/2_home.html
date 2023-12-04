@@ -76,10 +76,6 @@ margin-left:10px;
   text-indent: -9999px;
 }
 
-
-
-
-
 a {
   font-size: 23px;
   font-family: 'Noto Sans KR';
@@ -123,8 +119,6 @@ border:1px solid  #ebefd6;
   height:200px;
   background-color: aqua;
   float:left;
-
-
 }
 
 .pagination{
@@ -132,9 +126,7 @@ border:1px solid  #ebefd6;
   display: flex;
   border-top:3px solid black;
   margin-top: 45px;
-  justify-content: center;
-
-  
+  justify-content: center;  
 }
 
 .pagination a{
@@ -153,9 +145,9 @@ border:1px solid  #ebefd6;
   border:1px solid #c9d8b7;
 }
         
-        .productname{
-             width:130px;
-        }
+.productname{
+  width:130px;
+}
 </style>
     <body>
         {% extends "index.html" %} {% block section %}
@@ -184,10 +176,16 @@ border:1px solid  #ebefd6;
                                             <p style="font-size: 18px;">
                                                 {{ value.price }}원<br/>
                                                 {{ value.sellerid }}<br/>
-                                                <span style="color: orange; font-size: 15px;">★★★★★(2)</span>
+                                                <span style="color: orange; font-size: 15px;">
+                                                {% if value.average_rating %}
+                                                {{ value.average_rating }} / 5
+                                                {% else %}
+                                                No rating yet
+                                                {% endif %}
+                                                </span>
                                             </p>
                                         </div>
-                                    </div>
+                                     </div>
                                 </a>
                             </div>
                         </td>
@@ -206,7 +204,9 @@ border:1px solid  #ebefd6;
                     <ul>
                         <li>
                             {% for i in range(page_count)%}
+                            
                             <a href="{{url_for('view_home', page=i)}}" color="black">{{i+1}}</a>
+                            
                             {% endfor %}
                         </li>
                     </ul>
