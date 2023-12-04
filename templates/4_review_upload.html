@@ -45,13 +45,12 @@
     <main>
 <form class="mb-3" name="myform" id="myform" method="post" action="/reg_review" enctype="multipart/form-data">
     <div class="info-product">
-        <input type="text" placeholder="상품명" name="seller" id="seller" value="{{seller}}" class="seller" required>
-        <h2>님의</h2>
-        <input type="text" placeholder="상품명" name="name" id="name" value="{{name}}" class="name" required>
+        <h2 style="font-family:'Noto Sans KR">
+            판매자 '{{seller}}' 님의 상품 '{{name}}' 에 대한 후기를 작성해주세요.
+        </h2>
     </div>
     <br>
             <div class="evaluation-product">
-                <h2>상품 품질 평가</h2>
                 <!--만약 리뷰자 아이디를 받아와서 옆에서 계속 바뀌게 하고 싶으면 추후 삽입-->
                 <!--해당 상품 사진이랑 상품명 수량 가져오는 것은 일단은 삭제했음-->
             </div>
