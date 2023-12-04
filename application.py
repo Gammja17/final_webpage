@@ -18,6 +18,7 @@ def hello():
 @application.route("/home") #home으로
 def view_home():
     page = request.args.get("page", 0, type=int)
+    sort_by = request.args.get("sort", None)
     category = request.args.get("category", "all")
     per_page=6
     per_row=3
@@ -29,7 +30,8 @@ def view_home():
         data = DB.get_items()
     else:
         data = DB.get_items_bycategory(category)
-    data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
+    if sort_by == "price":
+        data = {k:v for k, v in sorted(data.items(), key=lambda item: float(item[1]['price']))}
     item_counts = len(data)
     if item_counts <= per_page:
         data = dict(list(data.items())[:item_counts])

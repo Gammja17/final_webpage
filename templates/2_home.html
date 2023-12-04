@@ -163,45 +163,39 @@ border:1px solid  #ebefd6;
         <div class="rside">
             <div class="upper">
                 <div class="sort" style="font-weight: bold;">
-                    <a href="/home.html">가격순 정렬</a>
+                    <a href="/home?sort=price">가격순 정렬</a>
                 </div>
                 <a href="/product_upload" class="upload-button" style="font-weight: bold;">상품 등록하기</a>
             </div>
 
             {% if total > 0 %}
-
             <table>
                 <tr>
                     {% for key, value in datas %}
-                    <td>
-                        <div id="product-container">
-                            <a
-                                onclick="location.href='/product_detail/{{key}}/';"
-                                style="cursor: pointer;"
-                            >
-                                <div class="product">
-                                    <span class="product-img">
-                                        <img src="static/images/{{ value.img_path }}" alt="product image"/>
-                                    </span>
-                                    <div class="product-info">
-                                        <p style="font-size: 25px; font-weight: bold;" class="productname">{{ key }}</p>
-                                        <p style="font-size: 18px;">
-                                            {{ value.price }}원<br/>
-                                            {{ value.sellerid }}<br/>
-                                            <span style="color: orange; font-size: 15px;">★★★★★(2)</span>
-                                            <br/>
-                                            <!-- <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}"
-                                                alt="wishbutton" style="width: 45px; height: 45px;"/> -->
-                                        </p>
+                        <td>
+                            <div id="product-container">
+                                <a onclick="location.href='/product_detail/{{key}}/';" style="cursor: pointer;">
+                                    <div class="product">
+                                        <span class="product-img">
+                                            <img src="static/images/{{ value.img_path }}" alt="product image"/>
+                                        </span>
+                                        <div class="product-info">
+                                            <p style="font-size: 25px; font-weight: bold;" class="productname">{{ key }}</p>
+                                            <p style="font-size: 18px;">
+                                                {{ value.price }}원<br/>
+                                                {{ value.sellerid }}<br/>
+                                                <span style="color: orange; font-size: 15px;">★★★★★(2)</span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    </td>
-                    {% if loop.index % 3 == 0 %}
-                </tr>
-                <tr>
-                    {% endif %} {% endfor %}
+                                </a>
+                            </div>
+                        </td>
+                        {% if loop.index % 3 == 0 %}
+                            </tr> <!-- 각 행을 마침 -->
+                            <tr> <!-- 새로운 행 시작 -->
+                        {% endif %}
+                    {% endfor %}
                 </tr>
             </table>
             <br /><br /><br />
@@ -219,7 +213,7 @@ border:1px solid  #ebefd6;
                 </div>
             </div>
             {% else %}
-            <p>
+            <p style="text-align:center; justify-content:center;">
                 등록된 상품이 없습니다.
             </p>
             {% endif %}
