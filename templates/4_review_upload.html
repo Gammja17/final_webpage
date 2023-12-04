@@ -7,6 +7,8 @@
      <link rel="stylesheet" href="{{ url_for('static', filename='4_review_upload.css') }}">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <!--<script src="{{ url_for('static', filename='4_review_upload.js') }}" defer></script>-->
+    
+    <title>리뷰 등록 - 이화 마켓</title>
     <style>
         
         .star {
@@ -19,20 +21,10 @@
     </style>
 </head>
 <body>
-    <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>리뷰 등록 - 이화 마켓</title>
-</head>
-<body>
-
-
-     {% extends "index.html" %}
+{% extends "index.html" %}
     
-    {% block section %}
+{% block section %}
 
 
         <content>
@@ -42,7 +34,7 @@
             </div> 
         </content>
    
-    <main>
+<main>
 <form class="mb-3" name="myform" id="myform" method="post" action="/reg_review" enctype="multipart/form-data">
     <div class="info-product">
         <h2 style="font-family:'Noto Sans KR">
