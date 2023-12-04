@@ -1,1 +1,2 @@
-# flask_project2023
+# Open SW Platform 
+### Ewha-Market
