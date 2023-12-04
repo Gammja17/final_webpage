@@ -286,7 +286,7 @@ def view_review():
         row3 = locals()['data_2'].items(),
         limit = per_page,
         page = page,
-        page_count = int(item_counts/per_page+1),
+        page_count = math.ceil(item_counts / per_page),
         total = item_counts
     )
 
@@ -300,9 +300,7 @@ def view_review_detail(name):
         return render_template("6_review_detail.html", data=review_data)
     else:
         return redirect(url_for('view_review'))
-    
-    
-    
+
     
 @application.route('/show_heart/<name>/', methods=['GET'])
 def show_heart(name):
