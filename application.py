@@ -187,8 +187,44 @@ def wishlist():
     if 'id' not in session:
         return redirect(url_for('login'))
     
+    page = request.args.get("page", 0, type = int)
+    per_page = 6
+    per_row = 2
+    row_count = int(per_page/per_row)
+    start_idx = per_page*page
+    end_idx = per_page*(page+1)
+    
+    
     user_id = session['id']
     wishlist_items = DB.get_wishlist_items(user_id)
+    data = DB.get_wishlist_items(user_id)
+    
+    if not isinstance(data, dict):
+        # Handle the case where data is not a dictionary (e.g., convert from string or return an error)
+        return "Error: Data format is incorrect"
+    
+    item_counts = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    tot_count = len(data)
+    
+    for i in range(row_count):
+        if(i==row_count-1) and (tot_count%per_row!=0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else: 
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return render_template(
+        "9_1_wishlist.html",
+        items=wishlist_items,
+        datas = data.items(),
+        row1 = locals()['data_0'].items(),
+        row2 = locals()['data_1'].items(),
+        limit = per_page,
+        page = page,
+        page_count = math.ceil(item_counts / per_page),
+        total = item_counts
+    )
+    
+    
     return render_template("9_1_wishlist.html", 
                            items=wishlist_items)
             
@@ -229,7 +265,8 @@ def search():
         limit = per_page,
         page = page,
         page_count = math.ceil(item_counts / per_page),
-        total = item_counts
+        total = item_counts,
+        query=query
     )
     
     

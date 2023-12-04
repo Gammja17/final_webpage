@@ -217,12 +217,77 @@ border:1px solid  #ebefd6;
                     {% endif %} {% endfor %}
                 </tr>
             </table>
+            <div class="page-wrap">
+    <div class="page-nation">
+        <ul>
+            <li>
+            {% for i in range(page_count) %}
+                <a href="{{url_for('wishlist', page=i)}}" color="black">{{i+1}}</a>
+            {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
             <br /><br /><br />
             <hr style="border: 1.5px solid black;" />
     {% else %}
         <p>위시리스트에 상품이 없습니다.</p>
     {% endif %}
         </div>
+        <style>
+    main{
+    display: grid; 
+    }
+    .page-nation li{
+        list-style: none;
+    }
+    .page-wrap{
+        text-align: center;
+        font-size: 0;
+    }
+    .page-nation{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .page-nation a{
+        display: block;
+        margin: 0 3px;
+        float: left;
+        border: 1px solid #e6e6e6;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        background-color: #fff;
+        font-size: 13px;
+        color: black;
+        text-decoration: none;
+        font-weight:bold;}
+        
+        .info-detail{
+  display: flex;
+  align-items: flex-end;
+            
+}
+    .info-detail span{
+        color: orange;
+    }
+    
+    .more-button{
+       width: 105px;
+    height: 25px;
+    background-color: #c9d8b7;
+    text-align: center;
+    padding-top: 5px;
+    transition: background-color 0.3s, opacity 0.3s;
+            font-size: 15px;
+    margin-top: 10px;
+}
+    }
+    
+</style>
 {% endblock section %}
         </body>
 </html>
