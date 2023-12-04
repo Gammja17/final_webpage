@@ -21,7 +21,7 @@ body{
 
 .main{
   display: grid;
-  place-items: center;
+
 }
 
 .slideshow-container img{

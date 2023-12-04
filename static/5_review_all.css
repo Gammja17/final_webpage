@@ -185,11 +185,10 @@
   flex-direction: row;
 }
 
-.info-detail{
+/* .info-detail{
   display: flex;
-  flex-direction: column;
   align-items: flex-end;
-}
+} */
 
 .info-preview{
   display: flex;
