@@ -4,228 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리뷰보기</title>
-    
-     <link rel="stylesheet" href="{{ url_for('static', filename='5_review_all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='5_review_all.css') }}">
 </head>
 <body>
 
-{% extends "index.html" %}
-    
+    {% extends "index.html" %}
+
     {% block section %}
-     <main>
-       <div class="uuuper">
-        <h1 style="font-family: 'Noto Sans KR'; margin-left: 100px; font-size:23px"> 리뷰 전체 조회 </h1>
-        </div> 
-   
-     {% if total > 0 %}
-    <table>
-    <tr>
-        {% for key, value in row1 %}
-        <td>
-    <div class="review-container">
+        <main>
+            <div class="uuuper">
+                <h1 style="font-family: 'Noto Sans KR'; margin-left: 100px; font-size:23px"> 리뷰 전체 조회 </h1>
+            </div> 
 
-            <div class="user-info">
-                 <div class="user-icon">
-                    <img src="{{ url_for('static', filename='images/10_user.png') }}" alt="User Icon">
-                 </div>
+            {% if total > 0 %}
+                <table>
+                    {% for row in [row1, row2, row3] %}
+                        <tr>
+                            {% for key, value in row %}
+                                <td>
+                                    <div class="review-container">
+                                        <div class="user-info">
+                                            <div class="user-icon">
+                                                <img src="{{ url_for('static', filename='images/10_user.png') }}" alt="User Icon">
+                                            </div>
+                                            <div class="buyer-section">
+                                                <div class="buyer-name">{{value.reviewer}}</div>
+                                            </div>
+                                        </div>
 
-                    <div class="buyer-section">
-                        <div class="buyer-name">{{value.reviewer}}</div>
-                    </div>
-                    </div>
+                                        <div class="item-details">
+                                            <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
+                                            <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
+                                            <div class="date-purchase">title: {{value.title}}</div>
+                                        </div>
 
-                    <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
-                        <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                        <div class="date-purchase">title: {{value.title}}</div>
-                    </div>
+                                        <div class="info3">
+                                            <div class="info-upper">
+                                                <div class="buyer-info">
+                                                    <div class="seller-rating">별점: </div>
+                                                    <div class="info-detail">
+                                                        <span>({{value.rate}})</span>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                    <div class="info3">
-                        
-                    <div class="info-upper">
-                    <div class="buyer-info">
-                        <div class="seller-rating">별점: </div>
-                    </div>
+                                            <div class="info-preview">
+                                                <div>{{value.review}}</div>
+                                                <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
+                                            </div>
+                                        </div>
 
-                    <div class="info-detail">
-                    <span>({{value.rate}})</span>
-                    </div>
-                </div>
-                
+                                        <div class="review-image-container">
+                                            <img src="../../static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
+                                        </div>
+                                    </div>  
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
 
-                <div class="info-preview">
-                    <div>{{value.review}}</div>
-                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
-                </div>
-            </div>
-                    <div class="review-image-container">
-                        <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
-                    </div>
-               
-           
-        </div>  
-            </td>
-    {% endfor %}
-    </tr>
-            <tr>
-        {% for key, value in row2 %}
-        <td>
-            
-    <div class="review-container">
-         
-
-            <div class="user-info">
-                 <div class="user-icon">
-                    <img src="{{ url_for('static', filename='images/10_user.png') }}" alt="User Icon">
-                 </div>
-
-                    <div class="buyer-section">
-                        <div class="buyer-name">{{value.reviewer}}</div>
-                    </div>
-                    </div>
-
-                    <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
-                        <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                        <div class="date-purchase">title: {{value.title}}</div>
-                    </div>
-
-                    <div class="info3">
-                        
-                    <div class="info-upper">
-                    <div class="buyer-info">
-                        <div class="seller-rating">별점: </div>
-                    </div>
-
-                    <div class="info-detail">
-                    <span>({{value.rate}})</span>
+                <div class="page-wrap">
+                    <div class="page-nation">
+                        <ul>
+                            <li>
+                                {% for i in range(page_count) %}
+                                    <a href="{{url_for('view_review', page=i)}}" color="black">{{i+1}}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                
 
-                <div class="info-preview">
-                    <div>{{value.review}}</div>
-                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
-                </div>
-            </div>
-                    <div class="review-image-container">
-                        <img src="../../static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
-                    </div>
-               
-        
-        </div>  
-            </td>
-    {% endfor %}
-    </tr>
-            <tr>
-        {% for key, value in row3 %}
-        <td>
-    <div class="review-container">
-
-            <div class="user-info">
-                 <div class="user-icon">
-                    <img src="{{ url_for('static', filename='images/10_user.png') }}" alt="User Icon">
-                 </div>
-
-                    <div class="buyer-section">
-                        <div class="buyer-name">{{value.reviewer}}</div>
-                    </div>
-                    </div>
-
-                    <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
-                        <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                        <div class="date-purchase">title: {{value.title}}</div>
-                    </div>
-
-                    <div class="info3">
-                        
-                    <div class="info-upper">
-                    <div class="buyer-info">
-                        <div class="seller-rating">별점: </div>
-                    </div>
-
-                    <div class="info-detail">
-                    <span>({{value.rate}})</span>
-                    </div>
-                </div>
-                
-
-                <div class="info-preview">
-                    <div>{{value.review}}</div>
-                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
-                </div>
-                    
-            </div>
-                    <div class="review-image-container">
-                        <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
-                    </div>
-               
-           
-        </div>  
-            </td>
-    {% endfor %}
-    </tr>
- 
- </table>
-        
-        
-<div class="page-wrap">
-    <div class="page-nation">
-        <ul>
-            <li>
-            {% for i in range(page_count) %}
-                <a href="{{url_for('view_review', page=i)}}" color="black">{{i+1}}</a>
-            {% endfor %}
-            </li>
-        </ul>
-    </div>
-</div>
-    
-
-{% else %}
-<p>
-    등록된 리뷰가 없습니다
-</p>
-{% endif %}
+            {% else %}
+                <p>등록된 리뷰가 없습니다</p>
+            {% endif %}
         </main>
 
-<style>
-    main{
-    display: grid; 
-    }
-    .page-nation li{
-        list-style: none;
-    }
-    .page-wrap{
-        text-align: center;
-        font-size: 0;
-    }
-    .page-nation{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-    }
-    .page-nation a{
-        display: block;
-        margin: 0 3px;
-        float: left;
-        border: 1px solid #e6e6e6;
-        width: 28px;
-        height: 28px;
-        line-height: 28px;
-        text-align: center;
-        background-color: #fff;
-        font-size: 13px;
-        color: black;
-        text-decoration: none;
-        font-weight:bold;
-    }
-</style>
+        <style>
+            main{
+                display: grid; 
+            }
+            .page-nation li{
+                list-style: none;
+            }
+            .page-wrap{
+                text-align: center;
+                font-size: 0;
+            }
+            .page-nation{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+            }
+            .page-nation a{
+                display: block;
+                margin: 0 3px;
+                float: left;
+                border: 1px solid #e6e6e6;
+                width: 28px;
+                height: 28px;
+                line-height: 28px;
+                text-align: center;
+                background-color: #fff;
+                font-size: 13px;
+                color: black;
+                text-decoration: none;
+                font-weight:bold;
+            }
+        </style>
 
-        
-    
     {% endblock section %}
 </body>
 </html>
