@@ -5,65 +5,293 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리뷰보기</title>
     
-     <link rel="stylesheet" href="{{ url_for('static', filename='5_review_all.css') }}">
+     
 </head>
+    
 <body>
+    
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
+
+.user-section{
+  display:flex;
+  width:100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+    font-family: 'Noto Sans KR';
+    float:right;
+}
+
+.status {
+    font-family: 'Noto Sans KR';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebefd6;
+}
+
+.info-section{
+    font-family: 'Noto Sans KR';
+    background-color: #ebefd6;
+    display:flex;
+    justify-content: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.info-block{
+   width:100%;
+   text-align: center;
+   font-size: 25px;
+   padding: 22px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   margin-bottom: 0;
+}
+
+.info-block:hover{
+    background-color: #c9d8b7;
+}
+
+  
+ .review-container {
+    display: flex;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #ccc;
+    height: 200px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-left:1oopx;
+    margin-right:30px;
+  }
+
+
+  
+  .user-icon {
+   width: 100px;
+   height: 100px;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+  }
+
+  .user-icon img{
+    max-width:100%;
+    max-height:100%;
+  }
+  
+  .review-image-container{
+    width:200px;
+    height:200px;
+    border-left: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .review-image{
+    max-width:100%;
+    max-height:100%;
+    object-fit:cover;
+  }
+
+  .item-container{
+    display:flex;
+    align-items: flex-start;
+  }
+
+  .buyer-section{
+    font-size: 30px;
+  }
+
+  .user-section img{
+    width:50px;
+    height:50px;
+  }
+
+  .item-details{
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    width: 300px;
+
+  }
+
+.buyer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.pagination{
+  display:inline-block;
+  margin-left: 550px;
+  margin-top: 45px;
+}
+
+.pagination a{
+  color:black;
+  float:left;
+  padding: 8px 16px;
+  font-family: 'Noto Sans KR';
+  text-decoration: none;
+  
+  transition: background-color .3s;
+  margin-left: 0 4px;
+}
+
+.pagination a:hover{
+  background-color: #c9d8b7;
+  color:black;
+  border:1px solid #c9d8b7;
+}
+
+#product-reviews{
+    background-color: #c9d87b;
+}
+
+.review-button{
+  font-size: 23px;
+  font-family: 'Noto Sans KR';
+  margin-top: 50px;
+  margin-right: 30px;
+  float: right;
+  width: 200px;
+  height: 50px;
+  background-color: #c9d8b7;
+  text-align: center;
+  padding-top: 5px;
+  transition: background-color 0.3s, opacity 0.3s; 
+}
+
+.review-button:hover{
+  background-color: #c9d8b7; 
+  opacity: 0.6; 
+}
+
+  
+  
+.user-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 75px;
+ margin-right: 20px;
+}
+
+.info3{
+ display: flex;
+ font-size: 25px;
+ align-items: flex-start;
+ flex-direction: column;
+}
+
+.info-upper{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+/* .info-detail{
+  display: flex;
+  align-items: flex-end;
+} */
+
+.info-preview{
+  display: flex;
+  border: 2px solid #ccc;
+  width: 400px;
+  font-size: 20px;
+  height: 70px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.more{
+  width: 25px;
+  height: 25px;
+  transition: background-color 0.3s;
+  margin-top: 3px;
+}
+
+.more:hover{
+  background-color: #c9d8b7;
+}
+
+.uuuper{
+  display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+    </style>
 
 {% extends "index.html" %}
     
     {% block section %}
      <main>
-       <div class="uuuper">
-        <h1 style="font-family: 'Noto Sans KR'; margin-left: 100px; font-size:23px"> 리뷰 전체 조회 </h1>
-        </div> 
+        <content>
+            <div class="status" style="margin-bottom:35px;">
+                <p style="font-size:23px"> 전체 상품 후기 </p>
+            </div>
+        </content> 
    
      {% if total > 0 %}
     <table>
     <tr>
         {% for key, value in row1 %}
         <td>
-    <div class="review-container">
+<div class="review-container">
 
-            <div class="user-info">
-                 <div class="user-icon">
-                    <img src="{{ url_for('static', filename='images/10_user.png') }}" alt="User Icon">
-                 </div>
+        <div class="user-info">
+             <div class="user-icon">
+                <img src="{{ url_for('static', filename='images/10_user.png') }}" alt="User Icon">
+             </div>
 
-                    <div class="buyer-section">
-                        <div class="buyer-name">{{value.reviewer}}</div>
-                    </div>
-                    </div>
+                <div class="buyer-section">
+                    <div class="buyer-name">{{value.reviewer}}</div>
+                </div>
+                </div>
 
-                    <div class="item-details">
-                        <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
-                        <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                        <div class="date-purchase">title: {{value.title}}</div>
-                    </div>
+                <div class="item-details">
+                    <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
+                    <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
 
-                    <div class="info3">
-                        
+
+                <div class="info-detail">
+                별점: <span>★★★★☆({{value.rate}})</span>
+                </div>
+
+                </div>
+
+                <div class="info3">
+
                     <div class="info-upper">
-                    <div class="buyer-info">
-                        <div class="seller-rating">별점: </div>
+                        <div class="date-purchase">제목: {{value.title}}</div>
                     </div>
 
-                    <div class="info-detail">
-                    <span>★★★★☆({{value.rate}})</span>
-                    </div>
-                </div>
-                
+                    <div class="info-preview">
 
-                <div class="info-preview">
-                    <div>{{value.review}}</div>
-                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
+                        <div>{{value.review}}</div>
+
+                    </div>
+
+                    <a href="/view_review_detail/{{key}}" class="more-button" >리뷰 상세보기</a>
+
                 </div>
+            <div class="review-image-container">
+                <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
             </div>
-                    <div class="review-image-container">
-                        <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
-                    </div>
-               
-           
-        </div>  
+
+
+    </div>  
             </td>
     {% endfor %}
     </tr>
@@ -87,26 +315,26 @@
                     <div class="item-details">
                         <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
                         <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                        <div class="date-purchase">title: {{value.title}}</div>
+                         <div class="info-detail">
+                    별점: <span>★★★★☆({{value.rate}})</span>
+                    </div>
+                        
                     </div>
 
                     <div class="info3">
                         
                     <div class="info-upper">
-                    <div class="buyer-info">
-                        <div class="seller-rating">별점: </div>
+                    
+                        <div class="date-purchase">제목: {{value.title}}</div>
                     </div>
 
-                    <div class="info-detail">
-                    <span>★★★★☆({{value.rate}})</span>
-                    </div>
-                </div>
-                
+                     <div class="info-preview">
 
-                <div class="info-preview">
-                    <div>{{value.review}}</div>
-                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
-                </div>
+                        <div>{{value.review}}</div>
+
+                     </div>
+
+                    <a href="/view_review_detail/{{key}}" class="more-button" >리뷰 상세보기</a>
             </div>
                     <div class="review-image-container">
                         <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
@@ -135,26 +363,27 @@
                     <div class="item-details">
                         <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
                         <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                        <div class="date-purchase">title: {{value.title}}</div>
+                         <div class="info-detail">
+                    별점: <span>★★★★☆({{value.rate}})</span>
+                    </div>
+                        
                     </div>
 
                     <div class="info3">
                         
                     <div class="info-upper">
-                    <div class="buyer-info">
-                        <div class="seller-rating">별점: </div>
-                    </div>
-
-                    <div class="info-detail">
-                    <span>★★★★☆({{value.rate}})</span>
-                    </div>
+                    
+                        <div class="date-purchase">제목: {{value.title}}</div>
                 </div>
                 
 
-                <div class="info-preview">
-                    <div>{{value.review}}</div>
-                    <a href="/view_review_detail/{{key}}"> <img src="{{ url_for('static', filename='images/10_plus.png') }}"  class="more"> </a>
-                </div>
+                 <div class="info-preview">
+
+                        <div>{{value.review}}</div>
+
+                    </div>
+
+                    <a href="/view_review_detail/{{key}}" class="more-button" >리뷰 상세보기</a>
                     
             </div>
                     <div class="review-image-container">
@@ -220,8 +449,29 @@
         font-size: 13px;
         color: black;
         text-decoration: none;
-        font-weight:bold;
+        font-weight:bold;}
+        
+        .info-detail{
+  display: flex;
+  align-items: flex-end;
+            
+}
+    .info-detail span{
+        color: orange;
     }
+    
+    .more-button{
+       width: 105px;
+    height: 25px;
+    background-color: #c9d8b7;
+    text-align: center;
+    padding-top: 5px;
+    transition: background-color 0.3s, opacity 0.3s;
+            font-size: 15px;
+    margin-top: 10px;
+}
+    }
+    
 </style>
 
         
