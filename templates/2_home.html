@@ -180,10 +180,13 @@ border:1px solid  #ebefd6;
                                         <p style="font-size: 18px;">
                                             {{ value.price }}원<br/>
                                             {{ value.sellerid }}<br/>
-                                            <span style="color: orange; font-size: 15px;">★★★★★(2)</span>
-                                            <br/>
-                                            <!-- <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}"
-                                                alt="wishbutton" style="width: 45px; height: 45px;"/> -->
+                                            <span style="color: orange; font-size: 15px;">
+                                {% if value.average_rating %}
+                                    {{ value.average_rating }} / 5
+                                {% else %}
+                                    No rating yet
+                                {% endif %}
+                            </span>
                                         </p>
                                     </div>
                                 </div>

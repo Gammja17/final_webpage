@@ -11,7 +11,7 @@ class DBhandler:
 
     def insert_item(self, name, data, img_path):
         try:
-            price = float(data['price'])
+            price = int(data['price'])
         except ValueError:
             print("Invalid price for item:", name)
             return False
@@ -97,7 +97,26 @@ class DBhandler:
             "img_path": img_path
         }
         self.db.child("review").child(data['name']).set(review_info)
+        
+        self.db.child("review").child(data['name'])
         return True
+    
+    def update_average_rating(self, product_name):
+        reviews = self.db.child("review").child(product_name).get().val()
+        
+        if not reviews:
+            return
+        
+        total_rating = 0
+        review_count = 0
+        
+        for review_id, review in reviews.items():
+            total_rating += int(review['rate'])
+            review_count += 1
+            
+        if review_count > 0:
+            average_rating = total_rating / review_count
+            self.db.child("item").child(product_name).update({"average_rating": average_rating})
     
     def get_review_byname(self,name):
         reviews = self.db.child("review").get().val()
@@ -147,10 +166,7 @@ class DBhandler:
             if user.val().get('id') == user_id:
                 return user.val()
         return None 
-    
-    
 
-    
     def get_items_bycategory(self, cate):
         items = self.db.child("item").get()
         target_value = []
