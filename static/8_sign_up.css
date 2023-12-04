@@ -24,14 +24,16 @@
     background-color: #ebefd6;
 }
 
-input[type="text"],
+input[type="name"],
+input[type="id"],
 input[type="password"],
 input[type="realname"],
 input[type="email"],
 input[type="phone"],
 input[type="address"],
 input[type="account"],
-input[type="secret"]{
+input[type="secret"],
+input[type="ewha"]{
     width: 100%; 
     padding: 10px; 
     margin: 5px 0 20px 0; 
