@@ -161,42 +161,39 @@ border:1px solid  #ebefd6;
             </div>
 
             {% if total > 0 %}
-
             <table>
                 <tr>
                     {% for key, value in datas %}
-                    <td>
-                        <div id="product-container">
-                            <a
-                                onclick="location.href='/product_detail/{{key}}/';"
-                                style="cursor: pointer;"
-                            >
-                                <div class="product">
-                                    <span class="product-img">
-                                        <img src="../../static/images/{{ value.img_path }}" alt="product image"/>
-                                    </span>
-                                    <div class="product-info">
-                                        <p style="font-size: 25px; font-weight: bold;" class="productname">{{ key }}</p>
-                                        <p style="font-size: 18px;">
-                                            {{ value.price }}원<br/>
-                                            {{ value.sellerid }}<br/>
-                                            <span style="color: orange; font-size: 15px;">
-                                {% if value.average_rating %}
-                                    {{ value.average_rating }} / 5
-                                {% else %}
-                                    No rating yet
-                                {% endif %}
-                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </td>
-                    {% if loop.index % 3 == 0 %}
-                </tr>
-                <tr>
-                    {% endif %} {% endfor %}
+                        <td>
+                            <div id="product-container">
+                                <a onclick="location.href='/product_detail/{{key}}/';" style="cursor: pointer;">
+                                    <div class="product">
+                                        <span class="product-img">
+                                            <img src="static/images/{{ value.img_path }}" alt="product image"/>
+                                        </span>
+                                        <div class="product-info">
+                                            <p style="font-size: 25px; font-weight: bold;" class="productname">{{ key }}</p>
+                                            <p style="font-size: 18px;">
+                                                {{ value.price }}원<br/>
+                                                {{ value.sellerid }}<br/>
+                                                <span style="color: orange; font-size: 15px;">
+                                                {% if value.average_rating %}
+                                                {{ value.average_rating }} / 5
+                                                {% else %}
+                                                No rating yet
+                                                {% endif %}
+                                                </span>
+                                            </p>
+                                        </div>
+                                     </div>
+                                </a>
+                            </div>
+                        </td>
+                        {% if loop.index % 3 == 0 %}
+                            </tr> <!-- 각 행을 마침 -->
+                            <tr> <!-- 새로운 행 시작 -->
+                        {% endif %}
+                    {% endfor %}
                 </tr>
             </table>
             <br /><br /><br />
@@ -216,7 +213,7 @@ border:1px solid  #ebefd6;
                 </div>
             </div>
             {% else %}
-            <p>
+            <p style="text-align:center; justify-content:center;">
                 등록된 상품이 없습니다.
             </p>
             {% endif %}
