@@ -63,7 +63,6 @@ def view_home():
     )
 
 
-
 @application.route("/product_upload") 
 def product_upload():
     if 'id' not in session:
@@ -91,8 +90,6 @@ def product_detail():
 
     return render_template("3_product_detail.html", data=data, img_path=
 "static/images/{}".format(image_file.filename))
-    # return render_template("3_product_detail.html")
-
 
 @application.route("/seller_info")
 def seller_info():
