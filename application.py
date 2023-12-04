@@ -34,6 +34,7 @@ def view_home():
     if sort_by == "price":
         data = {k: v for k, v in sorted(data.items(), key=lambda item: float(item[1]['price']))}
         
+
     item_counts = len(data)
     if item_counts <= per_page:
         data = dict(list(data.items())[:item_counts])

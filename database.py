@@ -11,16 +11,17 @@ class DBhandler:
 
     def insert_item(self, name, data, img_path):
         try:
+
             price = int(data['price'])
         except ValueError:
             print("Invalid price for item:", name)
             return False
-        
+
         item_info = {
             "img_path": img_path,
             "name": data['name'],
             "title": data['title'],
-            "price": data['price'],
+            "price": 'price',
             "productstatus": data['productstatus'],
             "category": data['category'],
             "place": data['place'],
