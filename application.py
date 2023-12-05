@@ -199,6 +199,12 @@ def wishlist():
     wishlist_items = DB.get_wishlist_items(user_id)
     data = DB.get_wishlist_items(user_id)
     
+    for key in data.keys():
+        review = DB.get_reviews_by_product_name(key)  # This is now a single review as an OrderedDict
+        if review and 'rate' in review:
+            data[key]['rating'] = review['rate']
+        else:
+            data[key]['rating'] = 'No Rating'
     if not isinstance(data, dict):
         # Handle the case where data is not a dictionary (e.g., convert from string or return an error)
         return "Error: Data format is incorrect"
