@@ -63,6 +63,7 @@ def view_home():
     )
 
 
+
 @application.route("/product_upload") 
 def product_upload():
     if 'id' not in session:
@@ -88,8 +89,10 @@ def product_detail():
     data = request.form
     DB.insert_item(data['name'], data, image_file.filename)
 
-    return render_template("3_product_detail.html", data=data, img_path=
-"static/images/{}".format(image_file.filename))
+
+    # 상품 정보가 성공적으로 제출된 후 홈 페이지로 리디렉션
+    return redirect(url_for('view_home'))
+
 
 @application.route("/seller_info")
 def seller_info():
@@ -232,8 +235,7 @@ def search():
     # 판매자 아이디, 상품명으로 검색
     filtered_items = {name: details for name, details in all_items.items() 
                       if query.lower() in name.lower() or query.lower() in details.get('sellerid', '').lower()}
-    
-    
+
     data = filtered_items
     item_counts = len(data)
     data = dict(list(data.items())[start_idx:end_idx])
