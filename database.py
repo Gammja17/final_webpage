@@ -97,7 +97,7 @@ class DBhandler:
             "seller": data['seller'],
             "img_path": img_path
         }
-        self.db.child("review").child(data['name']).push(review_info)
+        self.db.child("review").child(data['name']).set(review_info)
         
         return True
     

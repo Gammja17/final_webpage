@@ -267,7 +267,8 @@
 
                         <div class="info-detail"  style="color: gold;">
                         별점: 
-                        {% set rate = value.rate|int %}
+                        {% set rate = value.rate|int(default=0) %}
+
                         {% for i in range(1, 6) %}
                             {% if i <= rate %} ★
                             {% else %} ☆ 
@@ -324,7 +325,8 @@
                         <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
                          <div class="info-detail"  style="color: gold;">
                         별점: 
-                        {% set rate = value.rate|int %}
+                        {% set rate = value.rate|int(default=0) %}
+
                         {% for i in range(1, 6) %}
                             {% if i <= rate %} ★
                             {% else %} ☆ 
@@ -379,7 +381,8 @@
                         <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
                          <div class="info-detail"  style="color: gold;">
                             별점: 
-                            {% set rate = value.rate|int %}
+                            {% set rate = value.rate|int(default=0) %}
+
                             {% for i in range(1, 6) %}
                                 {% if i <= rate %} ★
                                 {% else %} ☆ 
