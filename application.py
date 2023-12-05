@@ -15,26 +15,36 @@ def hello():
      #return render_template("7_1_log_in.html")
     return redirect(url_for('view_home'))
 
-@application.route("/home") #home으로
+@application.route("/home")
 def view_home():
     page = request.args.get("page", 0, type=int)
     sort_by = request.args.get("sort", None)
     category = request.args.get("category", "all")
-    per_page=6
-    per_row=3
-    row_count=int(per_page/per_row)
-    start_idx=per_page*page
-    end_idx=per_page*(page+1)
-    
+    per_page = 6
+    per_row = 3
+    row_count = int(per_page / per_row)
+    start_idx = per_page * page
+    end_idx = per_page * (page + 1)
+
     if category == "all":
         data = DB.get_items()
     else:
         data = DB.get_items_bycategory(category)
 
+    # Fetch and include reviews for each product
+    for key in data.keys():
+        review = DB.get_reviews_by_product_name(key)  # This is now a single review as an OrderedDict
+        if review and 'rate' in review:
+            data[key]['rating'] = review['rate']
+        else:
+            data[key]['rating'] = 'No Rating'
+
+
+    # Sorting, if applicable
     if sort_by == "price":
         data = {k: v for k, v in sorted(data.items(), key=lambda item: float(item[1]['price']))}
-        
 
+    # Pagination logic
     item_counts = len(data)
     if item_counts <= per_page:
         data = dict(list(data.items())[:item_counts])
@@ -42,14 +52,13 @@ def view_home():
         data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
 
-
+    # Preparing data for rows
     for i in range(row_count):
-        if (i == row_count-1) and (tot_count%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        if (i == row_count - 1) and (tot_count % per_row != 0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i * per_row:])
         else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-            
-    
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i * per_row:(i + 1) * per_row])
+
     return render_template(
         "2_home.html",
         datas=data.items(),
@@ -57,7 +66,7 @@ def view_home():
         row2=locals()['data_1'].items(),
         limit=per_page,
         page=page,
-        page_count = math.ceil(item_counts / per_page),
+        page_count=math.ceil(item_counts / per_page),
         total=item_counts,
         category=category
     )
@@ -89,9 +98,9 @@ def product_detail():
     data = request.form
     DB.insert_item(data['name'], data, image_file.filename)
 
-    return render_template("3_product_detail.html", data=data, img_path=
-"static/images/{}".format(image_file.filename))
-    # return render_template("3_product_detail.html")
+
+    # 상품 정보가 성공적으로 제출된 후 홈 페이지로 리디렉션
+    return redirect(url_for('view_home'))
 
 
 @application.route("/seller_info")
@@ -159,11 +168,6 @@ def register_user():
     else:
         flash("아이디가 이미 존재합니다!")
         return render_template("8_sign_up.html")
-
-        
-    #print(name,addr,phone,category,status)
-    #return render_template("reg_item.html")
-
 
     
 @application.route("/logout")
@@ -240,8 +244,7 @@ def search():
     # 판매자 아이디, 상품명으로 검색
     filtered_items = {name: details for name, details in all_items.items() 
                       if query.lower() in name.lower() or query.lower() in details.get('sellerid', '').lower()}
-    
-    
+
     data = filtered_items
     item_counts = len(data)
     data = dict(list(data.items())[start_idx:end_idx])
@@ -262,9 +265,6 @@ def search():
         total = item_counts,
         query=query
     )
-    
-    
-    # return render_template("search_result.html", items=filtered_items)
 
 @application.route("/review_upload")
 def review_upload():
@@ -297,37 +297,41 @@ def view_review():
     if 'id' not in session:
         return redirect(url_for('login'))
     
-    page = request.args.get("page", 0, type = int)
+    page = request.args.get("page", 0, type=int)
     per_page = 3
     per_row = 1
-    row_count = int(per_page/per_row)
-    start_idx = per_page*page
-    end_idx = per_page*(page+1)
+    row_count = int(per_page / per_row)
+    start_idx = per_page * page
+    end_idx = per_page * (page + 1)
     
     data = DB.get_reviews()
+
     print("data269: "+str(data))
     item_counts = len(data)
     print("item_counts: "+str(item_counts))
 
     data = dict(list(data.items())[start_idx:end_idx])
+
     tot_count = len(data)
     
     for i in range(row_count):
-        if(i==row_count-1) and (tot_count%per_row!=0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else: 
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+        if (i == row_count - 1) and (tot_count % per_row != 0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i * per_row:])
+        else:
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i * per_row:(i + 1) * per_row])
+    
     return render_template(
         "5_review_all.html",
-        datas = data.items(),
-        row1 = locals()['data_0'].items(),
-        row2 = locals()['data_1'].items(),
-        row3 = locals()['data_2'].items(),
-        limit = per_page,
-        page = page,
-        page_count = math.ceil(item_counts / per_page),
-        total = item_counts
+        datas=data.items(),
+        row1=locals()['data_0'].items(),
+        row2=locals()['data_1'].items(),
+        row3=locals()['data_2'].items(),
+        limit=per_page,
+        page=page,
+        page_count=math.ceil(item_counts / per_page),
+        total=item_counts
     )
+
 
 @application.route("/view_review_detail/<name>/")
 def view_review_detail(name):

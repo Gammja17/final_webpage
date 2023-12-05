@@ -265,9 +265,17 @@
                     <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
 
 
-                <div class="info-detail">
-                별점: <span>★★★★☆({{value.rate}})</span>
-                </div>
+                        <div class="info-detail"  style="color: gold;">
+                        별점: 
+                        {% set rate = value.rate|int(default=0) %}
+
+                        {% for i in range(1, 6) %}
+                            {% if i <= rate %} ★
+                            {% else %} ☆ 
+                            {% endif %}
+                        {% endfor %}
+                        ({{value.rate}})
+                    </div>
 
                 </div>
 
@@ -277,13 +285,10 @@
                         <div class="date-purchase">제목: {{value.title}}</div>
                     </div>
 
-
                     <div class="info-preview">
 
                         <div>{{value.review}}</div>
 
-
-                   
                     </div>
 
                     <a href="/view_review_detail/{{key}}" class="more-button" >리뷰 상세보기</a>
@@ -318,8 +323,16 @@
                     <div class="item-details">
                         <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
                         <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                         <div class="info-detail">
-                    별점: <span>★★★★☆({{value.rate}})</span>
+                         <div class="info-detail"  style="color: gold;">
+                        별점: 
+                        {% set rate = value.rate|int(default=0) %}
+
+                        {% for i in range(1, 6) %}
+                            {% if i <= rate %} ★
+                            {% else %} ☆ 
+                            {% endif %}
+                        {% endfor %}
+                        ({{value.rate}})
                     </div>
                         
                     </div>
@@ -331,9 +344,7 @@
                         <div class="date-purchase">제목: {{value.title}}</div>
                     </div>
 
-
                      <div class="info-preview">
-                   
 
                         <div>{{value.review}}</div>
 
@@ -342,7 +353,7 @@
                     <a href="/view_review_detail/{{key}}" class="more-button" >리뷰 상세보기</a>
             </div>
                     <div class="review-image-container">
-                        <img src="../../static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
+                        <img src="static/images/{{ value.img_path }}" alt="Review Image" class="review-image">
                     </div>
                
         
@@ -368,8 +379,16 @@
                     <div class="item-details">
                         <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
                         <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                         <div class="info-detail">
-                    별점: <span>★★★★☆({{value.rate}})</span>
+                         <div class="info-detail"  style="color: gold;">
+                            별점: 
+                            {% set rate = value.rate|int(default=0) %}
+
+                            {% for i in range(1, 6) %}
+                                {% if i <= rate %} ★
+                                {% else %} ☆ 
+                                {% endif %}
+                            {% endfor %}
+                            ({{value.rate}})
                     </div>
                         
                     </div>
@@ -377,11 +396,8 @@
                     <div class="info3">
                         
                     <div class="info-upper">
-
                     
                         <div class="date-purchase">제목: {{value.title}}</div>
-
-                  
                 </div>
                 
 

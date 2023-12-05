@@ -176,14 +176,18 @@ border:1px solid  #ebefd6;
                                             <p style="font-size: 18px;">
                                                 {{ value.price }}원<br/>
                                                 {{ value.sellerid }}<br/>
-                                                <span style="color: orange; font-size: 15px;">
-                                                {% if value.average_rating %}
-                                                {{ value.average_rating }} / 5
-                                                {% else %}
-                                                No rating yet
-                                                {% endif %}
-                                                </span>
-                                            </p>
+                                                <div>
+                                                        <span style="color: orange; font-size: 15px;">
+                                                            {% if value.rating != 'No Rating' %}
+                                                                {% for _ in range(value.rating|int) %}★{% endfor %}  
+                                                                {% for _ in range(5-value.rating|int) %}☆{% endfor %} ({{ value.rating }})  
+                                                            {% else %}
+                                                                별점 정보 없음
+                                                            {% endif %}
+                                                        </span>
+                                                        
+                                                    </div>
+                                                
                                         </div>
                                      </div>
                                 </a>
@@ -197,7 +201,7 @@ border:1px solid  #ebefd6;
                 </tr>
             </table>
             <br /><br /><br />
-            <hr style="border: 1.5px solid black;" />
+            <hr style="border:none" />
             <!-- 페이지네이션을 위한 코드 시작 -->
             <div class="page-wrap">
                 <div class="page-nation">
@@ -213,7 +217,7 @@ border:1px solid  #ebefd6;
                 </div>
             </div>
             {% else %}
-            <p style="text-align:center; justify-content:center;">
+            <p style="text-align:center; justify-content:center; margin-top: 200px; font-size: 20px; font-family: 'NOTO SANS KR';">
                 등록된 상품이 없습니다.
             </p>
             {% endif %}

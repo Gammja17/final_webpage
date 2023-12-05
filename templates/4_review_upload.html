@@ -7,6 +7,8 @@
      <link rel="stylesheet" href="{{ url_for('static', filename='4_review_upload.css') }}">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <!--<script src="{{ url_for('static', filename='4_review_upload.js') }}" defer></script>-->
+    
+    <title>리뷰 등록 - 이화 마켓</title>
     <style>
         
         .star {
@@ -19,20 +21,10 @@
     </style>
 </head>
 <body>
-    <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>리뷰 등록 - 이화 마켓</title>
-</head>
-<body>
-
-
-     {% extends "index.html" %}
+{% extends "index.html" %}
     
-    {% block section %}
+{% block section %}
 
 
         <content>
@@ -42,16 +34,18 @@
             </div> 
         </content>
    
-    <main>
+<main>
 <form class="mb-3" name="myform" id="myform" method="post" action="/reg_review" enctype="multipart/form-data">
+    <input type="hidden" name="name" value="{{name}}">
+    <input type="hidden" name="seller" value="{{seller}}">
+
     <div class="info-product">
-        <input type="text" placeholder="상품명" name="seller" id="seller" value="{{seller}}" class="seller" required>
-        <h2>님의</h2>
-        <input type="text" placeholder="상품명" name="name" id="name" value="{{name}}" class="name" required>
+        <h2 style="font-family:'Noto Sans KR">
+            판매자 '{{seller}}' 님의 상품 '{{name}}' 에 대한 후기를 작성해주세요.
+        </h2>
     </div>
     <br>
             <div class="evaluation-product">
-                <h2>상품 품질 평가</h2>
                 <!--만약 리뷰자 아이디를 받아와서 옆에서 계속 바뀌게 하고 싶으면 추후 삽입-->
                 <!--해당 상품 사진이랑 상품명 수량 가져오는 것은 일단은 삭제했음-->
             </div>
