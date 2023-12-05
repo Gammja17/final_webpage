@@ -265,9 +265,16 @@
                     <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
 
 
-                <div class="info-detail">
-                별점: <span>★★★★☆({{value.rate}})</span>
-                </div>
+                        <div class="info-detail"  style="color: gold;">
+                        별점: 
+                        {% set rate = value.rate|int %}
+                        {% for i in range(1, 6) %}
+                            {% if i <= rate %} ★
+                            {% else %} ☆ 
+                            {% endif %}
+                        {% endfor %}
+                        ({{value.rate}})
+                    </div>
 
                 </div>
 
@@ -315,8 +322,15 @@
                     <div class="item-details">
                         <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
                         <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                         <div class="info-detail">
-                    별점: <span>★★★★☆({{value.rate}})</span>
+                         <div class="info-detail"  style="color: gold;">
+                        별점: 
+                        {% set rate = value.rate|int %}
+                        {% for i in range(1, 6) %}
+                            {% if i <= rate %} ★
+                            {% else %} ☆ 
+                            {% endif %}
+                        {% endfor %}
+                        ({{value.rate}})
                     </div>
                         
                     </div>
@@ -363,8 +377,15 @@
                     <div class="item-details">
                         <div class="product-name" style="margin-bottom: 10px;">상품명: <u>{{value.name}}</u></div>
                         <div class="seller-name" style="margin-bottom: 10px;">판매자 id: <u>{{value.seller}}</u></div>
-                         <div class="info-detail">
-                    별점: <span>★★★★☆({{value.rate}})</span>
+                         <div class="info-detail"  style="color: gold;">
+                            별점: 
+                            {% set rate = value.rate|int %}
+                            {% for i in range(1, 6) %}
+                                {% if i <= rate %} ★
+                                {% else %} ☆ 
+                                {% endif %}
+                            {% endfor %}
+                            ({{value.rate}})
                     </div>
                         
                     </div>
