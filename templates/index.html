@@ -121,10 +121,11 @@ aside {
 }
 
 .status {
-    font-family: 'Noto Sans KR';
+   font-family: 'Noto Sans KR';
     font-weight: bold;
     display: flex;
     justify-content: center;
+    height: 78.6px;
     align-items: center;
     background-color: #ebefd6;
 }
@@ -209,7 +210,7 @@ aside {
         </header>
 
         <aside>
-                <p style="font-weight: bold; font-size:23px"> 카테고리<p>
+            <p style="font-weight: bold;font-size: 23px;height: 75px;margin: 0px;padding: 0px;display: flex;justify-content: center;align-items: center;"> 카테고리</p>
                 <ul class="category">  
                     <li><a href="{{url_for('view_home', page=i, category='all')}}"><div class="category-menu">전체</div></a></li>
                     <li><a href="{{url_for('view_home', page=i, category='cloth')}}"> <div class="category-menu">옷</div></a></li>
