@@ -272,7 +272,7 @@
                                         <td><u>{{data.seller}}</u></td>
                                     </tr>
                                     <tr>
-                                        <td>상품 명:</td>
+                                        <td>상품 이름:</td>
                                         <td><u>{{data.name}}</u></td>
                                     </tr>
                                 </table>
@@ -290,12 +290,21 @@
                     <div class="review-detail">
                         <div class="review">
                             <p class="review-title">리뷰 제목: {{data.title}}</p>
-                            <span class="review-star">
-                                별점: <span style="color: gold;"> ({{data.rate}})</span>
-                            </span>
+                        <span class="review-star">
+                            별점: 
+                            {% for i in range(1, 6) %}
+                                {% if i <= data.rate|int %}
+                                    <span style="color: gold;">★</span> <!-- 평점에 해당하는 별 -->
+                                {% else %}
+                                    <span style="color: gold;">☆</span> <!-- 나머지 빈 별 -->
+                                {% endif %}
+                            {% endfor %}
+                            ({{data.rate}})
+                        </span>
+
                         </div>
                         <div class="input-container2">
-                            <textarea id="pro-review" cols="10" rows="50" readonly>
+                            <textarea id="pro-review" cols="10" rows="10" readonly>
  {{data.review}} </textarea
                             >
                         </div>
