@@ -147,6 +147,35 @@ aside {
   background-color: #c9d8b7; 
   opacity: 0.6; 
 }
+    
+    
+.loggin {
+    font-family: 'Noto Sans KR';
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.loggin::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s, opacity 0.3s;
+    z-index: -1;
+    box-sizing: border-box;
+}
+
+.loggin:hover::before {
+    border-color: #ebefd6;
+    opacity: 0.6;
+}
 
     </style>
 
@@ -173,7 +202,7 @@ aside {
                     <a href="/wishlist"><span class="hb" id="wishlist">  <img id="icon" src="{{ url_for('static', filename='images/10_wish.png') }}" alt="wish"> </span></a>
                     <a href="/mypage"><span class="hb" id="mypage">  <img id="icon" src="{{ url_for('static', filename='images/10_my.png') }}" alt="my"> </span></a>
                     {% else %}
-                    <a href="/login">로그인</a>
+                    <a href="/login" class="loggin">로그인</a>
                     {% endif %}
                 </div>
             </div>
@@ -191,7 +220,8 @@ aside {
                 </ul>
         </aside>
         
-    {% block section %}{% endblock %}
+    {% block section %}
+    {% endblock %}
 
     </body>
 
