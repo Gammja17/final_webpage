@@ -169,7 +169,7 @@ border:1px solid  #ebefd6;
         </content>
         <div class="rside">
     
-    {% if items %}
+    {% if total > 0 %}
         <!-- <table>
             <tr>
                 {% for key, value in items.items() %}
@@ -185,7 +185,7 @@ border:1px solid  #ebefd6;
         </table> -->
             <table>
                 <tr>
-                    {% for key, value in items.items() %}
+                    {% for key, value in datas %}
                     <td>
                         <div id="product-container">
                             <a
