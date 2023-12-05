@@ -176,14 +176,18 @@ border:1px solid  #ebefd6;
                                             <p style="font-size: 18px;">
                                                 {{ value.price }}원<br/>
                                                 {{ value.sellerid }}<br/>
-                                                <span style="color: orange; font-size: 15px;">
-                                                {% if value.average_rating %}
-                                                {{ value.average_rating }} / 5
-                                                {% else %}
-                                                No rating yet
-                                                {% endif %}
-                                                </span>
-                                            </p>
+                                                <div>
+                                                        <span style="color: orange; font-size: 15px;">
+                                                            {% if value.rating != 'No Rating' %}
+                                                                {% for _ in range(value.rating|int) %}★{% endfor %}  
+                                                                {% for _ in range(5-value.rating|int) %}☆{% endfor %} ({{ value.rating }})  
+                                                            {% else %}
+                                                                별점 정보 없음
+                                                            {% endif %}
+                                                        </span>
+                                                        
+                                                    </div>
+                                                
                                         </div>
                                      </div>
                                 </a>

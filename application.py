@@ -15,26 +15,36 @@ def hello():
      #return render_template("7_1_log_in.html")
     return redirect(url_for('view_home'))
 
-@application.route("/home") #home으로
+@application.route("/home")
 def view_home():
     page = request.args.get("page", 0, type=int)
     sort_by = request.args.get("sort", None)
     category = request.args.get("category", "all")
-    per_page=6
-    per_row=3
-    row_count=int(per_page/per_row)
-    start_idx=per_page*page
-    end_idx=per_page*(page+1)
-    
+    per_page = 6
+    per_row = 3
+    row_count = int(per_page / per_row)
+    start_idx = per_page * page
+    end_idx = per_page * (page + 1)
+
     if category == "all":
         data = DB.get_items()
     else:
         data = DB.get_items_bycategory(category)
 
+    # Fetch and include reviews for each product
+    for key in data.keys():
+        review = DB.get_reviews_by_product_name(key)  # This is now a single review as an OrderedDict
+        if review and 'rate' in review:
+            data[key]['rating'] = review['rate']
+        else:
+            data[key]['rating'] = 'No Rating'
+
+
+    # Sorting, if applicable
     if sort_by == "price":
         data = {k: v for k, v in sorted(data.items(), key=lambda item: float(item[1]['price']))}
-        
 
+    # Pagination logic
     item_counts = len(data)
     if item_counts <= per_page:
         data = dict(list(data.items())[:item_counts])
@@ -42,14 +52,13 @@ def view_home():
         data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
 
-
+    # Preparing data for rows
     for i in range(row_count):
-        if (i == row_count-1) and (tot_count%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        if (i == row_count - 1) and (tot_count % per_row != 0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i * per_row:])
         else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-            
-    
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i * per_row:(i + 1) * per_row])
+
     return render_template(
         "2_home.html",
         datas=data.items(),
@@ -57,10 +66,11 @@ def view_home():
         row2=locals()['data_1'].items(),
         limit=per_page,
         page=page,
-        page_count = math.ceil(item_counts / per_page),
+        page_count=math.ceil(item_counts / per_page),
         total=item_counts,
         category=category
     )
+
 
 
 @application.route("/product_upload") 
