@@ -200,13 +200,12 @@ def wishlist():
     data = DB.get_wishlist_items(user_id)
     
     for key in data.keys():
-        review = DB.get_reviews_by_product_name(key)  # This is now a single review as an OrderedDict
+        review = DB.get_reviews_by_product_name(key)  
         if review and 'rate' in review:
             data[key]['rating'] = review['rate']
         else:
             data[key]['rating'] = 'No Rating'
     if not isinstance(data, dict):
-        # Handle the case where data is not a dictionary (e.g., convert from string or return an error)
         return "Error: Data format is incorrect"
     
     item_counts = len(data)
@@ -250,8 +249,17 @@ def search():
     # 판매자 아이디, 상품명으로 검색
     filtered_items = {name: details for name, details in all_items.items() 
                       if query.lower() in name.lower() or query.lower() in details.get('sellerid', '').lower()}
-
     data = filtered_items
+    
+    for key in data.keys():
+        review = DB.get_reviews_by_product_name(key)  
+        if review and 'rate' in review:
+            data[key]['rating'] = review['rate']
+        else:
+            data[key]['rating'] = 'No Rating'
+    if not isinstance(data, dict):
+        return "Error: Data format is incorrect"
+    
     item_counts = len(data)
     data = dict(list(data.items())[start_idx:end_idx])
     tot_count = len(data)
