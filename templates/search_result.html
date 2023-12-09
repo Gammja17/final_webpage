@@ -1,297 +1,272 @@
-  <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <meta name="viewport" content="width=device-height, initial-scale=1.0" />
-
-        </head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-height, initial-scale=1.0" />
+    </head>
     <style>
-
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
 
-    .rside{
-      display: flex;
-        flex-direction: column;
-    }
-
-
-    .upper{
-      display: flex;
-      justify-content: space-between;
-    }
-
-    #product-container {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top:50px;
-      margin-left:10px;
-
-    }
-    .product {
-      width: 400px;
-      height: 250px;
-      border: 3px solid black;
-      margin: 10px;
-      display: flex;
-      transition: background-color 0.3s, opacity 0.3s; 
-    }
-
-        
-    .product:hover {
-      background-color: rgba(255, 255, 255, 0.5); 
-      opacity: 0.6; 
-    }
-
-    .product-img {
-      width: 250px; 
-      height: 250px; 
-
-    }
-
-    .product-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-right: 3px solid black;
-    }
-
-
-
-    .product-info{
-      width: 90px;
-      height: 200px;
-      font-family: 'Noto Sans KR';
-
-    float:right;
-    margin-left:10px;
-    }
-
-    .custom-button {
-      background: url('10_wishbutton.png') no-repeat;
-      background-size: cover;
-      width: 50px;
-      height: 50px;
-      border: none;
-      cursor: pointer;
-      text-indent: -9999px;
-    }
-
-
-
-
-
-    a {
-      font-size: 23px;
-      font-family: 'Noto Sans KR';
-
-    }
-    .sort {
-      float: left;
-      margin-top: 60px;
-      margin-left: 100px;
-    }
-
-    .sort a{
-      transition: background-color 0.3s;
-    }
-
-    .sort a:hover{
-    background-color:  #ebefd6;
-    color:black;
-    border:1px solid  #ebefd6;
-    }
-
-    .upload-button {
-      margin-top: 50px;
-      margin-right: 100px;
-      float: right;
-      width: 200px;
-      height: 50px;
-      background-color: #c9d8b7;
-      text-align: center;
-      padding-top: 5px;
-      transition: background-color 0.3s, opacity 0.3s; 
-    }
-
-    .upload-button:hover{
-      background-color: #c9d8b7; 
-      opacity: 0.6; 
-    }
-
-    .product-image{
-      width:200px;
-      height:200px;
-      background-color: aqua;
-      float:left;
-
-
-    }
-
-    .pagination{
-
-      display: flex;
-      border-top:3px solid black;
-      margin-top: 45px;
-      justify-content: center;
-
-
-    }
-
-    .pagination a{
-      color:black;
-      float:left;
-      padding: 8px 16px;
-      font-family: 'Noto Sans KR';
-      text-decoration: none;
-      transition: background-color .3s;
-      margin-left: 0 4px;
-    }
-
-    .pagination a:hover{
-      background-color: #c9d8b7;
-      color:black;
-      border:1px solid #c9d8b7;
-    }
-
-            .productname{
-                 width:130px;
+        .rside {
+            display: flex;
+            flex-direction: column;
         }
-    </style>
-        <body>
 
+        .upper {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    {% extends "index.html" %}
+        #product-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            margin-left: 10px;
+        }
+        .product {
+            width: 400px;
+            height: 250px;
+            border: 3px solid black;
+            margin: 10px;
+            display: flex;
+            transition: background-color 0.3s, opacity 0.3s;
+        }
 
-    {% block section %}
-    {% if items %}
+        .product:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            opacity: 0.6;
+        }
 
-            <div class="rside">
-        <p style= "font-size: 23px; margin-top: 50px; margin-left: 70px; margin-bottom: 0px; font-weight: bold;">
-            ({{ items|length }})개의 상품이 검색되었습니다.
-        </p>
+        .product-img {
+            width: 250px;
+            height: 250px;
+        }
 
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-right: 3px solid black;
+        }
 
-        <!-- <table>
-            <tr>
-                {% for key, value in items.items() %}
-                <td>
-                    <p>상품이름: {{ key }}</p>
-                    <p>가격: {{ value.price }}원</p>
-                    <p>판매자: {{ value.sellerid }}</p> <!-- Display the seller's ID -->
-                    <!-- <p><span style="color: orange; font-size: 15px;">★★★★★(2)</span></p>
-                    <img src="static/images/{{ value.img_path }}" width="140" height="200" onclick="location.href='/product_detail/{{ key }}/';" style="cursor:pointer;">
-                    <img src="{{ url_for('static', filename='images/10_wishbutton.png') }}"
-                                                    alt="wishbutton" style="width: 45px; height: 45px;"/>
-                </td>
-                {% if loop.index % 3 == 0 %}
-            </tr>
-            <tr>
-                {% endif %}
-                {% endfor %}
-            </tr>
-        </table> -->
+        .product-info {
+            width: 90px;
+            height: 200px;
+            font-family: 'Noto Sans KR';
 
-                 <table>
-                    <tr>
-                        {% for key, value in datas %}
-                        <td>
-                            <div id="product-container">
-                                <a
-                                    onclick="location.href='/product_detail/{{key}}/';"
-                                    style="cursor: pointer;"
-                                >
-                                    <div class="product">
-                                        <span class="product-img">
-                                            <img src="static/images/{{ value.img_path }}" alt="product image"/>
-                                        </span>
-                                        <div class="product-info">
-                                            <p style="font-size: 25px; font-weight: bold;" class="productname">{{ key }}</p>
-                                            <p style="font-size: 18px;">
-                                                {{ value.price }}원<br/>
-                                                {{ value.sellerid }}<br/>
-                                                <span style="color: orange; font-size: 15px;">
-                                                                                                                
-                                                    {% if value.rating != 'No Rating' %}
-                                                    {% for _ in range(value.rating|int) %}★{% endfor %}            
-                                                    {% for _ in range(5-value.rating|int) %}☆{% endfor %} ({{ value.rating }})  
-                                                            
-                                                    {% else %}
-                                                    별점 정보 없음  
-                                                    {% endif %}
-                                                </span>
-                                                <br/>
+            float: right;
+            margin-left: 10px;
+        }
 
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </td>
-                        {% if loop.index % 3 == 0 %}
-                    </tr>
-                    <tr>
-                        {% endif %} {% endfor %}
-                    </tr>
-                </table>
-                <br /><br /><br />
-     <hr style="border:none;" />
-        <!-- 페이지네이션 코드 (필요한 경우) -->
-<div class="page-wrap">
-    <div class="page-nation">
-        <ul>
-            <li>
-            {% for i in range(page_count) %}
-                <a href="{{url_for('search', page=i, query=query)}}" color="black">{{i+1}}</a>
-            {% endfor %}
-            </li>
-        </ul>
+        .custom-button {
+            background: url('10_wishbutton.png') no-repeat;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+            text-indent: -9999px;
+        }
+
+        a {
+            font-size: 23px;
+            font-family: 'Noto Sans KR';
+        }
+        .sort {
+            float: left;
+            margin-top: 60px;
+            margin-left: 100px;
+        }
+
+        .sort a {
+            transition: background-color 0.3s;
+        }
+
+        .sort a:hover {
+            background-color: #ebefd6;
+            color: black;
+            border: 1px solid #ebefd6;
+        }
+
+        .upload-button {
+            margin-top: 50px;
+            margin-right: 100px;
+            float: right;
+            width: 200px;
+            height: 50px;
+            background-color: #c9d8b7;
+            text-align: center;
+            padding-top: 5px;
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+
+        .upload-button:hover {
+            background-color: #c9d8b7;
+            opacity: 0.6;
+        }
+
+        .product-image {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            float: left;
+        }
+
+        .pagination {
+            display: flex;
+            border-top: 3px solid black;
+            margin-top: 45px;
+            justify-content: center;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            font-family: 'Noto Sans KR';
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-left: 0 4px;
+        }
+
+        .pagination a:hover {
+            background-color: #c9d8b7;
+            color: black;
+            border: 1px solid #c9d8b7;
+        }
+
+        .productname {
+            width: 130px;
+        }
         
-    </div>
-</div>
+         main {
+                    display: grid;
+                }
+                .page-nation li {
+                    list-style: none;
+                }
+                .page-wrap {
+                    text-align: center;
+                    font-size: 0;
+                }
+                .page-nation {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 20px;
+                }
+                .page-nation a {
+                    display: block;
+                    margin: 0 3px;
+                    float: left;
+                    border: 1px solid #e6e6e6;
+                    width: 28px;
+                    height: 28px;
+                    line-height: 28px;
+                    text-align: center;
+                    background-color: #fff;
+                    font-size: 13px;
+                    color: black;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+    </style>
+    <body>
+        {% extends "index.html" %} {% block section %} {% if items %}
+
+        <div class="rside">
+            <p
+                style="
+                    font-size: 23px;
+                    margin-top: 50px;
+                    margin-left: 70px;
+                    margin-bottom: 0px;
+                    font-weight: bold;
+                "
+            >
+                ({{ items|length }})개의 상품이 검색되었습니다.
+            </p>
 
 
-
-    {% else %}
-        <p style="text-align:center; justify-content:center; margin-top: 200px; font-size: 20px; font-family: 'NOTO SANS KR'">
-            검색된 상품이 없습니다.
-        </p>
-    {% endif %}
-<style>
-    main{
-    display: grid; 
-    }
-    .page-nation li{
-        list-style: none;
-    }
-    .page-wrap{
-        text-align: center;
-        font-size: 0;
-    }
-    .page-nation{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-    }
-    .page-nation a{
-        display: block;
-        margin: 0 3px;
-        float: left;
-        border: 1px solid #e6e6e6;
-        width: 28px;
-        height: 28px;
-        line-height: 28px;
-        text-align: center;
-        background-color: #fff;
-        font-size: 13px;
-        color: black;
-        text-decoration: none;
-        font-weight:bold;
-    }
-</style>
-
+            <table>
+                <tr>
+                    {% for key, value in datas %}
+                    <td>
+                        <div id="product-container">
+                            <a
+                                onclick="location.href='/product_detail/{{key}}/';"
+                                style="cursor: pointer"
+                            >
+                                <div class="product">
+                                    <span class="product-img">
+                                        <img
+                                            src="static/images/{{ value.img_path }}"
+                                            alt="product image"
+                                        />
+                                    </span>
+                                    <div class="product-info">
+                                        <p
+                                            style="font-size: 25px; font-weight: bold"
+                                            class="productname"
+                                        >
+                                            {{ key }}
+                                        </p>
+                                        <p style="font-size: 18px">
+                                            {{ value.price }}원<br />
+                                            {{ value.sellerid }}<br />
+                                            <span style="color: orange; font-size: 15px">
+                                                {% if value.rating != 'No Rating' %} {% for _ in
+                                                range(value.rating|int) %}★{% endfor %} {% for _ in
+                                                range(5-value.rating|int) %}☆{% endfor %} ({{
+                                                value.rating }}) {% else %} 별점 정보 없음 {% endif
+                                                %}
+                                            </span>
+                                            <br />
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                    {% if loop.index % 3 == 0 %}
+                </tr>
+                <tr>
+                    {% endif %} {% endfor %}
+                </tr>
+            </table>
+            <br /><br /><br />
+            <hr style="border: none" />
+            
+            <div class="page-wrap">
+                <div class="page-nation">
+                    <ul>
+                        <li>
+                            {% for i in range(page_count) %}
+                            <a href="{{url_for('search', page=i, query=query)}}" color="black"
+                                >{{i+1}}</a
+                            >
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
             </div>
-    {% endblock section %}
-        </body>
-    </html>
+
+            {% else %}
+            <p
+                style="
+                    text-align: center;
+                    justify-content: center;
+                    margin-top: 200px;
+                    font-size: 20px;
+                    font-family: 'NOTO SANS KR';
+                "
+            >
+                검색된 상품이 없습니다.
+            </p>
+            {% endif %}
+            
+        </div>
+        {% endblock section %}
+    </body>
+</html>

@@ -6,287 +6,266 @@
 
         <title>Sign In - 이화 마켓</title>
     </head>
-    
+
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
 
-.signup-form{
-    font-family: 'Noto Sans KR';
-    max-width: 900px;
-    margin: 0 auto;
-    flex: 1;
-    font-weight: 500;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-.col {
-    display: flex;
-}
-
-.status {
-    font-family: 'Noto Sans KR';
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ebefd6;
-}
-
-input[type="name"],
-input[type="id"],
-input[type="realname"],
-input[type="email"],
-input[type="phone"],
-input[type="address"],
-input[type="account"],
-input[type="secret"],
-input[type="ewha"]{
-    width: 100%; 
-    padding: 10px; 
-    margin: 5px 0 20px 0; 
-    border: 1px solid #000; 
-    border-radius: 5px; 
-    font-family: 'Noto Sans KR'
-}
-
-.input-group {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    margin-bottom: 5px;
-    font-size: 20px;
-}
-
-.input-group label{
-    flex:0 0 120px;
-    text-align: right;
-    margin-right: 10px;
-}
-
-.input-group input,
-.input-group button{
-    flex:1;
-    min-width:0;
-}
-
-.signup-btn{
-    width: 450px;
-    height: 50px;
-    margin-top: 20px;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    background-color: #c9d8b7;
-    border: none;
-    transition: background-color 0.3s, opacity 0.3s; 
-    color: black;
-}
-
-.signup-btn:hover{
-    background-color: #c9d8b7; 
-    opacity: 0.6; 
-}
-
-.check-btn{
-    width: 150px;
-    height: 29px;
-    font-family: "Noto Sans KR";
-    font-size: 18px;
-    background-color: #c9d8b7;
-    border: none;
-    margin-left: 10px;
-    transition: background-color 0.3s, opacity 0.3s;
-    color: black;
-}
-
-.check-btn:hover{
-    background-color: #c9d8b7; 
-    opacity: 0.6; 
-}
-
-
-.SU-texting{
-    font-family: 'Noto Sans KR';
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    text-align: center; 
-    margin-top:200px;
-    font-family: 'Noto Sans KR';
-    font-size:25px;
-}
-
-.back_btn{
-    width: 450px;
-    height: 50px;
-    margin-top: 20px;
-    font-family: "Noto Sans KR";
-    font-size: 23px;
-    background-color: #c9d8b7;
-    border: none;
-    transition: background-color 0.3s, opacity 0.3s; 
-    color: black;
- }
- 
- .back_btn:hover{
-     background-color: #c9d8b7; 
-     opacity: 0.6; 
- }
-        
-        
-        .info-upload{
-font-family: "Noto Sans KR";
-font-size: 18px;
-float: right;
-height: 304px;
-margin-top: 20px;
-display: flex;
-flex-direction: row;
-align-items: baseline;
-}
-        .texts{
-  line-height: 2.1;
-   
-}
-
-.inputs{
-      display: flex;
-    flex-direction: column;
-    padding: 1px;
-}
-
-  .c{
-    margin-bottom:10px;
-    padding:4px;
-  }
-        
-        .ewhain{
-            display:flex;
+        .signup-form {
+            font-family: 'Noto Sans KR';
+            max-width: 900px;
+            margin: 0 auto;
+            flex: 1;
+            font-weight: 500;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
         }
-        
+        .col {
+            display: flex;
+        }
+
+        .status {
+            font-family: 'Noto Sans KR';
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ebefd6;
+        }
+
+        input[type='name'],
+        input[type='id'],
+        input[type='realname'],
+        input[type='email'],
+        input[type='phone'],
+        input[type='address'],
+        input[type='account'],
+        input[type='secret'],
+        input[type='ewha'] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #000;
+            border-radius: 5px;
+            font-family: 'Noto Sans KR';
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        .input-group label {
+            flex: 0 0 120px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .input-group input,
+        .input-group button {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .signup-btn {
+            width: 450px;
+            height: 50px;
+            margin-top: 20px;
+            font-family: 'Noto Sans KR';
+            font-size: 20px;
+            background-color: #c9d8b7;
+            border: none;
+            transition: background-color 0.3s, opacity 0.3s;
+            color: black;
+        }
+
+        .signup-btn:hover {
+            background-color: #c9d8b7;
+            opacity: 0.6;
+        }
+
+        .check-btn {
+            width: 150px;
+            height: 29px;
+            font-family: 'Noto Sans KR';
+            font-size: 18px;
+            background-color: #c9d8b7;
+            border: none;
+            margin-left: 10px;
+            transition: background-color 0.3s, opacity 0.3s;
+            color: black;
+        }
+
+        .check-btn:hover {
+            background-color: #c9d8b7;
+            opacity: 0.6;
+        }
+
+        .SU-texting {
+            font-family: 'Noto Sans KR';
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            margin-top: 200px;
+            font-family: 'Noto Sans KR';
+            font-size: 25px;
+        }
+
+        .back_btn {
+            width: 450px;
+            height: 50px;
+            margin-top: 20px;
+            font-family: 'Noto Sans KR';
+            font-size: 23px;
+            background-color: #c9d8b7;
+            border: none;
+            transition: background-color 0.3s, opacity 0.3s;
+            color: black;
+        }
+
+        .back_btn:hover {
+            background-color: #c9d8b7;
+            opacity: 0.6;
+        }
+
+        .info-upload {
+            font-family: 'Noto Sans KR';
+            font-size: 18px;
+            float: right;
+            height: 304px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+        }
+        .texts {
+            line-height: 2.1;
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            padding: 1px;
+        }
+
+        .c {
+            margin-bottom: 10px;
+            padding: 4px;
+        }
+
+        .ewhain {
+            display: flex;
+        }
     </style>
     <body>
-        {% extends "index.html" %} 
-        {% block section %} 
-        {% with mesg = get_flashed_messages() %} 
-        {% if mesg !=[] %}
+        {% extends "index.html" %} {% block section %} {% with mesg = get_flashed_messages() %} {%
+        if mesg !=[] %}
         <script>
             alert('{{ mesg[0] }}');
         </script>
-        {% endif %} 
-        {% endwith %}
+        {% endif %} {% endwith %}
         <content>
             <div class="status">
-                <p style="font-size: 23px;">
-                    회원가입
-                </p>
+                <p style="font-size: 23px">회원가입</p>
             </div>
         </content>
-            <div id="SUScreen">
-        <div class="signup_form">
-            <form method="post" action="/signup_post" style="display: flex;flex-direction: column;align-items: center;">
-                 <div class="info-upload">
-                <span class="texts"  style="margin-right:10px;">
-                아이디  <br>
-                비밀번호 <br>
-                비밀번호 확인 <br>
-                이름<br>
-                이메일<br>
-                휴대폰 번호<br>
-                주소<br>
-                이화이언 비밀단어
-                
-            </span>
- 
-                <span class="inputs">
-                    <input type="text" name="id" id="id" class="c" required />
-                    <input type="password" name="pw" id="pw" class="c" required />
-                    <input type="password" name="confirm-pw" id="confirm-pw" class="c" required />
-                    <input type="text" name="name" id="name" class="c" required />
-               
-                    <input type="text" id="email" name="email" class="c" required/>
-                    <input type="text" id="tel" name="tel" class="c" required/>
-                     <input type="text" id="addr" name="addr"  class="c" required>
-                    <div class="ewhain">
-                        <input type="text" id="ewha" name="ewha"  class="c" required>
-		<button type="button" class="check-btn" id="check-secret">인증하기</button>
+        <div id="SUScreen">
+            <div class="signup_form">
+                <form
+                    method="post"
+                    action="/signup_post"
+                    style="display: flex; flex-direction: column; align-items: center"
+                >
+                    <div class="info-upload">
+                        <span class="texts" style="margin-right: 10px">
+                            아이디 <br />
+                            비밀번호 <br />
+                            비밀번호 확인 <br />
+                            이름<br />
+                            이메일<br />
+                            휴대폰 번호<br />
+                            주소<br />
+                            이화이언 비밀단어
+                        </span>
+
+                        <span class="inputs">
+                            <input type="text" name="id" id="id" class="c" required />
+                            <input type="password" name="pw" id="pw" class="c" required />
+                            <input
+                                type="password"
+                                name="confirm-pw"
+                                id="confirm-pw"
+                                class="c"
+                                required
+                            />
+                            <input type="text" name="name" id="name" class="c" required />
+
+                            <input type="text" id="email" name="email" class="c" required />
+                            <input type="text" id="tel" name="tel" class="c" required />
+                            <input type="text" id="addr" name="addr" class="c" required />
+                            <div class="ewhain">
+                                <input type="text" id="ewha" name="ewha" class="c" required />
+                                <button type="button" class="check-btn" id="check-secret">
+                                    인증하기
+                                </button>
+                            </div>
+                        </span>
                     </div>
-			
 
-                </span>
-                  
-
+                    <div class="input-group">
+                        <button type="submit" id="signup-btn" class="signup-btn">가입하기</button>
+                    </div>
+                </form>
             </div>
-                
-                   
-                     <div class="input-group">
-                    <button type="submit" id="signup-btn" class="signup-btn">
-                        가입하기
-                    </button>
-                </div>
-
-            </form>
         </div>
-        </div>
-
-    
     </body>
 
-    
-     <script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('signup-btn').addEventListener('click', function () {
+                var password = document.getElementById('pw').value;
+                var confirmPassword = document.getElementById('confirm-pw').value;
+                if (password !== confirmPassword) {
+                    alert('비밀번호 확인이 비밀번호와 일치하지 않습니다.');
 
-         
-    document.addEventListener('DOMContentLoaded', function(){
-
-        document.getElementById('signup-btn').addEventListener('click', function () {
-            var password = document.getElementById('pw').value;
-            var confirmPassword = document.getElementById('confirm-pw').value;
-            if (password !== confirmPassword) {
-                alert('비밀번호 확인이 비밀번호와 일치하지 않습니다.');
-
-                event.preventDefault();
-            }
-        });
-    });
-         
-         
-       document.addEventListener('DOMContentLoaded', function () {
-
-        document.getElementById('check-secret').addEventListener('click', function () {
-            var enteredSecret = document.getElementById('ewha').value;
-
-            // 이화이언 비밀 단어를 여기에 저장합니다.
-            var correctSecret = '읏멀항져JCBC';
-
-            if (enteredSecret !== correctSecret) {
-                alert('이화이언 비밀 단어가 일치하지 않습니다!');
-            } else {
-                alert('이화이언 비밀 단어가 일치합니다!');
-                // 여기에 인증 성공시의 추가 로직을 추가할 수 있습니다.
-            }
+                    event.preventDefault();
+                }
+            });
         });
 
-        document.getElementById('signup-btn').addEventListener('click', function () {
-            var enteredSecret = document.getElementById('ewha').value;
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('check-secret').addEventListener('click', function () {
+                var enteredSecret = document.getElementById('ewha').value;
 
-            // 이화이언 비밀 단어를 여기에 저장합니다.
-            var correctSecret = '읏멀항져JCBC';
+                
 
-            if (enteredSecret !== correctSecret) {
-                alert('비밀단어를 인증해주세요!');
-                event.preventDefault(); // 폼 제출 방지
-            }
+                if (enteredSecret !== correctSecret) {
+                    alert('이화이언 비밀 단어가 일치하지 않습니다!');
+                } else {
+                    alert('이화이언 비밀 단어가 일치합니다!');
+                   
+                }
+            });
+
+            document.getElementById('signup-btn').addEventListener('click', function () {
+                var enteredSecret = document.getElementById('ewha').value;
+
+                
+                var correctSecret = '읏멀항져JCBC';
+
+                if (enteredSecret !== correctSecret) {
+                    alert('비밀단어를 인증해주세요!');
+                    event.preventDefault(); 
+                }
+            });
         });
-    });
-</script>
+    </script>
 
-
-
-
-        {% endblock section %}
-
-  
+    {% endblock section %}
 </html>
-
