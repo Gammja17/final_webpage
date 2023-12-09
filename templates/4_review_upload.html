@@ -1,103 +1,120 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-     <link rel="stylesheet" href="{{ url_for('static', filename='4_review_upload.css') }}">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-     <!--<script src="{{ url_for('static', filename='4_review_upload.js') }}" defer></script>-->
-    
-    <title>리뷰 등록 - 이화 마켓</title>
-    <style>
-        
-        .star {
-            color: gray; /* 초기 별점 색상을 회색으로 설정 */
-            cursor: pointer;
-        }
-        .star.filled {
-            color: gold; /* 선택된 별점 색상을 금색으로 설정 */
-        }
-    </style>
-</head>
-<body>
+        <link rel="stylesheet" href="{{ url_for('static', filename='4_review_upload.css') }}" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
 
-{% extends "index.html" %}
-    
-{% block section %}
-
+        <title>리뷰 등록 - 이화 마켓</title>
+        <style>
+            .star {
+                color: gray;
+                cursor: pointer;
+            }
+            .star.filled {
+                color: gold;
+            }
+        </style>
+    </head>
+    <body>
+        {% extends "index.html" %} {% block section %}
 
         <content>
             <div class="info-section">
-                <a class="info-block" href="/review" style="background-color:#c9d8b7;">전체 상품 후기</a>
+                <a class="info-block" href="/review" style="background-color: #c9d8b7"
+                    >전체 상품 후기</a
+                >
                 <a class="info-block" href="/product_detail/{{name}}">상품 상세 정보</a>
-            </div> 
+            </div>
         </content>
-   
-<main>
-<form class="mb-3" name="myform" id="myform" method="post" action="/reg_review" enctype="multipart/form-data">
-    <input type="hidden" name="name" value="{{name}}">
-    <input type="hidden" name="seller" value="{{seller}}">
 
-    <div class="info-product">
-        <h2 style="font-family:'Noto Sans KR">
-            판매자 '{{seller}}' 님의 상품 '{{name}}' 에 대한 후기를 작성해주세요.
-        </h2>
-    </div>
-    <br>
-            <div class="evaluation-product">
-                <!--만약 리뷰자 아이디를 받아와서 옆에서 계속 바뀌게 하고 싶으면 추후 삽입-->
-                <!--해당 상품 사진이랑 상품명 수량 가져오는 것은 일단은 삭제했음-->
-            </div>
-        
- 
-            <div class="star-rating" data-current-rating="0">
-                <div class="stars" data-current-rating="0">
-                    <span class="star" onclick="setRating(this)" data-value="1">&#9733;</span>
-                    <span class="star" onclick="setRating(this)" data-value="2">&#9733;</span>
-                    <span class="star" onclick="setRating(this)" data-value="3">&#9733;</span>
-                    <span class="star" onclick="setRating(this)" data-value="4">&#9733;</span>
-                    <span class="star" onclick="setRating(this)" data-value="5">&#9733;</span>
+        <main>
+            <form
+                class="mb-3"
+                name="myform"
+                id="myform"
+                method="post"
+                action="/reg_review"
+                enctype="multipart/form-data"
+            >
+                <input type="hidden" name="name" value="{{name}}" />
+                <input type="hidden" name="seller" value="{{seller}}" />
+
+                <div class="info-product">
+                    <h2 style="font-family:'Noto Sans KR">
+                        판매자 '{{seller}}' 님의 상품 '{{name}}' 에 대한 후기를 작성해주세요.
+                    </h2>
                 </div>
-                <input type="hidden" name="reviewStar" id="reviewStar">
-        </div>
-            <input type="file" name="file" required><br>
-            <input type="text" placeholder="리뷰자명을 작성해주세요" name="reviewer" id="reviewer" class="reviewer" required>
-            <input type="text" placeholder="제목을 작성해주세요" name="title" id="title" class="review-title" required>
-            <label class="upload-image">
-                
-            </label>
-            
-            <div class="input-container2">
-                <textarea id="pro-review" name="reviewContents"placeholder="리뷰를 작성해주세요" required></textarea>
-            </div>
-            <div class="button-container">
-                <button type="submit" id="submit-review" class="submit-button">리뷰 등록</button> 
-            </div>
-    
-        </form>
-         <script>
-        function setRating(star) {
-            console.log('setRating function called');
-            var ratingValue = parseInt(star.dataset.value, 10);
-            var stars = document.querySelectorAll('.star');
+                <br />
+                <div class="evaluation-product"></div>
 
-            stars.forEach(function(s, index) {
-                if (index < ratingValue) {
-                    s.classList.add('filled');
-                } else {
-                    s.classList.remove('filled');
+                <div class="star-rating" data-current-rating="0">
+                    <div class="stars" data-current-rating="0">
+                        <span class="star" onclick="setRating(this)" data-value="1">&#9733;</span>
+                        <span class="star" onclick="setRating(this)" data-value="2">&#9733;</span>
+                        <span class="star" onclick="setRating(this)" data-value="3">&#9733;</span>
+                        <span class="star" onclick="setRating(this)" data-value="4">&#9733;</span>
+                        <span class="star" onclick="setRating(this)" data-value="5">&#9733;</span>
+                    </div>
+                    <input type="hidden" name="reviewStar" id="reviewStar" />
+                </div>
+                <input type="file" name="file" required /><br />
+                <input
+                    type="text"
+                    placeholder="리뷰자명을 작성해주세요"
+                    name="reviewer"
+                    id="reviewer"
+                    class="reviewer"
+                    required
+                />
+                <input
+                    type="text"
+                    placeholder="제목을 작성해주세요"
+                    name="title"
+                    id="title"
+                    class="review-title"
+                    required
+                />
+                <label class="upload-image"> </label>
+
+                <div class="input-container2">
+                    <textarea
+                        id="pro-review"
+                        name="reviewContents"
+                        placeholder="리뷰를 작성해주세요"
+                        required
+                    ></textarea>
+                </div>
+                <div class="button-container">
+                    <button type="submit" id="submit-review" class="submit-button">
+                        리뷰 등록
+                    </button>
+                </div>
+            </form>
+            <script>
+                function setRating(star) {
+                    console.log('setRating function called');
+                    var ratingValue = parseInt(star.dataset.value, 10);
+                    var stars = document.querySelectorAll('.star');
+
+                    stars.forEach(function (s, index) {
+                        if (index < ratingValue) {
+                            s.classList.add('filled');
+                        } else {
+                            s.classList.remove('filled');
+                        }
+                    });
+                    console.log('Rating Value:', ratingValue);
+                    document.getElementById('reviewStar').value = ratingValue;
                 }
-            });
-            console.log('Rating Value:', ratingValue);
-            document.getElementById('reviewStar').value = ratingValue;
-        }
-    </script>   
-            
-       
-    </main>
-   
+            </script>
+        </main>
+
         {% endblock section %}
-    
-</body>
+    </body>
 </html>

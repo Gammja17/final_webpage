@@ -6,27 +6,24 @@
 
         <script src="{{ url_for('static', filename='4_review_upload.js.') }}" defer></script>
     </head>
-    
+
     <body>
         <style>
-
-                    
-
-                    @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;900&family=Noto+Serif+KR:wght@500&display=swap');
 
             body {
-              font-family: 'Noto Sans KR';
+                font-family: 'Noto Sans KR';
             }
-            main{
-                display:grid;
-                    }
-            .aside-container{
-              display: flex;
+            main {
+                display: grid;
+            }
+            .aside-container {
+                display: flex;
             }
             .content {
-              font-family: 'Noto Sans KR';
-              float:right;
-              flex: 1;
+                font-family: 'Noto Sans KR';
+                float: right;
+                flex: 1;
             }
 
             .info-section {
@@ -54,194 +51,182 @@
                 justify-content: center;
             }
 
-            .info-block:hover{
-              background-color: #c9d8b7;
+            .info-block:hover {
+                background-color: #c9d8b7;
             }
 
-            .all{
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              flex: 1;
-              margin-top:20px;
-
+            .all {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex: 1;
+                margin-top: 20px;
             }
 
-            .B{
-              display:flex;
+            .B {
+                display: flex;
             }
 
-            .info{
-              display:flex;
+            .info {
+                display: flex;
                 width: 1232px;
                 align-items: center;
                 justify-content: center;
                 margin: 20px;
             }
 
-            .customer-img img{
-              max-width:200px;
-              max-height:200px;
+            .customer-img img {
+                max-width: 200px;
+                max-height: 200px;
             }
 
-            #customer-name{
-              font-size:30px;
-              font-family:'Noto Sans KR';
-              margin-top:10px;
-              margin-bottom:0px;
-
-            }
-
-            #review-date{
-              margin-top:10px;
-              font-size:30px;
-              margin-bottom:0px;
-            }
-
-            .info1{
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              margin-left:20px;
-            }
-
-            .seller-info{
-              font-size: 30px;
-              font-family: 'Noto Sans KR';
-              padding: 20px;
-              margin-left: 50px;
-              margin-right: 50px;
-
-            }
-
-
-            .stars{
-              display: flex;
-              direction: flex-end;
-              margin: 0 20px;
-            }
-
-            .star-rating{
-              font-size: 25px;
-              color: gray;
-            }
-
-            .star-rating .star{
-              color: #d3d3d3;
-              cursor: pointer;
-            }
-
-            .star-rating .star.filled{
-              color: gold;
-            }
-
-            .review{
-              display:flex;
-              margin-top:20px;
-            }
-
-
-            .review-title{
-              width:800px;
-              padding:20px;
-              height: 20px;
-              font-family: 'Noto Sans KR';
-              font-size: 25px;
-              border: 2px solid black;
-              background-color: #f5f5f5;
-              margin-top:0px;
-              margin-bottom: 0px;
-              text-align: left;
-                height: min-content;
-                border-bottom: none;
-                border-right:none;
-            }
-
-            .review-star{
-              width: 358px;
-              padding:20px;
-              height: 20px;
-              font-family: 'Noto Sans KR';
-              font-size: 25px;
-               border: 2px solid black;
-              background-color: #f5f5f5;
-              margin-top:0px;
-              margin-bottom: 0px;
-              text-align: left;
-                height: min-content;
-                border-bottom: none;
-            }
-
-            .input-container2 #pro-review{
-              width: 1200px;
-              flex: 1;
-              height: 100px;
-              font-family: 'Noto Sans KR';
-              font-size: 20px;
-               border: 2px solid black;
-              background-color: #f5f5f5;
-              resize: vertical;
-              outline: none;
-              padding:20px;
-              text-align: left;
-                height: min-content;
-            }
-
-            .product-img{
-              display: flex;
-              align-items:center;
-            }
-            .product-img img{
-
-              margin-right:40px;
-
-              border: 2px solid #ccc;
+            #customer-name {
+                font-size: 30px;
+                font-family: 'Noto Sans KR';
                 margin-top: 10px;
-    margin-bottom: 70px;
+                margin-bottom: 0px;
             }
 
-            .buyer{
+            #review-date {
+                margin-top: 10px;
+                font-size: 30px;
+                margin-bottom: 0px;
+            }
+
+            .info1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-left: 20px;
+            }
+
+            .seller-info {
+                font-size: 30px;
+                font-family: 'Noto Sans KR';
+                padding: 20px;
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+
+            .stars {
+                display: flex;
+                direction: flex-end;
+                margin: 0 20px;
+            }
+
+            .star-rating {
+                font-size: 25px;
+                color: gray;
+            }
+
+            .star-rating .star {
+                color: #d3d3d3;
+                cursor: pointer;
+            }
+
+            .star-rating .star.filled {
+                color: gold;
+            }
+
+            .review {
+                display: flex;
+                margin-top: 20px;
+            }
+
+            .review-title {
+                width: 800px;
+                padding: 20px;
+                height: 20px;
+                font-family: 'Noto Sans KR';
+                font-size: 25px;
+                border: 2px solid black;
+                background-color: #f5f5f5;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                text-align: left;
+                height: min-content;
+                border-bottom: none;
+                border-right: none;
+            }
+
+            .review-star {
+                width: 358px;
+                padding: 20px;
+                height: 20px;
+                font-family: 'Noto Sans KR';
+                font-size: 25px;
+                border: 2px solid black;
+                background-color: #f5f5f5;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                text-align: left;
+                height: min-content;
+                border-bottom: none;
+            }
+
+            .input-container2 #pro-review {
+                width: 1200px;
+                flex: 1;
+                height: 100px;
+                font-family: 'Noto Sans KR';
+                font-size: 20px;
+                border: 2px solid black;
+                background-color: #f5f5f5;
+                resize: vertical;
+                outline: none;
+                padding: 20px;
+                text-align: left;
+                height: min-content;
+            }
+
+            .product-img {
+                display: flex;
+                align-items: center;
+            }
+            .product-img img {
+                margin-right: 40px;
+
+                border: 2px solid #ccc;
+                margin-top: 10px;
+                margin-bottom: 70px;
+            }
+
+            .buyer {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
                 height: 100px;
                 margin: 20px;
                 margin-bottom: 45px;
-                
+            }
 
-                    }
+            .buyer-info {
+                display: flex;
+                flex-direction: column;
+                margin: 40px;
+                width: 445px;
+                margin-right: 110px;
+                margin-bottom: 70px;
+            }
 
-                    .buyer-info{
-                        display:flex;
-                        flex-direction:column;
-                        margin: 40px;
-                            width: 445px;
-                        margin-right: 110px;
-                        margin-bottom: 70px;
-
-                    }
-
-                    .buy{
-                        text-align:center;
-                        font-size: 30px;
-                       font-weight: bold;
-                        border-bottom: solid black;
-                    }
-                    .buy-box{
-                        border: solid black;
-                    }
-                    
+            .buy {
+                text-align: center;
+                font-size: 30px;
+                font-weight: bold;
+                border-bottom: solid black;
+            }
+            .buy-box {
+                border: solid black;
+            }
         </style>
 
         {% extends "index.html" %} {% block section %}
 
         <content>
             <div class="info-section">
-                <a class="info-block" href="/review" style="background-color: #c9d8b7;"
-                    >상품 후기</a
-                >
+                <a class="info-block" href="/review" style="background-color: #c9d8b7">상품 후기</a>
                 <a class="info-block" href="/product_detail/{{data.name}}">상품 상세 정보</a>
             </div>
         </content>
@@ -249,15 +234,13 @@
             <div class="all">
                 <div class="upper">
                     <div class="info">
-                        
-
                         <div class="buyer-info">
                             <div class="buyer">
                                 <img
                                     src="{{ url_for('static', filename='images/10_user.png') }}"
                                     alt="프로필 사진"
                                     class="customer-img"
-                                    style="width: 60px; height: 60px;"
+                                    style="width: 60px; height: 60px"
                                 />
 
                                 <div class="info1">
@@ -267,9 +250,7 @@
 
                             <div class="buy-box">
                                 <div class="buy">
-                                    <p>
-                                        구매한 상품
-                                    </p>
+                                    <p>구매한 상품</p>
                                 </div>
                                 <table class="seller-info">
                                     <tr>
@@ -288,35 +269,28 @@
                             <img
                                 src="../../static/images/{{data.img_path}}"
                                 alt="물건사진"
-                                style="width: 600px; height: 450px;"
+                                style="width: 600px; height: 450px"
                             />
                         </div>
                     </div>
                     <div class="review-detail">
                         <div class="review">
                             <p class="review-title">리뷰 제목: {{data.title}}</p>
-                        <span class="review-star">
-                            별점: 
-                            {% for i in range(1, 6) %}
-                                {% if i <= data.rate|int %}
-                                    <span style="color: gold;">★</span> <!-- 평점에 해당하는 별 -->
+                            <span class="review-star">
+                                별점: {% for i in range(1, 6) %} {% if i <= data.rate|int %}
+                                <span style="color: gold">★</span>
+                                <!-- 평점에 해당하는 별 -->
                                 {% else %}
-                                    <span style="color: gold;">☆</span> <!-- 나머지 빈 별 -->
-                                {% endif %}
-                            {% endfor %}
-                            ({{data.rate}})
-                        </span>
-
+                                <span style="color: gold">☆</span>
+                                <!-- 나머지 빈 별 -->
+                                {% endif %} {% endfor %} ({{data.rate}})
+                            </span>
                         </div>
                         <div class="input-container2">
                             <textarea id="pro-review" cols="10" rows="10" readonly>
  {{data.review}} </textarea
                             >
                         </div>
-
-                        <!-- <div class="product-img">
-                <img src="../../static/images/{{data.img_path}}" alt="물건사진" style="width: 400px; height:300px;" >
-            </div> -->
                     </div>
                 </div>
             </div>
