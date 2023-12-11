@@ -1,4 +1,4 @@
-# Open SW Platform (23-2)
+# Open SW Platform (23-2) 
 🐑🐑🐑양 여섯마리🐑🐑🐑
 
 ## Ewha-Market
@@ -22,12 +22,19 @@
 
 ### 파일 디렉토리 구조 
 |-- flask_project/
-|   |-- application.py 
+
+|   |-- application.py
+
 |   |-- static/
+
 |   |   |-- image/
+
 |   |   |-- style.css
+
 |   |-- templates/
+
 |       |-- index.html
+
 
 ### 사용 스택
 **FrontEnd:** HTML, CSS, JavaScript
