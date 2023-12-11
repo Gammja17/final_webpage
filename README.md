@@ -11,12 +11,12 @@
 ### 플라스크 초기 세팅 
 1. 레포지토리 포크 후, 구름에서 컨테이너 생성하여 깃허브 불러오기 진행
 2. URL 생성 후, 포트 5000번 열기
-3. 터미널에 ```
+3. 터미널에 아래 명령어 실행하여 pyrebase 설치하기 
+    ```
    pip3 install pyrebase --use-feature=2020-resolve
-   ```
-   실행하여 pyrebase 설치 
-5. 'application.py' 실행
-6. 해당 URL 열기
+    
+4. 'application.py' 실행
+5. 해당 URL 열기
    
 ----
 ### firebase와 flask 연결 
