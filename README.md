@@ -13,29 +13,37 @@
 2. URL 생성 후, 포트 5000번 열기
 3. 터미널에 ```
    pip3 install pyrebase --use-feature=2020-resolve
+   ```
    실행하여 pyrebase 설치 
 5. 'application.py' 실행
 6. 해당 URL 열기
    
 ----
-### firebase 초기 세팅
+### firebase와 flask 연결 
 1. firebase 프로젝트 및 realtime database 생성
-2. 앱  추가 후 해당 SDK json 파일 내용을 복사 후
-   ```
-    Authentication/firebase_auth.json
+2. 앱  추가 후 해당 SDK json 파일 내용을 복사 후 'Authentication/firebase_auth.json'에 붙여넣기 
  
-   에 붙여넣기
-   
 ----
 
 ### 파일 디렉토리 구조 
-├─ flask_project
-│   │ application.py
-|   | static
-|   |   | image
-|   |   | style.css
-|   | templates
-|       | index.html
+```
+📦 
+├─ LICENSE
+├─ README.md
+├─ __pycache__
+│  └─ database.cpython-37.pyc
+├─ application.py
+├─ authentication
+│  └─ firebase_auth.json
+├─ database.py
+├─ goorm.manifest
+├─ static
+│  ├─ style.css
+│  └─ images
+│     ├─ 0.jpg
+└─ templates
+   └─ index.html
+```
 
 ----
 
