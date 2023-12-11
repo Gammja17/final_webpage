@@ -39,7 +39,6 @@
 ├─ static
 │  ├─ style.css
 │  └─ images
-│     ├─ 0.jpg
 └─ templates
    └─ index.html
 ```
