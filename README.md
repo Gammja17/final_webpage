@@ -22,18 +22,13 @@
 
 ### 파일 디렉토리 구조 
 |-- flask_project/
-
 |   |-- application.py
-
 |   |-- static/
-
 |   |   |-- image/
-
 |   |   |-- style.css
-
 |   |-- templates/
-
 |       |-- index.html
+
 
 
 ### 사용 스택
