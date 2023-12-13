@@ -30,20 +30,48 @@
 
 ### 파일 디렉토리 구조 
 ```
+
 📦 flask_project
 ├─ LICENSE
+├─ README.md
+├─ __pycache__
+│  └─ database.cpython-37.pyc
 ├─ application.py
 ├─ authentication
 │  └─ firebase_auth.json
 ├─ database.py
 ├─ static
-│  ├─ style.css
+│  ├─ 0_header.css
+│  ├─ 1_product_upload.css
+│  ├─ 2_home.css
+│  ├─ 3_product_detail.css
+│  ├─ 4_review_upload.css
+│  ├─ 4_review_upload.js
+│  ├─ 5_review_all.css
+│  ├─ 6_review_detail.css
+│  ├─ 7_1_log_in.css
+│  ├─ 8_sign_up.css
+│  ├─ 9_1_wishlist.css
+│  ├─ 9_3_mypage.css
 │  └─ images
 └─ templates
-   └─ index.html
+   ├─ 1_product_upload.html
+   ├─ 2_home.html
+   ├─ 3_product_detail.html
+   ├─ 4_review_upload.html
+   ├─ 5_review_all.html
+   ├─ 6_review_detail.html
+   ├─ 7_1_log_in.html
+   ├─ 8_sign_up.html
+   ├─ 8_sign_up_copy0.html
+   ├─ 9_1_wishlist.html
+   ├─ 9_3_mypage.html
+   ├─ index.html
+   └─ search_result.html
 ```
 
 ----
+
 
 ### 기술 스택
 
